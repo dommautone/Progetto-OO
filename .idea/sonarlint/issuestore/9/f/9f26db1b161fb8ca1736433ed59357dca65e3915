@@ -37,6 +37,8 @@ K
 java:S1172"5Remove this unused method parameter "frameChiamante".(ú‹≈Í
 _
 java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢°ù¥
+R
+java:S2209'"5Change this instance-reference to a static reference.(€Ãçÿ8∏ÎÌö–1
 _
 java:S32520"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢°ù¥
 t
