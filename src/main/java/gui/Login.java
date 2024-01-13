@@ -61,6 +61,14 @@ public class Login {
                 JOptionPane.showMessageDialog(null, "Appenditi");
             }
         });
+        accediButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
+                pannelloAmministratore.frame.setVisible(true);
+                frame.dispose();
+            }
+        });
     }
 
     {
