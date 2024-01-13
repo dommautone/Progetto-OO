@@ -26,8 +26,8 @@ public class PannelloAmministratore {
         buttonAggiungi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
-                ricercaAmministratore.frame.setVisible(true);
+                AggiungiCalciatore aggiungiCalciatore = new AggiungiCalciatore(frame);
+                AggiungiCalciatore.frame.setVisible(true);
                 frame.dispose();
             }
         });
