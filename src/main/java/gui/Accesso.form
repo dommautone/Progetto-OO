@@ -1,40 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.Accesso">
-  <grid id="27dc6" binding="panel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="892" height="550"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-4859649"/>
+    </properties>
     <border type="none"/>
     <children>
-      <grid id="4fcbd" binding="panelAccedi" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-        <constraints/>
+      <grid id="7c221" binding="panelLogo" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
         <properties>
-          <alignmentX value="0.5"/>
+          <background color="-4859649"/>
         </properties>
         <border type="empty">
-          <font/>
-          <title-color color="-2104859"/>
-          <size top="55" left="0" bottom="0" right="0"/>
+          <size top="0" left="30" bottom="0" right="0"/>
         </border>
         <children>
-          <component id="b1a0b" class="javax.swing.JButton" binding="buttonAccedi">
-            <constraints/>
+          <component id="c556d" class="javax.swing.JLabel" binding="labelLogo">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <icon value="logo.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="91af2" binding="panelAccedi" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4859649"/>
+        </properties>
+        <border type="empty">
+          <size top="0" left="0" bottom="200" right="0"/>
+        </border>
+        <children>
+          <component id="3190e" class="javax.swing.JButton" binding="buttonAccedi">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="5" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <text value="Accedi come amministratore"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="dfd86" binding="panelUtente" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-        <constraints/>
-        <properties/>
+      <vspacer id="77221">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="1c828" binding="panelSenza" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4859649"/>
+        </properties>
         <border type="empty">
-          <size top="55" left="0" bottom="0" right="0"/>
+          <size top="0" left="0" bottom="200" right="0"/>
         </border>
         <children>
-          <component id="a003c" class="javax.swing.JButton" binding="buttonUtente">
-            <constraints/>
+          <component id="5472b" class="javax.swing.JButton" binding="buttonUtente">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="5" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
             <properties>
               <text value="Continua senza accedere"/>
             </properties>
