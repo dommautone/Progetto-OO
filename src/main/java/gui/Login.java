@@ -60,7 +60,7 @@ public class Login {
                 JOptionPane.showMessageDialog(null, "Mi dispiace il servizio richiesto è temporaneamente non disponibile, la preghiamo di riprovare in seguito.");
             }
         });
-        accediButton.addActionListener(new ActionListener() {
+        buttonAccedi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
