@@ -42,9 +42,9 @@ public class Login {
         buttonRegistrati.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               /* Registrazione registrazione = new Registrazione(frame);
+                Registrazione registrazione = new Registrazione(frame);
                 registrazione.frame.setVisible(true);
-                frame.setVisible(false);*/
+                frame.setVisible(false);
             }
 
         });
