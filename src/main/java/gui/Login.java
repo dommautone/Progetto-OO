@@ -28,6 +28,7 @@ public class Login {
     private JLabel labelLogo;
     private JPanel panelRegistrati;
     public static JFrame frame;
+    public Accesso accesso;
 
     public Login(JFrame frameChiamante) {
         frame = new JFrame("Login");
@@ -50,7 +51,7 @@ public class Login {
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameChiamante.setVisible(true);
+                accesso.frame.setVisible(true);
                 frame.dispose();
             }
         });
