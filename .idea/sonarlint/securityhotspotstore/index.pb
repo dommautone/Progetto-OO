@@ -37,3 +37,13 @@ w
 G.idea/sonarlint/issuestore/b/7/b7d02498c12448b72077229d9dd3070cb3006ea6,c\b\cbdd179a5421c8b4040088565cef53a5ada1995f
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-src/main/java/gui/PannelloAmministratore.java,6\d\6d5f63f03fd2d1f6eecdf8dd12c8cdbf45781262
+T
+$src/main/java/gui/Registrazione.form,e\0\e0029c5fef25c2755a8e0190d89d6ac86fd5cac0
+]
+-src/main/java/gui/PannelloAmministratore.form,c\4\c44896062fa891f30c91b97b12e72c69b076b23e
+W
+'src/main/java/gui/RisultatoRicerca.form,3\1\316db89931bdc9814c4353565a067450f7fd70ad
+K
+src/main/java/gui/Home.form,6\8\68ae5ee1017f32ab934cc69a5592ab263cc1e95a
