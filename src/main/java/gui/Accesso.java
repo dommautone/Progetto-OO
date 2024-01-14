@@ -15,7 +15,7 @@ public class Accesso {
     private JButton buttonAccedi;
     private JButton buttonUtente;
 
-    private static JFrame frame;
+    public static JFrame frame;
 
     public Accesso() {
         buttonAccedi.addActionListener(new ActionListener() {
@@ -23,7 +23,7 @@ public class Accesso {
             public void actionPerformed(ActionEvent e) {
                 Login login = new Login(frame);
                 login.frame.setVisible(true);
-                frame.dispose();
+                frame.setVisible(false);
             }
         });
         buttonUtente.addActionListener(new ActionListener() {
@@ -31,7 +31,7 @@ public class Accesso {
             public void actionPerformed(ActionEvent e) {
                 Home home = new Home(frame);
                 home.frame.setVisible(true);
-                frame.dispose();
+                frame.setVisible(false);
             }
         });
     }

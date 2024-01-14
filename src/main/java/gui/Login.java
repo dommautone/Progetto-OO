@@ -28,6 +28,7 @@ public class Login {
     private JLabel labelLogo;
     private JPanel panelRegistrati;
     public static JFrame frame;
+    public Accesso accesso;
 
     public Login(JFrame frameChiamante) {
         frame = new JFrame("Login");
@@ -50,7 +51,7 @@ public class Login {
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameChiamante.setVisible(true);
+                accesso.frame.setVisible(true);
                 frame.dispose();
             }
         });
@@ -125,7 +126,7 @@ public class Login {
         panel.add(panelUsername, new com.intellij.uiDesigner.core.GridConstraints(1, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         labelUsername = new JLabel();
         labelUsername.setBackground(new Color(-4859649));
-        Font labelUsernameFont = this.$$$getFont$$$(null, Font.BOLD, 14, labelUsername.getFont());
+        Font labelUsernameFont = this.$$$getFont$$$("Consolas", Font.BOLD, 14, labelUsername.getFont());
         if (labelUsernameFont != null) labelUsername.setFont(labelUsernameFont);
         labelUsername.setText("Username");
         panelUsername.add(labelUsername, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
