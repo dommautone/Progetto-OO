@@ -98,16 +98,6 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="b9b2e" class="javax.swing.JLabel" binding="labelUsername">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-4859649"/>
-              <font name="Consolas" size="14" style="1"/>
-              <text value="Username"/>
-            </properties>
-          </component>
           <component id="d7aac" class="javax.swing.JTextField" binding="textUsername">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -118,6 +108,18 @@
             </constraints>
             <properties>
               <font size="14"/>
+            </properties>
+          </component>
+          <component id="b9b2e" class="javax.swing.JLabel" binding="labelUsername">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-4859649"/>
+              <font name="Calibri" size="20" style="1"/>
+              <text value="Username"/>
+              <verticalAlignment value="0"/>
+              <verticalTextPosition value="3"/>
             </properties>
           </component>
         </children>
@@ -185,7 +187,7 @@
           <background color="-4859649"/>
         </properties>
         <border type="empty">
-          <size top="0" left="3" bottom="0" right="0"/>
+          <size top="0" left="6" bottom="0" right="0"/>
         </border>
         <children>
           <component id="35641" class="javax.swing.JLabel" binding="labelPassword">
@@ -193,7 +195,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font size="14" style="1"/>
+              <font name="Calibri" size="20" style="1"/>
               <text value="Password"/>
             </properties>
           </component>
