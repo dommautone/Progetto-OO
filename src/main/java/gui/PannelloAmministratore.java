@@ -11,7 +11,7 @@ import java.util.Locale;
 public class PannelloAmministratore {
     private JPanel panel;
     private JButton buttonAggiungi;
-    private JButton modificaCalciatoreButton;
+    private JButton buttonModificaCalciatore;
     private JButton buttonElimina;
     private JPanel panelAggiungi;
     private JPanel panelModifica;
@@ -41,7 +41,7 @@ public class PannelloAmministratore {
                 frame.dispose();
             }
         });
-        modificaCalciatoreButton.addActionListener(new ActionListener() {
+        buttonModificaCalciatore.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = JOptionPane.showInputDialog("Inserisci il nome del calciatore");
@@ -98,9 +98,9 @@ public class PannelloAmministratore {
         panelModifica.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panelModifica.setBackground(new Color(-4859649));
         panel.add(panelModifica, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        modificaCalciatoreButton = new JButton();
-        modificaCalciatoreButton.setText("Modifica calciatore");
-        panelModifica.add(modificaCalciatoreButton, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonModificaCalciatore = new JButton();
+        buttonModificaCalciatore.setText("Modifica calciatore");
+        panelModifica.add(buttonModificaCalciatore, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         panelElimina = new JPanel();
         panelElimina.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panelElimina.setBackground(new Color(-4859649));

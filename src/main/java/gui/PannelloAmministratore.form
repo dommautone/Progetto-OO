@@ -40,7 +40,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="984e1" class="javax.swing.JButton" binding="modificaCalciatoreButton" default-binding="true">
+          <component id="984e1" class="javax.swing.JButton" binding="buttonModificaCalciatore">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
