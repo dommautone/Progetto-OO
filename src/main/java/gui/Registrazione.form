@@ -3,11 +3,9 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="928" height="650"/>
+      <xy x="20" y="20" width="924" height="650"/>
     </constraints>
-    <properties>
-      <background color="-4859649"/>
-    </properties>
+    <properties/>
     <border type="empty">
       <size top="0" left="0" bottom="0" right="0"/>
     </border>
@@ -17,9 +15,7 @@
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="empty">
           <size top="0" left="205" bottom="0" right="0"/>
         </border>
@@ -50,9 +46,7 @@
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="true"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="empty">
           <size top="0" left="133" bottom="0" right="0"/>
         </border>
@@ -66,9 +60,9 @@
               <text value="Conferma Password"/>
             </properties>
           </component>
-          <component id="4113a" class="javax.swing.JPasswordField" binding="buttonConfermaPassword">
+          <component id="4113a" class="javax.swing.JPasswordField" binding="confermapasswordConfermaPassword">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="1" use-parent-layout="false">
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="250" height="-1"/>
                 <preferred-size width="250" height="-1"/>
                 <maximum-size width="250" height="-1"/>
@@ -83,9 +77,7 @@
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="empty">
           <size top="25" left="70" bottom="0" right="0"/>
         </border>
@@ -120,17 +112,15 @@
           </vspacer>
         </children>
       </grid>
-      <grid id="f4a57" binding="panelLogo" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="f4a57" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="none"/>
         <children>
-          <component id="1e1d" class="javax.swing.JLabel" binding="labelLogo">
+          <component id="1e1d" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -152,9 +142,7 @@
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <background color="-4859649"/>
-                </properties>
+                <properties/>
                 <border type="none"/>
                 <children>
                   <component id="55563" class="javax.swing.JLabel" binding="labelRegistrazione">
@@ -217,9 +205,7 @@
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="empty">
           <font/>
           <size top="0" left="202" bottom="0" right="0"/>
@@ -253,17 +239,15 @@
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <grid id="46238" binding="panelIndietro" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="46238" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-4859649"/>
-        </properties>
+        <properties/>
         <border type="none"/>
         <children>
-          <component id="bd87b" class="javax.swing.JButton" binding="buttonIndietro">
+          <component id="bd87b" class="javax.swing.JButton" binding="button1" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
