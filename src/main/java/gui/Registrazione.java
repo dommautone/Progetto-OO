@@ -44,6 +44,10 @@ public class Registrazione {
         buttonRegistrati.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (textUsername.getText().equals("") || passwordPassword.getText().equals("") || passwordConfermaPassword.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserisci tutti i campi");
+                    return;
+                }
                 JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
                 frameChiamante.setVisible(true);
                 frame.dispose();

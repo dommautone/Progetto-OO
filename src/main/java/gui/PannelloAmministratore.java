@@ -46,6 +46,9 @@ public class PannelloAmministratore {
             public void actionPerformed(ActionEvent e) {
                 String nome = JOptionPane.showInputDialog("Inserisci il nome del calciatore");
                 String cognome = JOptionPane.showInputDialog("Inserisci il cognome del calciatore");
+                RicercaModifica ricercaModifica = new RicercaModifica(frame);
+                RicercaModifica.frame.setVisible(true);
+                frame.setVisible(false);
             }
         });
         buttonElimina.addActionListener(new ActionListener() {
