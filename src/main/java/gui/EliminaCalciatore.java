@@ -29,15 +29,21 @@ public class EliminaCalciatore {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-
         tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro"});
         tableGiocatori.setModel(tableModel);
+
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameChiamante.setVisible(true);
                 frame.dispose();
+            }
+        });
+        buttonElimina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Calciatore eliminato con successo");
             }
         });
     }

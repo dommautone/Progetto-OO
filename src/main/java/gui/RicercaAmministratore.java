@@ -1,0 +1,55 @@
+package gui;
+
+import javax.swing.*;
+
+public class RicercaAmministratore {
+    private JPanel panelNome;
+    private JCheckBox checkBoxNome;
+    private JLabel labelNome;
+    private JTextField textNome;
+    private JPanel panelCognome;
+    private JCheckBox checkBoxCognome;
+    private JLabel labelCognome;
+    private JTextField textCognome;
+    private JPanel panelSquadra;
+    private JCheckBox checkBoxSquadra;
+    private JLabel labelSquadra;
+    private JComboBox comboBoxSquadra;
+    private JPanel panelNazionalità;
+    private JCheckBox checkBoxNazionalità;
+    private JLabel labelNazionalità;
+    private JComboBox comboBoxNazionalità;
+    private JPanel panelPiede;
+    private JCheckBox checkBoxPiede;
+    private JLabel labelPiede;
+    private JComboBox comboBoxPiede;
+    private JPanel panelEtà;
+    private JCheckBox checkBoEtà;
+    private JLabel labelEtà;
+    private JTextField textEtà;
+    private JPanel panelRuolo;
+    private JCheckBox checkBoxRuolo;
+    private JLabel Ruolo;
+    private JComboBox comboBoxRuolo;
+    private JPanel panelGolFatti;
+    private JCheckBox checkBoxGolFatti;
+    private JLabel labelGolFatti;
+    private JTextField textFieldGolFatti;
+    private JPanel panelGolSubiti;
+    private JCheckBox checkBoxGolSubiti;
+    private JLabel labelGolSubiti;
+    private JTextField textFieldGolSubiti;
+    private JPanel panelGenere;
+    private JLabel labelGenere;
+    private JRadioButton radioButtonMaschio;
+    private JRadioButton radioButtonFemmina;
+    private JCheckBox checkBoxGenere;
+    private JPanel panelDataDiNascita;
+    private JCheckBox checkboxDataDiNascita;
+    private JLabel labelDataDINascita;
+    private JTextField textDataDiNascita;
+    private JPanel panelDataDiRitiro;
+    private JLabel labelDataDiRitiro;
+    private JTextField textDataDiRitiro;
+    private JCheckBox checkboxDataDiRitiro;
+}

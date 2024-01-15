@@ -1,0 +1,117 @@
+
+L
+java:S3740"/Provide the parametrized type for this generic.(ï—î8µâìîĞ1
+Q
+java:S3740"/Provide the parametrized type for this generic.(“¿…şÿÿÿÿ8¯îîĞ1
+Q
+java:S3740"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8§ÿîîĞ1
+Q
+java:S3740!"/Provide the parametrized type for this generic.(·†£¢üÿÿÿÿ8÷«ğîĞ1
+x	java:S116"\Rename this field "panelNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡¤èÆ8Œ¯îîĞ1
+€	java:S116"_Rename this field "checkBoxNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ä€µøÿÿÿÿ8¯îîĞ1
+x	java:S116"\Rename this field "labelNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú•Ó´8¯îîĞ1
+€	java:S116"_Rename this field "comboBoxNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“¿…şÿÿÿÿ8¯îîĞ1
+p	java:S116"TRename this field "panelEtÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ªÌô8éÍïîĞ1
+r	java:S116"VRename this field "checkBoEtÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–äÔ8êÍïîĞ1
+u	java:S116"TRename this field "labelEtÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñçúûÿÿÿÿ8êÍïîĞ1
+t	java:S116"SRename this field "textEtÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îö¬úÿÿÿÿÿ8êÍïîĞ1
+l	java:S116 "PRename this field "Ruolo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨êŠ·8ı«ğîĞ1
+J
+java:S1068"-Remove this unused "panelNome" private field.(²ƒÉ³8ÍƒëîĞ1
+R
+java:S1068"0Remove this unused "checkBoxNome" private field.(Ç§½İşÿÿÿÿ8ÎƒëîĞ1
+J
+java:S1068"-Remove this unused "labelNome" private field.(¬Ñ‚—8ÎƒëîĞ1
+I
+java:S1068	",Remove this unused "textNome" private field.(—‹ïø8ÎƒëîĞ1
+M
+java:S1068
+"0Remove this unused "panelCognome" private field.(ö‘¶é8ÑúëîĞ1
+P
+java:S1068"3Remove this unused "checkBoxCognome" private field.(ôºüô8ÑúëîĞ1
+L
+java:S1068"0Remove this unused "labelCognome" private field.(›ş×8ÑúëîĞ1
+Q
+java:S1068"/Remove this unused "textCognome" private field.(ÿ‚Ù“ÿÿÿÿÿ8ÑúëîĞ1
+R
+java:S1068"0Remove this unused "panelSquadra" private field.(Ï”«Æøÿÿÿÿ8ÇâìîĞ1
+P
+java:S1068"3Remove this unused "checkBoxSquadra" private field.(Û™â½8ÇâìîĞ1
+R
+java:S1068"0Remove this unused "labelSquadra" private field.(ê¬…ÿşÿÿÿÿ8ÇâìîĞ1
+P
+java:S1068"3Remove this unused "comboBoxSquadra" private field.(ï—î8ÇâìîĞ1
+R
+java:S1068"5Remove this unused "panelNazionalitÃ " private field.(¡¤èÆ8˜¯îîĞ1
+Z
+java:S1068"8Remove this unused "checkBoxNazionalitÃ " private field.(ä€µøÿÿÿÿ8˜¯îîĞ1
+R
+java:S1068"5Remove this unused "labelNazionalitÃ " private field.(ú•Ó´8˜¯îîĞ1
+Z
+java:S1068"8Remove this unused "comboBoxNazionalitÃ " private field.(“¿…şÿÿÿÿ8˜¯îîĞ1
+K
+java:S1068".Remove this unused "panelPiede" private field.(Óõ› 8·ÿîîĞ1
+S
+java:S1068"1Remove this unused "checkBoxPiede" private field.(î©Î•úÿÿÿÿ8·ÿîîĞ1
+K
+java:S1068".Remove this unused "labelPiede" private field.(Ò¾Ş„8·ÿîîĞ1
+S
+java:S1068"1Remove this unused "comboBoxPiede" private field.(÷©“Òûÿÿÿÿ8¸ÿîîĞ1
+J
+java:S1068"-Remove this unused "panelEtÃ " private field.(›ªÌô8†ÎïîĞ1
+L
+java:S1068"/Remove this unused "checkBoEtÃ " private field.(–äÔ8†ÎïîĞ1
+O
+java:S1068"-Remove this unused "labelEtÃ " private field.(çñçúûÿÿÿÿ8†ÎïîĞ1
+N
+java:S1068",Remove this unused "textEtÃ " private field.(îö¬úÿÿÿÿÿ8†ÎïîĞ1
+K
+java:S1068".Remove this unused "panelRuolo" private field.(º¹ÎŸ8‡¬ğîĞ1
+N
+java:S1068"1Remove this unused "checkBoxRuolo" private field.(û­«Ñ8‡¬ğîĞ1
+F
+java:S1068 ")Remove this unused "Ruolo" private field.(¨êŠ·8ˆ¬ğîĞ1
+S
+java:S1068!"1Remove this unused "comboBoxRuolo" private field.(·†£¢üÿÿÿÿ8ˆ¬ğîĞ1
+S
+java:S1068""1Remove this unused "panelGolFatti" private field.(ïàí„ùÿÿÿÿ8áçğîĞ1
+V
+java:S1068#"4Remove this unused "checkBoxGolFatti" private field.(İ¹‰äüÿÿÿÿ8áçğîĞ1
+S
+java:S1068$"1Remove this unused "labelGolFatti" private field.(ƒòÁÿÿÿÿÿ8áçğîĞ1
+R
+java:S1068%"5Remove this unused "textFieldGolFatti" private field.(ó©Ä—8âçğîĞ1
+T
+java:S1068&"2Remove this unused "panelGolSubiti" private field.(¥ÆÁ“şÿÿÿÿ8ü¤ñîĞ1
+W
+java:S1068'"5Remove this unused "checkBoxGolSubiti" private field.(¥Ãêòşÿÿÿÿ8ü¤ñîĞ1
+O
+java:S1068("2Remove this unused "labelGolSubiti" private field.(ÑÉØ–8ü¤ñîĞ1
+S
+java:S1068)"6Remove this unused "textFieldGolSubiti" private field.(ìŸıå8ü¤ñîĞ1
+Q
+java:S1068*"/Remove this unused "panelGenere" private field.(ĞĞ£­ıÿÿÿÿ8¹Ö™ïĞ1
+Q
+java:S1068+"/Remove this unused "labelGenere" private field.(ïÿí÷şÿÿÿÿ8ø­™ïĞ1
+S
+java:S1068,"6Remove this unused "radioButtonMaschio" private field.(×äÈÔ8…ô‘ïĞ1
+X
+java:S1068-"6Remove this unused "radioButtonFemmina" private field.(‘İÁ‹ÿÿÿÿÿ8…ô‘ïĞ1
+O
+java:S1068."2Remove this unused "checkBoxGenere" private field.(ÊÒ˜à8ĞšïĞ1
+S
+java:S1068/"6Remove this unused "panelDataDiNascita" private field.(ŸùŠ®8öØšïĞ1
+V
+java:S10680"9Remove this unused "checkboxDataDiNascita" private field.(Øäè8¢§›ïĞ1
+S
+java:S10681"6Remove this unused "labelDataDINascita" private field.(ßôÈ…8œÛ›ïĞ1
+W
+java:S10682"5Remove this unused "textDataDiNascita" private field.(á¯úüÿÿÿÿ8İ¦œïĞ1
+W
+java:S10683"5Remove this unused "panelDataDiRitiro" private field.(›ˆªÚÿÿÿÿÿ8ıöœïĞ1
+W
+java:S10684"5Remove this unused "labelDataDiRitiro" private field.(Á‚Ôûÿÿÿÿ8‘»ïĞ1
+Q
+java:S10685"4Remove this unused "textDataDiRitiro" private field.(ˆ¤çŸ8È‹ïĞ1
+Z
+java:S10686"8Remove this unused "checkboxDataDiRitiro" private field.(¥Ÿ±Öúÿÿÿÿ8¦ÕïĞ1
