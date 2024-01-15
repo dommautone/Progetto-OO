@@ -47,3 +47,9 @@ W
 'src/main/java/gui/RisultatoRicerca.form,3\1\316db89931bdc9814c4353565a067450f7fd70ad
 K
 src/main/java/gui/Home.form,6\8\68ae5ee1017f32ab934cc69a5592ab263cc1e95a
+Y
+)src/main/java/gui/AggiungiCalciatore.java,e\3\e3100fd70a7918c7f167d542d2b1ad612f828b39
+X
+(src/main/java/gui/EliminaCalciatore.java,2\b\2b2c72edb3a83e8cf9f24f917dbcd77677ce486d
+X
+(src/main/java/gui/EliminaCalciatore.form,9\c\9c48808edfaa0205846d66d1cc780baf92d06fa5
