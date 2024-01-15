@@ -92,7 +92,7 @@ public class AggiungiCalciatore {
         listNazionalità.setModel(modelNazionalità);
         listRuolo.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         listNazionalità.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        /*modelRuolo.addElement("Portiere");
+        modelRuolo.addElement("Portiere");
         modelRuolo.addElement("Difensore cemtrale");
         modelRuolo.addElement("Terzino destro");
         modelRuolo.addElement("Terzino sinistro");
@@ -142,7 +142,7 @@ public class AggiungiCalciatore {
         modelNazionalità.addElement("Stati Uniti");
         modelNazionalità.addElement("Austria");
         modelNazionalità.addElement("Algeria");
-        modelNazionalità.addElement("Australia");*/
+        modelNazionalità.addElement("Australia");
     }
 
     public static void main(String[] args) {
