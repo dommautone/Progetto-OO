@@ -1,0 +1,116 @@
+
+C
+java:S1604R"(Make this anonymous inner class a lambda(ã¥›šÿÿÿÿÿ
+C
+java:S1604\"(Make this anonymous inner class a lambda(›©¤–ıÿÿÿÿ
+C
+java:S1604f"(Make this anonymous inner class a lambda(å ÇÖøÿÿÿÿ
+C
+java:S1604p"(Make this anonymous inner class a lambda(Ù¯éüÿÿÿÿ
+>
+java:S1604z"(Make this anonymous inner class a lambda(—ï´©
+D
+java:S1604„"(Make this anonymous inner class a lambda(Àƒ¤¢ıÿÿÿÿ
+>
+java:S1604"(Make this anonymous inner class a lambda(ü©§
+?
+java:S1604˜"(Make this anonymous inner class a lambda(«¼›
+D
+java:S1604¢"(Make this anonymous inner class a lambda(Êè¬úÿÿÿÿ
+D
+java:S1604¬"(Make this anonymous inner class a lambda(äÌğŞûÿÿÿÿ
+D
+java:S1604´"(Make this anonymous inner class a lambda(ÿØ ÿÿÿÿÿÿ
+D
+java:S1604¼"(Make this anonymous inner class a lambda(âä™²üÿÿÿÿ
+D
+java:S1604Â"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ
+l
+java:S1104<"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ
+F
+java:S1444<"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ
+	java:S116"eRename this field "buttonAggiungiNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷îÚëıÿÿÿÿ
+~	java:S1169"dRename this field "panelModificaNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï­ÒŠıÿÿÿÿ
+p
+java:S1450)"[Remove the "labelCognome" field and declare it as a local variable in the relevant methods.(›ş×
+z
+java:S1450/"_Remove the "labelDataNascita" field and declare it as a local variable in the relevant methods.(äú£Üúÿÿÿÿ
+y
+java:S14501"^Remove the "labelDataRitiro" field and declare it as a local variable in the relevant methods.(²®›Çøÿÿÿÿ
+w
+java:S14505"\Remove the "labelGolFatti" field and declare it as a local variable in the relevant methods.(ƒòÁÿÿÿÿÿ
+s
+java:S14507"]Remove the "labelGolSubiti" field and declare it as a local variable in the relevant methods.(ÑÉØ–
+
+java:S1450%"fRemove the "labelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¨âäşÿÿÿÿ
+n
+java:S1450'"XRemove the "labelNome" field and declare it as a local variable in the relevant methods.(¬Ñ‚—
+o
+java:S1450+"YRemove the "labelPiede" field and declare it as a local variable in the relevant methods.(Ò¾Ş„
+t
+java:S1450-"YRemove the "labelSesso" field and declare it as a local variable in the relevant methods.(ü¬ò¨üÿÿÿÿ
+v
+java:S14503"[Remove the "labelSquadra" field and declare it as a local variable in the relevant methods.(ê¬…ÿşÿÿÿÿ
+q
+java:S1450("[Remove the "panelCognome" field and declare it as a local variable in the relevant methods.(ö‘¶é
+z
+java:S1450."_Remove the "panelDataNascita" field and declare it as a local variable in the relevant methods.(ê«äëøÿÿÿÿ
+y
+java:S14500"^Remove the "panelDataRitiro" field and declare it as a local variable in the relevant methods.(½Æ½Ëşÿÿÿÿ
+w
+java:S14504"\Remove the "panelGolFatti" field and declare it as a local variable in the relevant methods.(ïàí„ùÿÿÿÿ
+x
+java:S14506"]Remove the "panelGolSubiti" field and declare it as a local variable in the relevant methods.(¥ÆÁ“şÿÿÿÿ
+r
+java:S1450;"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥
+t
+java:S1450:"YRemove the "panelInvio" field and declare it as a local variable in the relevant methods.(ı½–¤ıÿÿÿÿ
+|
+java:S1450$"fRemove the "panelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¥®¨î
+ƒ
+java:S14509"hRemove the "panelModificaNazionalitÃ " field and declare it as a local variable in the relevant methods.(ï­ÒŠıÿÿÿÿ
+|
+java:S14508"aRemove the "panelModificaRuolo" field and declare it as a local variable in the relevant methods.(ü—óœûÿÿÿÿ
+n
+java:S1450&"XRemove the "panelNome" field and declare it as a local variable in the relevant methods.(²ƒÉ³
+o
+java:S1450*"YRemove the "panelPiede" field and declare it as a local variable in the relevant methods.(Óõ› 
+t
+java:S1450,"YRemove the "panelSesso" field and declare it as a local variable in the relevant methods.(ñŸö§ÿÿÿÿÿ
+v
+java:S14502"[Remove the "panelSquadra" field and declare it as a local variable in the relevant methods.(Ï”«Æøÿÿÿÿ
+h
+java:S3776>"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(×ƒş
+8
+java:S3010?""Remove this assignment of "frame".(Ã¸ÜÁ
+_
+java:S3252A"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´
+]
+java:S1126U"BReplace this if-then-else statement by a single method invocation.(¼ä÷ßûÿÿÿÿ
+]
+java:S1126_"BReplace this if-then-else statement by a single method invocation.(½Âøÿÿÿÿ
+X
+java:S1126i"BReplace this if-then-else statement by a single method invocation.(§æİÙ
+X
+java:S1126s"BReplace this if-then-else statement by a single method invocation.(£¼œ
+W
+java:S1126}"BReplace this if-then-else statement by a single method invocation.(‹Ó
+^
+java:S1126‡"BReplace this if-then-else statement by a single method invocation.(™Ëà¢şÿÿÿÿ
+Y
+java:S1126‘"BReplace this if-then-else statement by a single method invocation.(ùÖ×Æ
+^
+java:S1126›"BReplace this if-then-else statement by a single method invocation.(–¯ëÂÿÿÿÿÿ
+^
+java:S1126¥"BReplace this if-then-else statement by a single method invocation.(©…ıÄüÿÿÿÿ
+Q	java:S125¯"<This block of commented-out lines of code should be removed.(÷Ûü^
+W	java:S125·"<This block of commented-out lines of code should be removed.(´×ª‘ÿÿÿÿÿ
+X
+java:S1854Ì"<Remove this useless assignment to local variable "modifica".(œ’üßıÿÿÿÿ
+I
+java:S1481Ì"-Remove this unused "modifica" local variable.(œ’üßıÿÿÿÿ
+u
+java:S1171Ï"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ
+i	java:S100İ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ
+i	java:S100…"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œĞ—ıÿÿÿÿ
+i	java:S100›"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ
