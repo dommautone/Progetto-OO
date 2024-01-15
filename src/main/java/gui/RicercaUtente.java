@@ -10,7 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Locale;
 
-public class Home {
+public class RicercaUtente {
     private JPanel panel;
     private JPanel panelNome;
     private JPanel panelCognome;
@@ -57,7 +57,7 @@ public class Home {
 
     public static JFrame frame;
 
-    public Home(JFrame frameChiamante) {
+    public RicercaUtente(JFrame frameChiamante) {
         frame = new JFrame("Home");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -178,6 +178,14 @@ public class Home {
             }
         });
 
+        buttonRicerca.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RisultatoUtente risultatoUtente = new RisultatoUtente(frame);
+                risultatoUtente.frame.setVisible(true);
+                frame.setVisible(false);
+            }
+        });
     }
 
     {

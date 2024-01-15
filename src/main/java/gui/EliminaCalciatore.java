@@ -25,7 +25,8 @@ public class EliminaCalciatore {
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setResizable(false);
+        frame.setMinimumSize(new Dimension(800, 600));
+        frame.setMaximumSize(new Dimension(800, 600));
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));

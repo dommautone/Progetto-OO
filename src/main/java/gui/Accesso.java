@@ -14,7 +14,6 @@ public class Accesso {
     private JPanel panelUtente;
     private JButton buttonAccedi;
     private JButton buttonUtente;
-
     public static JFrame frame;
 
     public Accesso() {
@@ -29,8 +28,8 @@ public class Accesso {
         buttonUtente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Home home = new Home(frame);
-                home.frame.setVisible(true);
+                RicercaUtente ricercaUtente = new RicercaUtente(frame);
+                ricercaUtente.frame.setVisible(true);
                 frame.setVisible(false);
             }
         });
