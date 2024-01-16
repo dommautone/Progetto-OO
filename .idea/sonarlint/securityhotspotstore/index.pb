@@ -3,10 +3,6 @@ L
 src/main/java/gui/Login.java,8\c\8cab6d758af37d24c67100cf7718257b02fab720
 N
 src/main/java/gui/Accesso.java,1\c\1c61d58ee00c41acd92f57ee036f8cbe5a7ecbea
-K
-src/main/java/gui/Home.java,c\9\c96b8b9f35c6af4262c3577342f8635989569e00
-W
-'src/main/java/gui/RisultatoRicerca.java,0\7\07732dab5c91009114d1f2f4b89f16affbe38611
 T
 $src/main/java/gui/Registrazione.java,9\f\9f26db1b161fb8ca1736433ed59357dca65e3915
 N
@@ -43,10 +39,6 @@ T
 $src/main/java/gui/Registrazione.form,e\0\e0029c5fef25c2755a8e0190d89d6ac86fd5cac0
 ]
 -src/main/java/gui/PannelloAmministratore.form,c\4\c44896062fa891f30c91b97b12e72c69b076b23e
-W
-'src/main/java/gui/RisultatoRicerca.form,3\1\316db89931bdc9814c4353565a067450f7fd70ad
-K
-src/main/java/gui/Home.form,6\8\68ae5ee1017f32ab934cc69a5592ab263cc1e95a
 Y
 )src/main/java/gui/AggiungiCalciatore.java,e\3\e3100fd70a7918c7f167d542d2b1ad612f828b39
 X
@@ -157,3 +149,5 @@ Q.idea/sonarlint/securityhotspotstore/3/7/3725f2fd9147aead83799ed722110359923126
 Q.idea/sonarlint/securityhotspotstore/3/b/3bf3767296f0d08feaaeaa58fadc10cb7e2f5539,4\f\4fccb34375d972b1087ce92c0504248039b68322
 Å
 Q.idea/sonarlint/securityhotspotstore/d/2/d29d94e3ea63504a90c96b19c87ead15627387b8,8\7\87daecef968df4856b36cad38c7d2fb33c10d0a9
+T
+$src/main/java/gui/ModificaRuolo.java,0\f\0f156f458820a7219446cf8f5b2257449318de8d
