@@ -58,7 +58,7 @@ public class RicercaUtente {
     public static JFrame frame;
 
     public RicercaUtente(JFrame frameChiamante) {
-        frame = new JFrame("Home");
+        frame = new JFrame("Ricerca Utente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

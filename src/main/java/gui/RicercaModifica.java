@@ -38,7 +38,8 @@ public class RicercaModifica {
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameChiamante.setVisible(true);
+                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
+                pannelloAmministratore.frame.setVisible(true);
                 frame.dispose();
             }
         });

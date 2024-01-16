@@ -182,6 +182,12 @@ public class AggiungiCalciatore {
                 frame.dispose();
             }
         });
+        buttonInivio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Calciatore aggiunto con successo");
+            }
+        });
     }
 
     {

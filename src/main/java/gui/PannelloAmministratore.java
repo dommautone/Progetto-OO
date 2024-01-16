@@ -21,6 +21,7 @@ public class PannelloAmministratore {
     private JPanel panelPannello;
     private JLabel labelPannello;
 
+    public static int Flag;
     public static JFrame frame;
 
 
@@ -44,24 +45,18 @@ public class PannelloAmministratore {
         buttonModificaCalciatore.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
+                Flag = 1;
+                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
                 ricercaAmministratore.frame.setVisible(true);
-                frame.setVisible(false);
-*/
-                RicercaModifica ricercaModifica = new RicercaModifica(frame);
-                RicercaModifica.frame.setVisible(true);
                 frame.setVisible(false);
             }
         });
         buttonElimina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              /*  RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
+                Flag = 0;
+                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
                 ricercaAmministratore.frame.setVisible(true);
-                frame.setVisible(false);
-*/
-                EliminaCalciatore eliminaCalciatore = new EliminaCalciatore(frame);
-                EliminaCalciatore.frame.setVisible(true);
                 frame.setVisible(false);
             }
         });
