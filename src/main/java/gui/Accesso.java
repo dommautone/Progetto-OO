@@ -1,5 +1,8 @@
 package gui;
 
+import PostgresDAO.ImplementazionePostgresDAO;
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -15,12 +18,14 @@ public class Accesso {
     private JButton buttonAccedi;
     private JButton buttonUtente;
     public static JFrame frame;
+    private Controller controller = new Controller(new ImplementazionePostgresDAO());
 
     public Accesso() {
+        controller.setSchema();
         buttonAccedi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Login login = new Login(frame);
+                Login login = new Login(frame, controller);
                 login.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -28,7 +33,7 @@ public class Accesso {
         buttonUtente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RicercaUtente ricercaUtente = new RicercaUtente(frame);
+                RicercaUtente ricercaUtente = new RicercaUtente(frame, controller);
                 ricercaUtente.frame.setVisible(true);
                 frame.setVisible(false);
             }

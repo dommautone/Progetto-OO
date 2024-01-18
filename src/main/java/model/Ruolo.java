@@ -14,14 +14,6 @@ public class Ruolo {
     public String getPosizione(){return posizione;}
     public String getDescrizione(){return descrizione;}
 
-    public void setPosizione(String posizione){
-        if(posizione.equals("Portiere") || posizione.equals("Difensore") || posizione.equals("Centrocampista") || posizione.equals("Attaccante")){
-            this.posizione=posizione;
-        }
-        else{
-            System.out.println("Posizione non valida");
-        }
-
-    }
+    public void setPosizione(String posizione){this.posizione=posizione;}
     public void setDescrizione(String descrizione){this.descrizione=descrizione;}
 }

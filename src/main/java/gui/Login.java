@@ -1,5 +1,10 @@
 package gui;
 
+import controller.Controller;
+import controller.DatiNonValidiExeption;
+import controller.PasswordNonValidaExeption;
+import controller.UtenteNonRegistratoExeption;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
@@ -8,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
+
 
 public class Login {
     private JPanel panel;
@@ -29,8 +35,9 @@ public class Login {
     private JPanel panelRegistrati;
     public static JFrame frame;
     public Accesso accesso;
+    private Controller controller;
 
-    public Login(JFrame frameChiamante) {
+    public Login(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(panel);
@@ -42,7 +49,7 @@ public class Login {
         buttonRegistrati.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Registrazione registrazione = new Registrazione(frame);
+                Registrazione registrazione = new Registrazione(frame, controller);
                 registrazione.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -64,7 +71,33 @@ public class Login {
         buttonAccedi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
+                if (textUsername.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserisci l'username");
+                    return;
+                } else if (String.valueOf(passwordPassword.getPassword()).equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserisci la password");
+                    return;
+                }
+                String username = textUsername.getText();
+                String password = String.valueOf(passwordPassword.getPassword());
+                try {
+                    controller.login(username, password);
+                    JOptionPane.showMessageDialog(null, "Login effettuato con successo");
+                } catch (DatiNonValidiExeption ex) {
+                    JOptionPane.showMessageDialog(null, "Username o password errati");
+                    return;
+                } catch (UtenteNonRegistratoExeption ex) {
+                    JOptionPane.showMessageDialog(null, "Utente non registrato");
+                    return;
+                } catch (PasswordNonValidaExeption ex) {
+                    JOptionPane.showMessageDialog(null, "Password errata");
+                    return;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Errore");
+                    return;
+                }
+
+                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame, controller);
                 pannelloAmministratore.frame.setVisible(true);
                 frame.dispose();
             }

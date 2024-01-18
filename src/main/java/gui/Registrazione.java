@@ -1,5 +1,7 @@
 package gui;
 
+import controller.*;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
@@ -29,8 +31,9 @@ public class Registrazione {
     private JPanel panelIndietro;
     private JLabel labelPassword;
     private JLabel labelLogo;
+    private Controller controller;
 
-    public Registrazione(JFrame frameChiamante) {
+    public Registrazione(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Registrazione");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,11 +47,33 @@ public class Registrazione {
         buttonRegistrati.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textUsername.getText().equals("") || passwordPassword.getText().equals("") || passwordConfermaPassword.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Inserisci tutti i campi");
+                if (textUsername.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserire username");
+                    return;
+                } else if (String.valueOf(passwordPassword.getPassword()).equals("") || String.valueOf(passwordConfermaPassword.getPassword()).equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserire password");
+                    return;
+                } else if (!String.valueOf(passwordPassword.getPassword()).equals(String.valueOf(passwordConfermaPassword.getPassword()))) {
+                    JOptionPane.showMessageDialog(null, "Le password non coincidono");
                     return;
                 }
-                JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
+                String username = textUsername.getText();
+                String password = String.valueOf(passwordPassword.getPassword());
+                try {
+                    controller.registrazione(username, password);
+                    JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
+                } catch (AlreadyExistsExeption ex) {
+                    JOptionPane.showMessageDialog(null, "Username già esistente");
+                    return;
+                } catch (PasswordCortaException ex) {
+                    JOptionPane.showMessageDialog(null, "Password troppo corta");
+                    return;
+                } catch (UsernameCortoException ex) {
+                    JOptionPane.showMessageDialog(null, "Username troppo corto");
+                    return;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Errore");
+                }
                 frameChiamante.setVisible(true);
                 frame.dispose();
             }

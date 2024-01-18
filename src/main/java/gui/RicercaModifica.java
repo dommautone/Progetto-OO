@@ -1,5 +1,7 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -16,10 +18,11 @@ public class RicercaModifica {
     private JButton buttonIndietro;
     private JPanel panelSelezione;
     private JPanel panelIndietro;
+    private Controller controller;
 
     public static JFrame frame;
 
-    public RicercaModifica(JFrame frameChiamante) {
+    public RicercaModifica(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Ricerca e modifica");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +41,7 @@ public class RicercaModifica {
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
+                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame, controller);
                 pannelloAmministratore.frame.setVisible(true);
                 frame.dispose();
             }
@@ -46,7 +49,7 @@ public class RicercaModifica {
         buttonSelezione.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Modifica modifica = new Modifica(frame);
+                Modifica modifica = new Modifica(frame, controller);
                 modifica.frame.setVisible(true);
                 frame.setVisible(false);
             }

@@ -1,5 +1,7 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +21,7 @@ public class EliminaCalciatore {
     private JPanel panelIndietro;
     private JButton buttonIndietro;
     public static JFrame frame;
+    private Controller controller;
 
     public EliminaCalciatore(JFrame frameChiamante) {
         frame = new JFrame("Elimina calciatore");
@@ -37,7 +40,7 @@ public class EliminaCalciatore {
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame);
+                PannelloAmministratore pannelloAmministratore = new PannelloAmministratore(frame, controller);
                 pannelloAmministratore.frame.setVisible(true);
                 frame.dispose();
             }

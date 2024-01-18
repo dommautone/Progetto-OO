@@ -1,5 +1,10 @@
 package gui;
 
+import controller.Controller;
+import model.Nazionalità;
+import model.Ruolo;
+import model.Squadra;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -61,11 +66,12 @@ public class AggiungiCalciatore {
     private JLabel labelDataFine;
     private JButton buttonIndietro;
     private JPanel panelIndietro;
+    private Controller controller;
 
 
     public static JFrame frame;
 
-    public AggiungiCalciatore(JFrame frameChiamante) {
+    public AggiungiCalciatore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Aggiungi calciatore");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,6 +93,10 @@ public class AggiungiCalciatore {
         buttonGroupCarriera = new ButtonGroup();
         buttonGroupCarriera.add(radioButtonSì2);
         buttonGroupCarriera.add(noRadioButtonNo2);
+        comboBoxPiede.addItem("");
+        comboBoxPiede.addItem("Destro");
+        comboBoxPiede.addItem("Sinistro");
+        comboBoxPiede.addItem("Ambidestro");
 
 
         radioButtonSì.addActionListener(new ActionListener() {
@@ -109,57 +119,17 @@ public class AggiungiCalciatore {
         listNazionalità.setModel(modelNazionalità);
         listRuolo.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         listNazionalità.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        /*modelRuolo.addElement("Portiere");
-        modelRuolo.addElement("Difensore cemtrale");
-        modelRuolo.addElement("Terzino destro");
-        modelRuolo.addElement("Terzino sinistro");
-        modelRuolo.addElement("Centrocampista centrale");
-        modelRuolo.addElement("Centrocampista destro");
-        modelRuolo.addElement("Centrocampista sinistro");
-        modelRuolo.addElement("Ala destra");
-        modelRuolo.addElement("Ala sinistra");
-        modelRuolo.addElement("Trequartista");
-        modelRuolo.addElement("Attaccante centrale");
-        modelRuolo.addElement("Attaccante destro");
-        modelRuolo.addElement("Attaccante sinistro");
-        modelRuolo.addElement("Centrocampista difensivo");
-        modelRuolo.addElement("Centrocampista offensivo");
-        modelRuolo.addElement("Centrocampista esterno");
-        modelRuolo.addElement("Centrocampista interno");
-        modelRuolo.addElement("Centrocampista mezzala");
-        modelRuolo.addElement("Centrocampista regista");
-        modelRuolo.addElement("Centrocampista mezzapunta");
-        modelRuolo.addElement("Centrocampista trequartista");
-        modelRuolo.addElement("Centrocampista mezzala");
-        modelRuolo.addElement("Centrocampista mezzapunta");
-        modelRuolo.addElement("Centrocampista trequartista");
-        modelRuolo.addElement("Centrocampista mezzala");
-        modelNazionalità.addElement("Italia");
-        modelNazionalità.addElement("Francia");
-        modelNazionalità.addElement("Spagna");
-        modelNazionalità.addElement("Germania");
-        modelNazionalità.addElement("Inghilterra");
-        modelNazionalità.addElement("Brasile");
-        modelNazionalità.addElement("Argentina");
-        modelNazionalità.addElement("Olanda");
-        modelNazionalità.addElement("Belgio");
-        modelNazionalità.addElement("Portogallo");
-        modelNazionalità.addElement("Uruguay");
-        modelNazionalità.addElement("Cile");
-        modelNazionalità.addElement("Colombia");
-        modelNazionalità.addElement("Svezia");
-        modelNazionalità.addElement("Croazia");
-        modelNazionalità.addElement("Danimarca");
-        modelNazionalità.addElement("Svizzera");
-        modelNazionalità.addElement("Messico");
-        modelNazionalità.addElement("Polonia");
-        modelNazionalità.addElement("Perù");
-        modelNazionalità.addElement("Senegal");
-        modelNazionalità.addElement("Serbia");
-        modelNazionalità.addElement("Stati Uniti");
-        modelNazionalità.addElement("Austria");
-        modelNazionalità.addElement("Algeria");
-        modelNazionalità.addElement("Australia");*/
+
+        for (Ruolo ruolo : controller.getRuoli()) {
+            modelRuolo.addElement(ruolo.getPosizione());
+        }
+        for (Nazionalità nazionalità : controller.getNazionalità()) {
+            modelNazionalità.addElement(nazionalità.getNome());
+        }
+        for (Squadra squadra : controller.getSquadre()) {
+            comboBoxSquadra.addItem(squadra.getNome());
+        }
+
         radioButtonSì2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,5 +1,7 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -57,9 +59,10 @@ public class Modifica {
     private JPanel panelModificaNazionalità;
     private JPanel panelInvio;
     private JPanel panelIndietro;
+    private Controller controller;
     public static JFrame frame;
 
-    public Modifica(JFrame frameChiamante) {
+    public Modifica(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Modifica");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -172,7 +175,7 @@ public class Modifica {
         buttonModificaRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ModificaRuolo modificaRuolo = new ModificaRuolo(frame);
+                ModificaRuolo modificaRuolo = new ModificaRuolo(frame, controller);
                 modificaRuolo.frame.setVisible(true);
                 frame.setVisible(false);
             }

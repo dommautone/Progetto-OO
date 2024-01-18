@@ -1,5 +1,7 @@
 package gui;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -20,12 +22,13 @@ public class PannelloAmministratore {
     private JButton buttonRicercaCalciatore;
     private JPanel panelPannello;
     private JLabel labelPannello;
+    private Controller controller;
 
     public static int Flag;
     public static JFrame frame;
 
 
-    public PannelloAmministratore(JFrame frameChiamante) {
+    public PannelloAmministratore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Pannello di controllo");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +40,7 @@ public class PannelloAmministratore {
         buttonAggiungi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AggiungiCalciatore aggiungiCalciatore = new AggiungiCalciatore(frame);
+                AggiungiCalciatore aggiungiCalciatore = new AggiungiCalciatore(frame, controller);
                 AggiungiCalciatore.frame.setVisible(true);
                 frame.dispose();
             }
@@ -46,7 +49,7 @@ public class PannelloAmministratore {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Flag = 1;
-                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
+                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame, controller);
                 ricercaAmministratore.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -55,7 +58,7 @@ public class PannelloAmministratore {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Flag = 0;
-                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame);
+                RicercaAmministratore ricercaAmministratore = new RicercaAmministratore(frame, controller);
                 ricercaAmministratore.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -63,7 +66,7 @@ public class PannelloAmministratore {
         buttonRicercaCalciatore.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RicercaUtente ricercaUtente = new RicercaUtente(frame);
+                RicercaUtente ricercaUtente = new RicercaUtente(frame, controller);
                 RicercaUtente.frame.setVisible(true);
                 frame.setVisible(false);
             }

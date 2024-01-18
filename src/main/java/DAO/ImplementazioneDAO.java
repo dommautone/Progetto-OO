@@ -1,23 +1,29 @@
 package DAO;
 
-import model.*;
+import model.Amministratore;
+import model.Nazionalità;
+import model.Ruolo;
+import model.Squadra;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface ImplementazioneDAO {
 
-     void registrazione(String username, String password) throws Exception;
-     void setCalciatore(String nome, String cognome, String piede, char sesso, String DataNascita, String DataRitiro) throws Exception;
-     void setRuolo(Calciatore calciatore, Ruolo ruolo) throws Exception;
-     void setSquadra(Calciatore calciatore, Squadra squadra, String dataInizio, String dataFine) throws Exception;
-     void setNazionalita(Calciatore calciatore, Nazionalità nazionalita) throws Exception;
-     void setFeature(Calciatore calciatore, Feature feature) throws Exception;
-     void setSchema();
-     //boolean UtenteEsistente();
+    void setSchema();
+    Amministratore login(String username) throws Exception;
+    void registrazione(String username, String password) throws Exception;
+    ArrayList<Ruolo> getRuoli();
+    ArrayList<Nazionalità> getNazionalità();
+    ArrayList<Squadra> getSquadre();
 
-     ArrayList<Ruolo> getRuoli();
-     ArrayList<Feature> getFeature();
-    // ArrayList<Squadra> getSquadra();
-     ArrayList<Nazionalità> getNazionalita();
-     ArrayList<Calciatore> getCalciatoreNome();
+    //void getGiocatoriUtente();
+    //void getCalciatoriAmministratore();
+    //void getCalciatoriEliminare();
+    //void getCalciatoriModificare();
+    //void getCalciatoriInserire();
+
+
+
+
 }

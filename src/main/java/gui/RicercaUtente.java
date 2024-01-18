@@ -1,5 +1,10 @@
 package gui;
 
+import controller.Controller;
+import model.Nazionalità;
+import model.Ruolo;
+import model.Squadra;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -8,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class RicercaUtente {
@@ -54,15 +60,16 @@ public class RicercaUtente {
     private JPanel panelIndietro;
     private JLabel labelTesto;
     private JPanel panelTesto;
+    private Controller controller;
 
     public static JFrame frame;
 
-    public RicercaUtente(JFrame frameChiamante) {
+    public RicercaUtente(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Ricerca Utente");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(308, 450);
+        frame.setSize(450, 700);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
@@ -75,10 +82,24 @@ public class RicercaUtente {
         comboBoxRuolo.setEnabled(false);
         textFieldGolFatti.setEnabled(false);
         textFieldGolSubiti.setEnabled(false);
+        comboBoxRuolo.addItem("");
+        comboBoxSquadra.addItem("");
+        comboBoxNazionalità.addItem("");
+        comboBoxPiede.addItem("");
+        comboBoxPiede.addItem("Destro");
+        comboBoxPiede.addItem("Sinistro");
+        comboBoxPiede.addItem("Ambidestro");
 
-        /*for (Ruolo posizione : controller.getRuoli()) {
-            comboBoxRuolo.addItem(posizione.getPosizione());
-        }*/
+
+        for (Ruolo ruolo : controller.getRuoli()) {
+            comboBoxRuolo.addItem(ruolo.getPosizione());
+        }
+        for (Nazionalità nazionalità : controller.getNazionalità()) {
+            comboBoxNazionalità.addItem(nazionalità.getNome());
+        }
+        for (Squadra squadra : controller.getSquadre()) {
+            comboBoxSquadra.addItem(squadra.getNome());
+        }
 
         checkBoxNome.addItemListener(new ItemListener() {
             @Override
@@ -87,6 +108,7 @@ public class RicercaUtente {
                     textNome.setEnabled(true);
                 } else {
                     textNome.setEnabled(false);
+                    textNome.setText("");
                 }
             }
         });
@@ -97,6 +119,7 @@ public class RicercaUtente {
                     textCognome.setEnabled(true);
                 } else {
                     textCognome.setEnabled(false);
+                    textCognome.setText("");
                 }
             }
         });
@@ -107,6 +130,7 @@ public class RicercaUtente {
                     comboBoxSquadra.setEnabled(true);
                 } else {
                     comboBoxSquadra.setEnabled(false);
+                    comboBoxSquadra.setSelectedIndex(0);
                 }
             }
         });
@@ -117,6 +141,7 @@ public class RicercaUtente {
                     comboBoxNazionalità.setEnabled(true);
                 } else {
                     comboBoxNazionalità.setEnabled(false);
+                    comboBoxNazionalità.setSelectedIndex(0);
                 }
             }
         });
@@ -127,6 +152,7 @@ public class RicercaUtente {
                     comboBoxPiede.setEnabled(true);
                 } else {
                     comboBoxPiede.setEnabled(false);
+                    comboBoxPiede.setSelectedIndex(0);
                 }
             }
         });
@@ -137,6 +163,7 @@ public class RicercaUtente {
                     textEtà.setEnabled(true);
                 } else {
                     textEtà.setEnabled(false);
+                    textEtà.setText("");
                 }
             }
         });
@@ -147,6 +174,7 @@ public class RicercaUtente {
                     comboBoxRuolo.setEnabled(true);
                 } else {
                     comboBoxRuolo.setEnabled(false);
+                    comboBoxRuolo.setSelectedIndex(0);
                 }
             }
         });
@@ -157,6 +185,7 @@ public class RicercaUtente {
                     textFieldGolFatti.setEnabled(true);
                 } else {
                     textFieldGolFatti.setEnabled(false);
+                    textFieldGolFatti.setText("");
                 }
             }
         });
@@ -167,6 +196,7 @@ public class RicercaUtente {
                     textFieldGolSubiti.setEnabled(true);
                 } else {
                     textFieldGolSubiti.setEnabled(false);
+                    textFieldGolSubiti.setText("");
                 }
             }
         });

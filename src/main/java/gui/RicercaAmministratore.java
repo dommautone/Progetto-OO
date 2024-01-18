@@ -1,5 +1,10 @@
 package gui;
 
+import controller.Controller;
+import model.Nazionalità;
+import model.Ruolo;
+import model.Squadra;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -66,11 +71,12 @@ public class RicercaAmministratore {
     private JPanel panelRicercaCalciatore;
     private JLabel labelRicercaCalciatore;
     private ButtonGroup buttonGroupSesso;
+    private Controller controller;
 
 
     public static JFrame frame;
 
-    public RicercaAmministratore(JFrame frameChiamante) {
+    public RicercaAmministratore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Ricerca Amministratore");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +101,23 @@ public class RicercaAmministratore {
         textDataDiRitiro.setEnabled(false);
         radioButtonMaschio.setEnabled(false);
         radioButtonFemmina.setEnabled(false);
+        comboBoxPiede.addItem("");
+        comboBoxPiede.addItem("Destro");
+        comboBoxPiede.addItem("Sinistro");
+        comboBoxPiede.addItem("Ambidestro");
+        comboBoxRuolo.addItem("");
+        comboBoxNazionalità.addItem("");
+        comboBoxSquadra.addItem("");
 
+        for (model.Ruolo ruolo : controller.getRuoli()) {
+            comboBoxRuolo.addItem(ruolo.getPosizione());
+        }
+        for (Nazionalità nazionalità : controller.getNazionalità()) {
+            comboBoxNazionalità.addItem(nazionalità.getNome());
+        }
+        for (Squadra squadra : controller.getSquadre()) {
+            comboBoxNazionalità.addItem(squadra.getNome());
+        }
 
         checkBoxNome.addActionListener(new ActionListener() {
             @Override
@@ -104,6 +126,7 @@ public class RicercaAmministratore {
                     textNome.setEnabled(true);
                 } else {
                     textNome.setEnabled(false);
+                    textNome.setText("");
                 }
             }
         });
@@ -114,6 +137,7 @@ public class RicercaAmministratore {
                     textCognome.setEnabled(true);
                 } else {
                     textCognome.setEnabled(false);
+                    textCognome.setText("");
                 }
             }
         });
@@ -124,6 +148,7 @@ public class RicercaAmministratore {
                     comboBoxSquadra.setEnabled(true);
                 } else {
                     comboBoxSquadra.setEnabled(false);
+                    comboBoxSquadra.setSelectedIndex(0);
                 }
             }
         });
@@ -134,6 +159,7 @@ public class RicercaAmministratore {
                     comboBoxNazionalità.setEnabled(true);
                 } else {
                     comboBoxNazionalità.setEnabled(false);
+                    comboBoxNazionalità.setSelectedIndex(0);
                 }
             }
         });
@@ -144,6 +170,7 @@ public class RicercaAmministratore {
                     comboBoxPiede.setEnabled(true);
                 } else {
                     comboBoxPiede.setEnabled(false);
+                    comboBoxPiede.setSelectedIndex(0);
                 }
             }
         });
@@ -154,6 +181,7 @@ public class RicercaAmministratore {
                     textEtà.setEnabled(true);
                 } else {
                     textEtà.setEnabled(false);
+                    textEtà.setText("");
                 }
             }
         });
@@ -164,6 +192,7 @@ public class RicercaAmministratore {
                     comboBoxRuolo.setEnabled(true);
                 } else {
                     comboBoxRuolo.setEnabled(false);
+                    comboBoxRuolo.setSelectedIndex(0);
                 }
             }
         });
@@ -174,6 +203,7 @@ public class RicercaAmministratore {
                     textFieldGolFatti.setEnabled(true);
                 } else {
                     textFieldGolFatti.setEnabled(false);
+                    textFieldGolFatti.setText("");
                 }
             }
         });
@@ -184,6 +214,7 @@ public class RicercaAmministratore {
                     textFieldGolSubiti.setEnabled(true);
                 } else {
                     textFieldGolSubiti.setEnabled(false);
+                    textFieldGolSubiti.setText("");
                 }
             }
         });
@@ -194,6 +225,7 @@ public class RicercaAmministratore {
                     textDataDiNascita.setEnabled(true);
                 } else {
                     textDataDiNascita.setEnabled(false);
+                    textDataDiNascita.setText("");
                 }
             }
         });
@@ -204,6 +236,7 @@ public class RicercaAmministratore {
                     textDataDiRitiro.setEnabled(true);
                 } else {
                     textDataDiRitiro.setEnabled(false);
+                    textDataDiRitiro.setText("");
                 }
             }
         });
@@ -225,7 +258,7 @@ public class RicercaAmministratore {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (Flag == 1) {
-                    RicercaModifica ricercaModifica = new RicercaModifica(frame);
+                    RicercaModifica ricercaModifica = new RicercaModifica(frame, controller);
                     ricercaModifica.frame.setVisible(true);
                     frame.dispose();
                 } else {

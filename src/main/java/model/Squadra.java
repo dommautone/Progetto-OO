@@ -7,7 +7,7 @@ public class Squadra {
     private char categoria;
     private Nazionalità nazionalità;
 
-    public Squadra(int idSquadra, String nome, int annoFondazione, char categoria, Nazionalità nazionalità){
+    public Squadra(int idSquadra, String nome, char categoria, int annoFondazione, Nazionalità nazionalità){
         this.idSquadra=idSquadra;
         this.nome=nome;
         setAnnoFondazione(annoFondazione);
