@@ -2,7 +2,6 @@ package gui;
 
 import controller.Controller;
 import model.Nazionalità;
-import model.Ruolo;
 import model.Squadra;
 
 import javax.swing.*;
@@ -11,6 +10,8 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import static gui.PannelloAmministratore.Flag;
@@ -36,10 +37,6 @@ public class RicercaAmministratore {
     private JCheckBox checkBoxPiede;
     private JLabel labelPiede;
     private JComboBox comboBoxPiede;
-    private JPanel panelEtà;
-    private JCheckBox checkBoEtà;
-    private JLabel labelEtà;
-    private JTextField textEtà;
     private JPanel panelRuolo;
     private JCheckBox checkBoxRuolo;
     private JLabel Ruolo;
@@ -57,10 +54,10 @@ public class RicercaAmministratore {
     private JRadioButton radioButtonMaschio;
     private JRadioButton radioButtonFemmina;
     private JCheckBox checkBoxGenere;
-    private JPanel panelDataDiNascita;
-    private JCheckBox checkboxDataDiNascita;
-    private JLabel labelDataDINascita;
-    private JTextField textDataDiNascita;
+    private JPanel panelEtà;
+    private JCheckBox checkboxEtà;
+    private JLabel labelEtà;
+    private JTextField textEtà;
     private JPanel panelDataDiRitiro;
     private JLabel labelDataDiRitiro;
     private JTextField textDataDiRitiro;
@@ -72,6 +69,11 @@ public class RicercaAmministratore {
     private JLabel labelRicercaCalciatore;
     private ButtonGroup buttonGroupSesso;
     private Controller controller;
+    private Integer golFatti;
+    private Integer golSubiti;
+    private Integer età;
+    private LocalDate dataRitiro;
+    private char sesso;
 
 
     public static JFrame frame;
@@ -82,7 +84,7 @@ public class RicercaAmministratore {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(300, 550);
+        frame.setSize(400, 550);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         buttonGroupSesso = new ButtonGroup();
@@ -93,11 +95,10 @@ public class RicercaAmministratore {
         comboBoxSquadra.setEnabled(false);
         comboBoxNazionalità.setEnabled(false);
         comboBoxPiede.setEnabled(false);
-        textEtà.setEnabled(false);
         comboBoxRuolo.setEnabled(false);
         textFieldGolFatti.setEnabled(false);
         textFieldGolSubiti.setEnabled(false);
-        textDataDiNascita.setEnabled(false);
+        textEtà.setEnabled(false);
         textDataDiRitiro.setEnabled(false);
         radioButtonMaschio.setEnabled(false);
         radioButtonFemmina.setEnabled(false);
@@ -116,7 +117,7 @@ public class RicercaAmministratore {
             comboBoxNazionalità.addItem(nazionalità.getNome());
         }
         for (Squadra squadra : controller.getSquadre()) {
-            comboBoxNazionalità.addItem(squadra.getNome());
+            comboBoxSquadra.addItem(squadra.getNome());
         }
 
         checkBoxNome.addActionListener(new ActionListener() {
@@ -174,17 +175,6 @@ public class RicercaAmministratore {
                 }
             }
         });
-        checkBoEtà.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (checkBoEtà.isSelected()) {
-                    textEtà.setEnabled(true);
-                } else {
-                    textEtà.setEnabled(false);
-                    textEtà.setText("");
-                }
-            }
-        });
         checkBoxRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -218,14 +208,14 @@ public class RicercaAmministratore {
                 }
             }
         });
-        checkboxDataDiNascita.addActionListener(new ActionListener() {
+        checkboxEtà.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (checkboxDataDiNascita.isSelected()) {
-                    textDataDiNascita.setEnabled(true);
+                if (checkboxEtà.isSelected()) {
+                    textEtà.setEnabled(true);
                 } else {
-                    textDataDiNascita.setEnabled(false);
-                    textDataDiNascita.setText("");
+                    textEtà.setEnabled(false);
+                    textEtà.setText("");
                 }
             }
         });
@@ -257,12 +247,38 @@ public class RicercaAmministratore {
         buttonRicerca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (textFieldGolFatti.getText().isEmpty())
+                    golFatti = null;
+                else
+                    golFatti = Integer.parseInt(textFieldGolFatti.getText());
+                if (textFieldGolSubiti.getText().isEmpty())
+                    golSubiti = null;
+                else
+                    golSubiti = Integer.parseInt(textFieldGolSubiti.getText());
+                if (textEtà.getText().isEmpty())
+                    età = null;
+                else
+                    età = Integer.parseInt(textEtà.getText());
+                if (textDataDiRitiro.getText().isEmpty() && !checkboxDataDiRitiro.isSelected())
+                    dataRitiro = LocalDate.of(1111, 1, 1);
+                else if (!textDataDiRitiro.getText().isEmpty() && checkboxDataDiRitiro.isSelected())
+                    dataRitiro = LocalDate.parse(textDataDiRitiro.getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                else
+                    dataRitiro = null;
+                if (radioButtonFemmina.isSelected())
+                    sesso = 'F';
+                else if (radioButtonMaschio.isSelected())
+                    sesso = 'M';
+                else
+                    sesso = 'A';
                 if (Flag == 1) {
-                    RicercaModifica ricercaModifica = new RicercaModifica(frame, controller);
+                    RicercaModifica ricercaModifica = new RicercaModifica(frame, controller, textNome.getText(), textCognome.getText(), sesso, comboBoxSquadra.getSelectedItem().toString(), comboBoxNazionalità.getSelectedItem().toString(),
+                            comboBoxPiede.getSelectedItem().toString(), età, comboBoxRuolo.getSelectedItem().toString(), golFatti, golSubiti, dataRitiro);
                     ricercaModifica.frame.setVisible(true);
                     frame.dispose();
                 } else {
-                    EliminaCalciatore eliminaCalciatore = new EliminaCalciatore(frame);
+                    EliminaCalciatore eliminaCalciatore = new EliminaCalciatore(frame, controller, textNome.getText(), textCognome.getText(), radioButtonMaschio.isSelected() ? 'M' : 'F', comboBoxSquadra.getSelectedItem().toString(), comboBoxNazionalità.getSelectedItem().toString(),
+                            comboBoxPiede.getSelectedItem().toString(), età, comboBoxRuolo.getSelectedItem().toString(), golFatti, golSubiti, dataRitiro);
                     eliminaCalciatore.frame.setVisible(true);
                     frame.dispose();
                 }
@@ -287,7 +303,7 @@ public class RicercaAmministratore {
      */
     private void $$$setupUI$$$() {
         panel = new JPanel();
-        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(14, 5, new Insets(0, 0, 0, 0), -1, -1));
+        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(13, 5, new Insets(0, 0, 0, 0), -1, -1));
         panel.setBackground(new Color(-4859649));
         panelNome = new JPanel();
         panelNome.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
@@ -356,23 +372,10 @@ public class RicercaAmministratore {
         panelPiede.add(labelPiede, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         comboBoxPiede = new JComboBox();
         panelPiede.add(comboBoxPiede, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        panelEtà = new JPanel();
-        panelEtà.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-        panelEtà.setBackground(new Color(-4859649));
-        panel.add(panelEtà, new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        checkBoEtà = new JCheckBox();
-        checkBoEtà.setBackground(new Color(-4859649));
-        checkBoEtà.setText("");
-        panelEtà.add(checkBoEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        labelEtà = new JLabel();
-        labelEtà.setText("Età");
-        panelEtà.add(labelEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        textEtà = new JTextField();
-        panelEtà.add(textEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(150, -1), null, 0, false));
         panelRuolo = new JPanel();
         panelRuolo.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelRuolo.setBackground(new Color(-4859649));
-        panel.add(panelRuolo, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelRuolo, new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxRuolo = new JCheckBox();
         checkBoxRuolo.setBackground(new Color(-4859649));
         checkBoxRuolo.setText("");
@@ -385,7 +388,7 @@ public class RicercaAmministratore {
         panelGolFatti = new JPanel();
         panelGolFatti.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelGolFatti.setBackground(new Color(-4859649));
-        panel.add(panelGolFatti, new com.intellij.uiDesigner.core.GridConstraints(11, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelGolFatti, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxGolFatti = new JCheckBox();
         checkBoxGolFatti.setBackground(new Color(-4859649));
         checkBoxGolFatti.setText("");
@@ -398,7 +401,7 @@ public class RicercaAmministratore {
         panelGolSubiti = new JPanel();
         panelGolSubiti.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelGolSubiti.setBackground(new Color(-4859649));
-        panel.add(panelGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(12, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(11, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxGolSubiti = new JCheckBox();
         checkBoxGolSubiti.setBackground(new Color(-4859649));
         checkBoxGolSubiti.setText("");
@@ -427,21 +430,21 @@ public class RicercaAmministratore {
         checkBoxGenere.setBackground(new Color(-4859649));
         checkBoxGenere.setText("");
         panelGenere.add(checkBoxGenere, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        panelDataDiNascita = new JPanel();
-        panelDataDiNascita.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-        panelDataDiNascita.setBackground(new Color(-4859649));
-        panel.add(panelDataDiNascita, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        checkboxDataDiNascita = new JCheckBox();
-        checkboxDataDiNascita.setBackground(new Color(-4859649));
-        checkboxDataDiNascita.setHorizontalTextPosition(0);
-        checkboxDataDiNascita.setText("");
-        panelDataDiNascita.add(checkboxDataDiNascita, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        labelDataDINascita = new JLabel();
-        labelDataDINascita.setText("Data di nascita");
-        panelDataDiNascita.add(labelDataDINascita, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        textDataDiNascita = new JTextField();
-        textDataDiNascita.setText("");
-        panelDataDiNascita.add(textDataDiNascita, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        panelEtà = new JPanel();
+        panelEtà.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panelEtà.setBackground(new Color(-4859649));
+        panel.add(panelEtà, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        checkboxEtà = new JCheckBox();
+        checkboxEtà.setBackground(new Color(-4859649));
+        checkboxEtà.setHorizontalTextPosition(0);
+        checkboxEtà.setText("");
+        panelEtà.add(checkboxEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        labelEtà = new JLabel();
+        labelEtà.setText("Età");
+        panelEtà.add(labelEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        textEtà = new JTextField();
+        textEtà.setText("");
+        panelEtà.add(textEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         panelDataDiRitiro = new JPanel();
         panelDataDiRitiro.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelDataDiRitiro.setBackground(new Color(-4859649));
@@ -460,7 +463,7 @@ public class RicercaAmministratore {
         panelRicerca = new JPanel();
         panelRicerca.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panelRicerca.setBackground(new Color(-4859649));
-        panel.add(panelRicerca, new com.intellij.uiDesigner.core.GridConstraints(13, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelRicerca, new com.intellij.uiDesigner.core.GridConstraints(12, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonRicerca = new JButton();
         buttonRicerca.setText("Invio");
         panelRicerca.add(buttonRicerca, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -505,3 +508,7 @@ public class RicercaAmministratore {
     }
 
 }
+
+
+
+

@@ -1,10 +1,14 @@
 package gui;
 
+import controller.Controller;
+import model.*;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 public class RisultatoUtente {
     private JPanel panel;
@@ -13,10 +17,12 @@ public class RisultatoUtente {
     private JPanel panelRicercaUtente;
     private JScrollPane scrollPaneRicercaUtente;
     private JPanel panelNuovaRicerca;
+    private Controller controller;
 
     public static JFrame frame;
 
-    public RisultatoUtente(JFrame frameChiamante) {
+    public RisultatoUtente(JFrame frameChiamante, Controller controller, String nome, String cognome, char sesso, String squadra, String nazionalità,
+                           String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro) {
         frame = new JFrame("Risultato ricerca");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,8 +33,33 @@ public class RisultatoUtente {
         frame.setVisible(true);
         tableRicercaUtente.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableRicercaUtente.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "Gol fatti", "Gol subiti"});
+      /*  DefaultTableModel ricercaCalciatori = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Cognome", "Piede",
+                "Sesso", "Data di nascita", "Data di ritiro", "Squadra", "Nazionalità", "Ruolo", "Gol fatti", "Gol subiti"}) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        for (Object calciatori : controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro)) {
+            Calciatore calciatore = (Calciatore) calciatori;
+            Nazionalità nazionalità1 = (Nazionalità) calciatori;
+            Squadra squadra1 = (Squadra) calciatori;
+            Militanza militanza = (Militanza) calciatori;
+            Ha ha = (Ha) calciatori;
+            Appartiene appartiene = (Appartiene) calciatori;
+            ricercaCalciatori.addRow(new Object[]{calciatore.getNome(), calciatore.getCognome(), calciatore.getPiede(),
+                    calciatore.getSesso(), calciatore.getDataNascita(), calciatore.getDataRitiro(), squadra1.getNome(),
+                    appartiene.getNazionalità(), ha.getRuolo(), militanza.getGolSegnati(), militanza.getGolSubiti()});
+        }*/
+
+        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
         tableRicercaUtente.setModel(tableModel);
+
+        tableRicercaUtente.getColumnModel().getColumn(8).setPreferredWidth(350);
+        tableRicercaUtente.getColumnModel().getColumn(6).setPreferredWidth(150);
+
+
         buttonNuovaRicerca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

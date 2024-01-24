@@ -8,6 +8,7 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Locale;
 
 public class Modifica {
@@ -62,7 +63,7 @@ public class Modifica {
     private Controller controller;
     public static JFrame frame;
 
-    public Modifica(JFrame frameChiamante, Controller controller) {
+    public Modifica(JFrame frameChiamante, Controller controller, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti) {
         frame = new JFrame("Modifica");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +81,15 @@ public class Modifica {
         textSquadra.setEnabled(false);
         textGolFatti.setEnabled(false);
         textGolSubiti.setEnabled(false);
-
+        textNome.setText(nome);
+        textCognome.setText(cognome);
+        textFieldPiede.setText(piede);
+        textFieldSesso.setText(String.valueOf(sesso));
+        textDataNascita.setText(String.valueOf(dataNascita));
+        textDataRitiro.setText(String.valueOf(dataRitiro));
+        textSquadra.setText(squadra);
+        textGolFatti.setText(String.valueOf(golFatti));
+        textGolSubiti.setText(String.valueOf(golSubiti));
 
         checkBoxNome.addActionListener(new ActionListener() {
             @Override

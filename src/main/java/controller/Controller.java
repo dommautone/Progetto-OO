@@ -3,6 +3,8 @@ package controller;
 import DAO.ImplementazioneDAO;
 import model.*;
 
+import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -49,5 +51,21 @@ public class Controller {
     public ArrayList<Ruolo> getRuoli(){return implementazionePostgresDAO.getRuoli();}
     public ArrayList<Nazionalità> getNazionalità(){return implementazionePostgresDAO.getNazionalità();}
     public ArrayList<Squadra> getSquadre(){return implementazionePostgresDAO.getSquadre();}
+   /* public ArrayList<Object> getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
+                                           String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro){
+        return implementazionePostgresDAO.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
+    }*/
+
+    public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
+                                           String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro){
+        return implementazionePostgresDAO.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
+    }
+
+    public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalità,
+                                   String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro, LocalDate dataInizio,
+                                   LocalDate dataFine){
+        implementazionePostgresDAO.aggiungiCalciatore(nome, cognome, sesso, squadra, nazionalità, piede, dataNascita, ruolo, dataRitiro, dataInizio, dataFine);
+    }
+
 }
 

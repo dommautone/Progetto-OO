@@ -9,11 +9,9 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class RicercaUtente {
@@ -60,7 +58,25 @@ public class RicercaUtente {
     private JPanel panelIndietro;
     private JLabel labelTesto;
     private JPanel panelTesto;
+    private JCheckBox checkBoxSesso;
+    private JRadioButton radioButtonMaschio;
+    private JRadioButton radioButtonFemmina;
+    private JPanel panelSesso;
+    private JLabel labelSesso;
+    private JCheckBox checkBoxDataRitiro;
+    private JTextField textDataRitiro;
+    private JRadioButton radioButtonRitirati;
+    private JRadioButton radioButtonNonRitirati;
+    private JRadioButton radioButtonDataRitiro;
+    private ButtonGroup buttonGroupRitiro;
+    private JPanel panelDataRitiro;
+    private ButtonGroup buttonGroupSesso;
     private Controller controller;
+    private Integer golFatti;
+    private Integer golSubiti;
+    private Integer età;
+    private LocalDate dataRitiro;
+    private char sesso;
 
     public static JFrame frame;
 
@@ -82,6 +98,19 @@ public class RicercaUtente {
         comboBoxRuolo.setEnabled(false);
         textFieldGolFatti.setEnabled(false);
         textFieldGolSubiti.setEnabled(false);
+        textDataRitiro.setEnabled(false);
+        buttonGroupSesso = new ButtonGroup();
+        buttonGroupSesso.add(radioButtonMaschio);
+        buttonGroupSesso.add(radioButtonFemmina);
+        radioButtonMaschio.setEnabled(false);
+        radioButtonFemmina.setEnabled(false);
+        buttonGroupRitiro = new ButtonGroup();
+        buttonGroupRitiro.add(radioButtonRitirati);
+        buttonGroupRitiro.add(radioButtonNonRitirati);
+        buttonGroupRitiro.add(radioButtonDataRitiro);
+        radioButtonRitirati.setEnabled(false);
+        radioButtonNonRitirati.setEnabled(false);
+        radioButtonDataRitiro.setEnabled(false);
         comboBoxRuolo.addItem("");
         comboBoxSquadra.addItem("");
         comboBoxNazionalità.addItem("");
@@ -112,6 +141,16 @@ public class RicercaUtente {
                 }
             }
         });
+        textNome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxCognome.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -120,6 +159,16 @@ public class RicercaUtente {
                 } else {
                     textCognome.setEnabled(false);
                     textCognome.setText("");
+                }
+            }
+        });
+        textCognome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_SPACE)) {
+                    e.consume();
                 }
             }
         });
@@ -145,6 +194,19 @@ public class RicercaUtente {
                 }
             }
         });
+        checkBoxSesso.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (checkBoxSesso.isSelected()) {
+                    radioButtonMaschio.setEnabled(true);
+                    radioButtonFemmina.setEnabled(true);
+                } else {
+                    radioButtonMaschio.setEnabled(false);
+                    radioButtonFemmina.setEnabled(false);
+                    buttonGroupSesso.clearSelection();
+                }
+            }
+        });
         checkBoxPiede.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -164,6 +226,63 @@ public class RicercaUtente {
                 } else {
                     textEtà.setEnabled(false);
                     textEtà.setText("");
+                }
+            }
+        });
+        textEtà.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
+
+        checkBoxDataRitiro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (checkBoxDataRitiro.isSelected()) {
+                    radioButtonRitirati.setEnabled(true);
+                    radioButtonNonRitirati.setEnabled(true);
+                    radioButtonDataRitiro.setEnabled(true);
+                } else {
+                    radioButtonRitirati.setEnabled(false);
+                    radioButtonNonRitirati.setEnabled(false);
+                    radioButtonDataRitiro.setEnabled(false);
+                    buttonGroupRitiro.clearSelection();
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        radioButtonDataRitiro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonDataRitiro.isSelected()) {
+                    textDataRitiro.setEnabled(true);
+                } else {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        radioButtonNonRitirati.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonNonRitirati.isSelected()) {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        radioButtonRitirati.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonRitirati.isSelected()) {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
                 }
             }
         });
@@ -189,6 +308,16 @@ public class RicercaUtente {
                 }
             }
         });
+        textFieldGolFatti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxGolSubiti.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -197,6 +326,16 @@ public class RicercaUtente {
                 } else {
                     textFieldGolSubiti.setEnabled(false);
                     textFieldGolSubiti.setText("");
+                }
+            }
+        });
+        textFieldGolSubiti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
                 }
             }
         });
@@ -211,11 +350,47 @@ public class RicercaUtente {
         buttonRicerca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RisultatoUtente risultatoUtente = new RisultatoUtente(frame);
+                if (textFieldGolFatti.getText().isEmpty())
+                    golFatti = null;
+                else
+                    golFatti = Integer.parseInt(textFieldGolFatti.getText());
+                if (textFieldGolSubiti.getText().isEmpty())
+                    golSubiti = null;
+                else
+                    golSubiti = Integer.parseInt(textFieldGolSubiti.getText());
+                if (textEtà.getText().isEmpty())
+                    età = null;
+                else
+                    età = Integer.parseInt(textEtà.getText());
+                if (textDataRitiro.getText().isEmpty() && radioButtonDataRitiro.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Inserire una data di ritiro valida", "Errore", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } else if (radioButtonRitirati.isSelected())
+                    dataRitiro = LocalDate.of(2222, 2, 2);
+                else if (radioButtonNonRitirati.isSelected())
+                    dataRitiro = null;
+                else if (textDataRitiro.getText().isEmpty())
+                    dataRitiro = LocalDate.of(1111, 1, 1);
+                else
+                    try {
+                        dataRitiro = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Inserire una data di ritiro valida", "Errore", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                if (radioButtonFemmina.isSelected())
+                    sesso = 'F';
+                else if (radioButtonMaschio.isSelected())
+                    sesso = 'M';
+                else
+                    sesso = 'A';
+                RisultatoUtente risultatoUtente = new RisultatoUtente(frame, controller, textNome.getText(), textCognome.getText(), sesso, comboBoxSquadra.getSelectedItem().toString(), comboBoxNazionalità.getSelectedItem().toString(),
+                        comboBoxPiede.getSelectedItem().toString(), età, comboBoxRuolo.getSelectedItem().toString(), golFatti, golSubiti, dataRitiro);
                 risultatoUtente.frame.setVisible(true);
                 frame.setVisible(false);
             }
         });
+
     }
 
     {
@@ -234,7 +409,7 @@ public class RicercaUtente {
      */
     private void $$$setupUI$$$() {
         panel = new JPanel();
-        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(12, 1, new Insets(0, 0, 0, 0), -1, -1));
+        panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(14, 1, new Insets(0, 0, 0, 0), -1, -1));
         panel.setBackground(new Color(-4859649));
         panelNome = new JPanel();
         panelNome.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
@@ -267,7 +442,7 @@ public class RicercaUtente {
         panelSquadra = new JPanel();
         panelSquadra.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelSquadra.setBackground(new Color(-4859649));
-        panel.add(panelSquadra, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelSquadra, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxSquadra = new JCheckBox();
         checkBoxSquadra.setBackground(new Color(-4859649));
         checkBoxSquadra.setText("");
@@ -280,7 +455,7 @@ public class RicercaUtente {
         panelNazionalità = new JPanel();
         panelNazionalità.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelNazionalità.setBackground(new Color(-4859649));
-        panel.add(panelNazionalità, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelNazionalità, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxNazionalità = new JCheckBox();
         checkBoxNazionalità.setBackground(new Color(-4859649));
         checkBoxNazionalità.setText("");
@@ -293,7 +468,7 @@ public class RicercaUtente {
         panelPiede = new JPanel();
         panelPiede.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelPiede.setBackground(new Color(-4859649));
-        panel.add(panelPiede, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelPiede, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxPiede = new JCheckBox();
         checkBoxPiede.setBackground(new Color(-4859649));
         checkBoxPiede.setText("");
@@ -306,7 +481,7 @@ public class RicercaUtente {
         panelEtà = new JPanel();
         panelEtà.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelEtà.setBackground(new Color(-4859649));
-        panel.add(panelEtà, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelEtà, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoEtà = new JCheckBox();
         checkBoEtà.setBackground(new Color(-4859649));
         checkBoEtà.setText("");
@@ -319,7 +494,7 @@ public class RicercaUtente {
         panelRuolo = new JPanel();
         panelRuolo.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelRuolo.setBackground(new Color(-4859649));
-        panel.add(panelRuolo, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelRuolo, new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxRuolo = new JCheckBox();
         checkBoxRuolo.setBackground(new Color(-4859649));
         checkBoxRuolo.setText("");
@@ -332,7 +507,7 @@ public class RicercaUtente {
         panelGolFatti = new JPanel();
         panelGolFatti.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelGolFatti.setBackground(new Color(-4859649));
-        panel.add(panelGolFatti, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelGolFatti, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxGolFatti = new JCheckBox();
         checkBoxGolFatti.setBackground(new Color(-4859649));
         checkBoxGolFatti.setText("");
@@ -345,7 +520,7 @@ public class RicercaUtente {
         panelGolSubiti = new JPanel();
         panelGolSubiti.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelGolSubiti.setBackground(new Color(-4859649));
-        panel.add(panelGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(11, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         checkBoxGolSubiti = new JCheckBox();
         checkBoxGolSubiti.setBackground(new Color(-4859649));
         checkBoxGolSubiti.setText("");
@@ -358,14 +533,14 @@ public class RicercaUtente {
         panelRicerca = new JPanel();
         panelRicerca.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         panelRicerca.setBackground(new Color(-4859649));
-        panel.add(panelRicerca, new com.intellij.uiDesigner.core.GridConstraints(10, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelRicerca, new com.intellij.uiDesigner.core.GridConstraints(12, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonRicerca = new JButton();
         buttonRicerca.setText("Avvia ricerca");
         panelRicerca.add(buttonRicerca);
         panelIndietro = new JPanel();
         panelIndietro.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         panelIndietro.setBackground(new Color(-4859649));
-        panel.add(panelIndietro, new com.intellij.uiDesigner.core.GridConstraints(11, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        panel.add(panelIndietro, new com.intellij.uiDesigner.core.GridConstraints(13, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonIndietro = new JButton();
         buttonIndietro.setText("Torna indietro");
         panelIndietro.add(buttonIndietro);
@@ -378,6 +553,49 @@ public class RicercaUtente {
         if (labelTestoFont != null) labelTesto.setFont(labelTestoFont);
         labelTesto.setText("Ricerca un giocatore");
         panelTesto.add(labelTesto);
+        panelSesso = new JPanel();
+        panelSesso.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 5, new Insets(0, 0, 0, 0), -1, -1));
+        panelSesso.setBackground(new Color(-4859649));
+        panel.add(panelSesso, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        checkBoxSesso = new JCheckBox();
+        checkBoxSesso.setBackground(new Color(-4859649));
+        checkBoxSesso.setText("");
+        panelSesso.add(checkBoxSesso, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
+        panelSesso.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(0, 4, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
+        labelSesso = new JLabel();
+        labelSesso.setText("Sesso");
+        panelSesso.add(labelSesso, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonMaschio = new JRadioButton();
+        radioButtonMaschio.setBackground(new Color(-4859649));
+        radioButtonMaschio.setText("Maschio");
+        panelSesso.add(radioButtonMaschio, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonFemmina = new JRadioButton();
+        radioButtonFemmina.setBackground(new Color(-4859649));
+        radioButtonFemmina.setText("Femmina");
+        panelSesso.add(radioButtonFemmina, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panelDataRitiro = new JPanel();
+        panelDataRitiro.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panelDataRitiro.setBackground(new Color(-4859649));
+        panel.add(panelDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        checkBoxDataRitiro = new JCheckBox();
+        checkBoxDataRitiro.setBackground(new Color(-4859649));
+        checkBoxDataRitiro.setText("Ritiro");
+        panelDataRitiro.add(checkBoxDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonRitirati = new JRadioButton();
+        radioButtonRitirati.setBackground(new Color(-4859649));
+        radioButtonRitirati.setText("Visualizza tutti i calciatori ritirati");
+        panelDataRitiro.add(radioButtonRitirati, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonNonRitirati = new JRadioButton();
+        radioButtonNonRitirati.setBackground(new Color(-4859649));
+        radioButtonNonRitirati.setText("Visualizza tutti i calciatori non ritirati");
+        panelDataRitiro.add(radioButtonNonRitirati, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonDataRitiro = new JRadioButton();
+        radioButtonDataRitiro.setBackground(new Color(-4859649));
+        radioButtonDataRitiro.setText("Calciatori ritirati in data:");
+        panelDataRitiro.add(radioButtonDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        textDataRitiro = new JTextField();
+        panelDataRitiro.add(textDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**

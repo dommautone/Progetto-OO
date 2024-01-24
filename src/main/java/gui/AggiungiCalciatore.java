@@ -11,6 +11,11 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class AggiungiCalciatore {
@@ -60,13 +65,18 @@ public class AggiungiCalciatore {
     private JLabel labelDataInizio;
     private JTextField textDataInizio;
     private JRadioButton radioButtonSì2;
-    private JRadioButton noRadioButtonNo2;
+    private JRadioButton radioButtonNo2;
     private ButtonGroup buttonGroupCarriera;
     private JTextField textDataFine;
     private JLabel labelDataFine;
     private JButton buttonIndietro;
     private JPanel panelIndietro;
     private Controller controller;
+    LocalDate dataRitiro = null;
+    LocalDate dataFine = null;
+    LocalDate dataInizio = null;
+    LocalDate dataNascita = null;
+    char sesso;
 
 
     public static JFrame frame;
@@ -92,12 +102,33 @@ public class AggiungiCalciatore {
         buttonGroupSesso.add(radioButtonFemmina);
         buttonGroupCarriera = new ButtonGroup();
         buttonGroupCarriera.add(radioButtonSì2);
-        buttonGroupCarriera.add(noRadioButtonNo2);
+        buttonGroupCarriera.add(radioButtonNo2);
+        comboBoxSquadra.addItem("");
         comboBoxPiede.addItem("");
         comboBoxPiede.addItem("Destro");
         comboBoxPiede.addItem("Sinistro");
         comboBoxPiede.addItem("Ambidestro");
 
+        textNome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
+        textCognome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
 
         radioButtonSì.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +168,7 @@ public class AggiungiCalciatore {
                 textDataFine.setVisible(false);
             }
         });
-        noRadioButtonNo2.addActionListener(new ActionListener() {
+        radioButtonNo2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 labelDataFine.setVisible(true);
@@ -155,6 +186,51 @@ public class AggiungiCalciatore {
         buttonInivio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (textNome.getText().equals("") || textCognome.getText().equals("") || comboBoxPiede.getSelectedItem().equals("") ||
+                        textDataNascita.getText().equals("") || listRuolo.getSelectedValuesList().isEmpty() || listNazionalità.getSelectedValuesList().isEmpty() ||
+                        comboBoxSquadra.getSelectedItem().equals("") || (radioButtonSì.isSelected() && textDataRitiro.getText().equals("")) ||
+                        (radioButtonNo2.isSelected() && textDataFine.getText().equals(""))) {
+                    JOptionPane.showMessageDialog(null, "Inserire tutti i campi");
+                    return;
+                }
+                if (radioButtonSì.isSelected())
+                    try {
+                        dataRitiro = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Inserire una data di ritiro valida");
+                        return;
+                    }
+                else
+                    dataRitiro = null;
+                if (radioButtonNo2.isSelected())
+                    try {
+                        dataFine = LocalDate.parse(textDataFine.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Inserire una data di fine contratto  valida");
+                        return;
+                    }
+                else
+                    dataFine = null;
+                if (radioButtonFemmina.isSelected())
+                    sesso = 'F';
+                else
+                    sesso = 'M';
+                try {
+                    dataNascita = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                } catch (Exception exception) {
+                    JOptionPane.showMessageDialog(null, "Inserire una data di nascita valida");
+                    return;
+                }
+                try {
+                    dataInizio = LocalDate.parse(textDataInizio.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                } catch (Exception exception) {
+                    JOptionPane.showMessageDialog(null, "Inserire una data di inizio contratto valida");
+                    return;
+                }
+                controller.aggiungiCalciatore(textNome.getText(), textCognome.getText(), sesso,
+                        comboBoxSquadra.getSelectedItem().toString(), (ArrayList<String>) listNazionalità.getSelectedValuesList(),
+                        comboBoxPiede.getSelectedItem().toString(), dataNascita, (ArrayList<String>) listRuolo.getSelectedValuesList(),
+                        dataRitiro, dataInizio, dataFine);
                 JOptionPane.showMessageDialog(null, "Calciatore aggiunto con successo");
             }
         });
@@ -317,10 +393,10 @@ public class AggiungiCalciatore {
         radioButtonSì2.setBackground(new Color(-4859649));
         radioButtonSì2.setText("Sì");
         panelDataFine.add(radioButtonSì2, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        noRadioButtonNo2 = new JRadioButton();
-        noRadioButtonNo2.setBackground(new Color(-4859649));
-        noRadioButtonNo2.setText("No");
-        panelDataFine.add(noRadioButtonNo2, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonNo2 = new JRadioButton();
+        radioButtonNo2.setBackground(new Color(-4859649));
+        radioButtonNo2.setText("No");
+        panelDataFine.add(radioButtonNo2, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         labelDataFine = new JLabel();
         labelDataFine.setText("Data fine ultimo contratto");
         panelDataFine.add(labelDataFine, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));

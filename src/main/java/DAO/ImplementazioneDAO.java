@@ -1,11 +1,9 @@
 package DAO;
 
-import model.Amministratore;
-import model.Nazionalità;
-import model.Ruolo;
-import model.Squadra;
+import model.*;
 
-import java.lang.reflect.Array;
+import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface ImplementazioneDAO {
@@ -16,14 +14,12 @@ public interface ImplementazioneDAO {
     ArrayList<Ruolo> getRuoli();
     ArrayList<Nazionalità> getNazionalità();
     ArrayList<Squadra> getSquadre();
-
-    //void getGiocatoriUtente();
-    //void getCalciatoriAmministratore();
-    //void getCalciatoriEliminare();
-    //void getCalciatoriModificare();
-    //void getCalciatoriInserire();
-
-
-
+    //ArrayList<Object> getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
+                                        // String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro);
+    DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
+                                    String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro);
+    void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalità,
+                            String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro, LocalDate dataInizio,
+                            LocalDate dataFine);
 
 }

@@ -9,6 +9,7 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Locale;
 
 public class EliminaCalciatore {
@@ -23,7 +24,8 @@ public class EliminaCalciatore {
     public static JFrame frame;
     private Controller controller;
 
-    public EliminaCalciatore(JFrame frameChiamante) {
+    public EliminaCalciatore(JFrame frameChiamante, Controller controller, String nome, String cognome, char sesso, String squadra, String nazionalità,
+                             String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro) {
         frame = new JFrame("Elimina calciatore");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,8 +36,7 @@ public class EliminaCalciatore {
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro"});
-        tableGiocatori.setModel(tableModel);
+        //tableGiocatori.setModel(tableModel);
 
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
