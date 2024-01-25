@@ -25,7 +25,9 @@
             <children>
               <component id="821f2" class="javax.swing.JTable" binding="tableModifica">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <font size="16"/>
+                </properties>
               </component>
             </children>
           </scrollpane>

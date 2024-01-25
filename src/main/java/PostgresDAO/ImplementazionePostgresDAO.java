@@ -199,8 +199,6 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             sceltaDati.append(" AND sesso = '" + sesso + "'");
         if (squadra != null && !squadra.equals(""))
             sceltaDati.append(" AND squadra.nome = '" + squadra + "'");
-       /* if (nazionalità != null && !nazionalità.equals(""))
-            sceltaDati.append(" AND appartiene.nazionalità = '" + nazionalità + "'");*/
         if (piede != null && !piede.equals("")) {
             piede = piede.toLowerCase();
             sceltaDati.append(" AND piede = '" + piede + "'");
@@ -216,8 +214,6 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             sceltaDati.append(" AND dataRitiro IS NOT NULL");
         else if (dataRitiro == null)
             sceltaDati.append(" AND dataRitiro IS NULL");
-        /*if (ruolo != null && !ruolo.equals(""))
-            sceltaDati.append(" AND ruolo = '" + ruolo + "'");*/
         if (golFatti != null)
             sceltaDati.append(" AND golSegnati = " + golFatti);
         if (golSubiti != null)
@@ -369,6 +365,13 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         PreparedStatement modificaMilitanza = null;
         PreparedStatement getidSquadra = null;
         ResultSet rs = null;
+
+        piede = piede.toLowerCase();
+        nome = nome.trim(); //Rimuove gli spazi all'inizio e alla fine
+        nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase(); //Mette la prima lettera maiuscola e le altre minuscole
+        cognome = cognome.trim();
+        cognome = cognome.substring(0, 1).toUpperCase() + cognome.substring(1).toLowerCase();
+
 
         try{
             String query = "UPDATE Calciatore " +

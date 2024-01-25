@@ -3,12 +3,15 @@ package gui;
 import controller.Controller;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class RicercaModifica {
 
@@ -35,10 +38,11 @@ public class RicercaModifica {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableModifica.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
         tableModifica.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
         tableModifica.setModel(tableModel);
         tableModifica.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         tableModifica.getColumnModel().getColumn(8).setPreferredWidth(350);
         tableModifica.getColumnModel().getColumn(6).setPreferredWidth(150);
         tableModifica.getColumnModel().getColumn(10).setPreferredWidth(350);
@@ -119,6 +123,8 @@ public class RicercaModifica {
         scrollPaneModifica = new JScrollPane();
         panelModifica.add(scrollPaneModifica, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         tableModifica = new JTable();
+        Font tableModificaFont = this.$$$getFont$$$(null, -1, 16, tableModifica.getFont());
+        if (tableModificaFont != null) tableModifica.setFont(tableModificaFont);
         scrollPaneModifica.setViewportView(tableModifica);
         panelSelezione = new JPanel();
         panelSelezione.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
@@ -132,6 +138,28 @@ public class RicercaModifica {
         buttonIndietro = new JButton();
         buttonIndietro.setText("Torna indietro");
         panelIndietro.add(buttonIndietro, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_NORTH, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private Font $$$getFont$$$(String fontName, int style, int size, Font currentFont) {
+        if (currentFont == null) return null;
+        String resultName;
+        if (fontName == null) {
+            resultName = currentFont.getName();
+        } else {
+            Font testFont = new Font(fontName, Font.PLAIN, 10);
+            if (testFont.canDisplay('a') && testFont.canDisplay('1')) {
+                resultName = fontName;
+            } else {
+                resultName = currentFont.getName();
+            }
+        }
+        Font font = new Font(resultName, style >= 0 ? style : currentFont.getStyle(), size >= 0 ? size : currentFont.getSize());
+        boolean isMac = System.getProperty("os.name", "").toLowerCase(Locale.ENGLISH).startsWith("mac");
+        Font fontWithFallback = isMac ? new Font(font.getFamily(), font.getStyle(), font.getSize()) : new StyleContext().getFont(font.getFamily(), font.getStyle(), font.getSize());
+        return fontWithFallback instanceof FontUIResource ? fontWithFallback : new FontUIResource(fontWithFallback);
     }
 
     /**

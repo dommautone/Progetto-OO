@@ -36,8 +36,8 @@ public class EliminaCalciatore {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-        tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
+        tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableGiocatori.setModel(tableModel);
 
         tableGiocatori.getColumnModel().getColumn(10).setPreferredWidth(350);

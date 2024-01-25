@@ -10,6 +10,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
 public class Modifica {
@@ -66,6 +68,7 @@ public class Modifica {
     private Controller controller;
     public static JFrame frame;
     private LocalDate dataRitiro2;
+    private LocalDate dataNascita2;
     private char sesso2;
 
     public Modifica(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti, String ruolo, String nazionalità) {
@@ -225,12 +228,46 @@ public class Modifica {
         buttonInvio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textNome.getText().equals("") || textCognome.getText().equals("") || textDataNascita.getText().equals("") || textDataRitiro.getText().equals("") || textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
+                if (textNome.getText().equals("") || textCognome.getText().equals("") || textDataNascita.getText().equals("") || textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Inserire tutti i campi");
                     return;
                 }
+                boolean isValidFormat = false;
                 if (textDataRitiro.getText().equals(""))
                     dataRitiro2 = null;
+                else {
+                    try {
+                        dataRitiro2 = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                        isValidFormat = true;
+                    } catch (DateTimeParseException e1) {
+                        try {
+                            dataRitiro2 = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                            isValidFormat = true;
+                        } catch (DateTimeParseException e2) {
+                            isValidFormat = false;
+                        }
+                    }
+                }
+                if (!isValidFormat && dataRitiro2 != null) {
+                    JOptionPane.showMessageDialog(null, "Formato data di ritiro non valido");
+                    return;
+                }
+                try{
+                    dataNascita2 = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    isValidFormat = true;
+                } catch (DateTimeParseException e1) {
+                    try {
+                        dataNascita2 = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                        isValidFormat = true;
+                    } catch (DateTimeParseException e2) {
+                        isValidFormat = false;
+                    }
+                }
+                if (!isValidFormat) {
+                    JOptionPane.showMessageDialog(null, "Formato data di nascita non valido");
+                    return;
+                }
+
                 if (radioButtonMaschio.isSelected())
                     sesso2 = 'M';
                 else

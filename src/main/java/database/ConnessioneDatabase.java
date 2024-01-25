@@ -10,7 +10,7 @@ public class ConnessioneDatabase {
         private static ConnessioneDatabase instance;
         public Connection connection = null;
         private String nome = "postgres";
-        private String password = "Telecomando0!";
+        private String password = "admin";
         private String url = "jdbc:postgresql://localhost:5432/Traccia3";
         private String driver = "org.postgresql.Driver";
 
