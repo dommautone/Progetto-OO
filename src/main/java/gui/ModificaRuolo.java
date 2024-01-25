@@ -24,7 +24,7 @@ public class ModificaRuolo {
 
     public static JFrame frame;
 
-    public ModificaRuolo(JFrame frameChiamante, Controller controller, int idCalciatore, String ruolo) {
+    public ModificaRuolo(JFrame frameChiamante, Controller controller, int idCalciatore) {
         frame = new JFrame("Modifica ruolo");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

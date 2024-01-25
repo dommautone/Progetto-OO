@@ -21,6 +21,8 @@ java:S1450"\Remove the "labelPassword" field and declare it as a local variabl
 java:S1450"\Remove the "labelUsername" field and declare it as a local variable in the relevant methods.(†„¢úÿÿÿÿ8çÂÈŸĞ1
 |
 java:S1450"ZRemove the "panelAccedi" field and declare it as a local variable in the relevant methods.(¿°×ûşÿÿÿÿ8êÂÈŸĞ1
+{
+java:S1450"_Remove the "panelDimenticata" field and declare it as a local variable in the relevant methods.(íÿÂ8¾Ê§Ñ1
 r
 java:S1450"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥
 u
@@ -31,8 +33,6 @@ java:S1450"\Remove the "panelPassword" field and declare it as a local variabl
 java:S1450"^Remove the "panelRegistrati" field and declare it as a local variable in the relevant methods.(Äêüãıÿÿÿÿ8ÊÃÈŸĞ1
 ~
 java:S1450"\Remove the "panelUsername" field and declare it as a local variable in the relevant methods.(ßÖÎüÿÿÿÿ8ÌÃÈŸĞ1
-‚
-java:S1450"`Remove the "panelaDimenticata" field and declare it as a local variable in the relevant methods.(ôÆü ıÿÿÿÿ8ÎÃÈŸĞ1
 
 java:S1450"_Remove the "passwordPassword" field and declare it as a local variable in the relevant methods.(û°Ì¹úÿÿÿÿ8£‰àĞ1
 }

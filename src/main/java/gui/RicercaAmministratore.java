@@ -10,6 +10,8 @@ import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -58,8 +60,6 @@ public class RicercaAmministratore {
     private JCheckBox checkboxEtà;
     private JLabel labelEtà;
     private JTextField textEtà;
-    private JPanel panelDataDiRitiro;
-    private JLabel labelDataDiRitiro;
     private JTextField textDataDiRitiro;
     private JCheckBox checkboxDataDiRitiro;
     private JPanel panel;
@@ -67,7 +67,15 @@ public class RicercaAmministratore {
     private JPanel panelRicerca;
     private JPanel panelRicercaCalciatore;
     private JLabel labelRicercaCalciatore;
+    private JPanel panelDataRitiro;
+    private JCheckBox checkBoxDataRitiro;
+    private JRadioButton radioButtonRitirati;
+    private JRadioButton radioButtonNonRitirati;
+    private JRadioButton radioButtonDataRitiro;
+    private JTextField textDataRitiro;
     private ButtonGroup buttonGroupSesso;
+
+    private ButtonGroup buttonGroupRitiro;
     private Controller controller;
     private Integer golFatti;
     private Integer golSubiti;
@@ -99,7 +107,6 @@ public class RicercaAmministratore {
         textFieldGolFatti.setEnabled(false);
         textFieldGolSubiti.setEnabled(false);
         textEtà.setEnabled(false);
-        textDataDiRitiro.setEnabled(false);
         radioButtonMaschio.setEnabled(false);
         radioButtonFemmina.setEnabled(false);
         comboBoxPiede.addItem("");
@@ -109,6 +116,13 @@ public class RicercaAmministratore {
         comboBoxRuolo.addItem("");
         comboBoxNazionalità.addItem("");
         comboBoxSquadra.addItem("");
+        buttonGroupRitiro = new ButtonGroup();
+        buttonGroupRitiro.add(radioButtonRitirati);
+        buttonGroupRitiro.add(radioButtonNonRitirati);
+        buttonGroupRitiro.add(radioButtonDataRitiro);
+        radioButtonRitirati.setEnabled(false);
+        radioButtonDataRitiro.setEnabled(false);
+        radioButtonNonRitirati.setEnabled(false);
 
         for (model.Ruolo ruolo : controller.getRuoli()) {
             comboBoxRuolo.addItem(ruolo.getPosizione());
@@ -219,17 +233,64 @@ public class RicercaAmministratore {
                 }
             }
         });
-        checkboxDataDiRitiro.addActionListener(new ActionListener() {
+        checkBoxDataRitiro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (checkboxDataDiRitiro.isSelected()) {
-                    textDataDiRitiro.setEnabled(true);
+                if (checkBoxDataRitiro.isSelected()) {
+                    radioButtonRitirati.setEnabled(true);
+                    radioButtonNonRitirati.setEnabled(true);
+                    radioButtonDataRitiro.setEnabled(true);
                 } else {
-                    textDataDiRitiro.setEnabled(false);
-                    textDataDiRitiro.setText("");
+                    radioButtonRitirati.setEnabled(false);
+                    radioButtonNonRitirati.setEnabled(false);
+                    radioButtonDataRitiro.setEnabled(false);
+                    buttonGroupRitiro.clearSelection();
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
                 }
             }
         });
+        radioButtonDataRitiro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonDataRitiro.isSelected()) {
+                    textDataRitiro.setEnabled(true);
+                } else {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        radioButtonNonRitirati.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonNonRitirati.isSelected()) {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        radioButtonRitirati.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonRitirati.isSelected()) {
+                    textDataRitiro.setEnabled(false);
+                    textDataRitiro.setText("");
+                }
+            }
+        });
+        checkBoxRuolo.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (checkBoxRuolo.isSelected()) {
+                    comboBoxRuolo.setEnabled(true);
+                } else {
+                    comboBoxRuolo.setEnabled(false);
+                    comboBoxRuolo.setSelectedIndex(0);
+                }
+            }
+        });
+
         checkBoxGenere.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -259,10 +320,10 @@ public class RicercaAmministratore {
                     età = null;
                 else
                     età = Integer.parseInt(textEtà.getText());
-                if (textDataDiRitiro.getText().isEmpty() && !checkboxDataDiRitiro.isSelected())
+                if (textDataRitiro.getText().isEmpty() && !checkBoxDataRitiro.isSelected())
                     dataRitiro = LocalDate.of(1111, 1, 1);
-                else if (!textDataDiRitiro.getText().isEmpty() && checkboxDataDiRitiro.isSelected())
-                    dataRitiro = LocalDate.parse(textDataDiRitiro.getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                else if (!textDataRitiro.getText().isEmpty() && checkBoxDataRitiro.isSelected())
+                    dataRitiro = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
                 else
                     dataRitiro = null;
                 if (radioButtonFemmina.isSelected())
@@ -445,21 +506,6 @@ public class RicercaAmministratore {
         textEtà = new JTextField();
         textEtà.setText("");
         panelEtà.add(textEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        panelDataDiRitiro = new JPanel();
-        panelDataDiRitiro.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-        panelDataDiRitiro.setBackground(new Color(-4859649));
-        panel.add(panelDataDiRitiro, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 5, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        checkboxDataDiRitiro = new JCheckBox();
-        checkboxDataDiRitiro.setBackground(new Color(-4859649));
-        checkboxDataDiRitiro.setHorizontalTextPosition(0);
-        checkboxDataDiRitiro.setText("");
-        panelDataDiRitiro.add(checkboxDataDiRitiro, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        labelDataDiRitiro = new JLabel();
-        labelDataDiRitiro.setText("Data di ritiro");
-        panelDataDiRitiro.add(labelDataDiRitiro, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        textDataDiRitiro = new JTextField();
-        textDataDiRitiro.setText("");
-        panelDataDiRitiro.add(textDataDiRitiro, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         panelRicerca = new JPanel();
         panelRicerca.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panelRicerca.setBackground(new Color(-4859649));
@@ -476,6 +522,28 @@ public class RicercaAmministratore {
         if (labelRicercaCalciatoreFont != null) labelRicercaCalciatore.setFont(labelRicercaCalciatoreFont);
         labelRicercaCalciatore.setText("Ricerca calciatore");
         panelRicercaCalciatore.add(labelRicercaCalciatore, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panelDataRitiro = new JPanel();
+        panelDataRitiro.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panelDataRitiro.setBackground(new Color(-4859649));
+        panel.add(panelDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        checkBoxDataRitiro = new JCheckBox();
+        checkBoxDataRitiro.setBackground(new Color(-4859649));
+        checkBoxDataRitiro.setText("Ritiro");
+        panelDataRitiro.add(checkBoxDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonRitirati = new JRadioButton();
+        radioButtonRitirati.setBackground(new Color(-4859649));
+        radioButtonRitirati.setText("Visualizza tutti i calciatori ritirati");
+        panelDataRitiro.add(radioButtonRitirati, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonNonRitirati = new JRadioButton();
+        radioButtonNonRitirati.setBackground(new Color(-4859649));
+        radioButtonNonRitirati.setText("Visualizza tutti i calciatori non ritirati");
+        panelDataRitiro.add(radioButtonNonRitirati, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        radioButtonDataRitiro = new JRadioButton();
+        radioButtonDataRitiro.setBackground(new Color(-4859649));
+        radioButtonDataRitiro.setText("Calciatori ritirati in data:");
+        panelDataRitiro.add(radioButtonDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        textDataRitiro = new JTextField();
+        panelDataRitiro.add(textDataRitiro, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**
