@@ -67,8 +67,12 @@ public class Controller {
     public ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore){
         return implementazionePostgresDAO.visualizzaRuoloCalciatore(idCalciatore);
     }
-    public void inserisciRuolo (int idCalciatore, String ruolo){
-        implementazionePostgresDAO.inserisciRuolo(idCalciatore, ruolo);
+    public void inserisciRuolo (int idCalciatore, String ruolo) throws RuoloGiàInseritoException{
+        try {
+            implementazionePostgresDAO.inserisciRuolo(idCalciatore, ruolo);
+        } catch (Exception e) {
+            throw new RuoloGiàInseritoException();
+        }
     }
     public void eliminaRuolo (int idCalciatore, ArrayList<String> ruolo){
         implementazionePostgresDAO.eliminaRuolo(idCalciatore, ruolo);
@@ -76,11 +80,18 @@ public class Controller {
     public ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore){
         return implementazionePostgresDAO.visualizzaNazionalitàCalciatore(idCalciatore);
     }
-    public void inserisciNazionalità (int idCalciatore, String nazionalità){
-        implementazionePostgresDAO.inserisciNazionalità(idCalciatore, nazionalità);
+    public void inserisciNazionalità (int idCalciatore, String nazionalità) throws NazionalitàGiàInseritaException{
+        try{
+            implementazionePostgresDAO.inserisciNazionalità(idCalciatore, nazionalità);
+        } catch (Exception e) {
+            throw new NazionalitàGiàInseritaException();
+        }
     }
     public void eliminaNazionalità (int idCalciatore, ArrayList<String> nazionalità){
         implementazionePostgresDAO.eliminaNazionalità(idCalciatore, nazionalità);
+    }
+    public void eliminaCalciatore(ArrayList<Integer> idCalciatore){
+        implementazionePostgresDAO.eliminaCalciatore(idCalciatore);
     }
 
 }

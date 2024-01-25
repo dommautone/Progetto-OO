@@ -1,6 +1,9 @@
 package gui;
 
 import controller.Controller;
+import controller.RuoloGiàInseritoException;
+import model.Appartiene;
+import model.Ha;
 import model.Ruolo;
 
 import javax.swing.*;
@@ -49,15 +52,23 @@ public class ModificaRuolo {
         buttonAggiungiRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox comboBoxruolo = new JComboBox();
+                JComboBox comboBoxRuolo = new JComboBox();
                 for (Ruolo ruolo : controller.getRuoli()) {
-                    comboBoxruolo.addItem(ruolo.getPosizione());
+                    comboBoxRuolo.addItem(ruolo.getPosizione());
                 }
-                JOptionPane.showMessageDialog(null, comboBoxruolo, "Inserisci il ruolo", JOptionPane.QUESTION_MESSAGE);
-                String ruolo = (String) comboBoxruolo.getSelectedItem();
-                controller.inserisciRuolo(idCalciatore, ruolo);
-                JOptionPane.showMessageDialog(null, "Ruolo inserito con successo");
-                tableModel.addRow(new Object[]{idCalciatore, calciatore, ruolo});
+                JOptionPane.showMessageDialog(null, comboBoxRuolo, "Inserisci il ruolo", JOptionPane.QUESTION_MESSAGE);
+                String ruolo = (String) comboBoxRuolo.getSelectedItem();
+                try {
+                    controller.inserisciRuolo(idCalciatore, ruolo);
+                    tableModel.setRowCount(0);
+                    for (Ha ha : controller.visualizzaRuoloCalciatore(idCalciatore)) {
+                        tableModel.addRow(new Object[]{idCalciatore, ha.getCalciatore().getNome() + " " +
+                                ha.getCalciatore().getCognome(), ha.getRuolo().getPosizione()});
+                    }
+                    JOptionPane.showMessageDialog(null, "Ruolo inserito con successo");
+                } catch (RuoloGiàInseritoException ex) {
+                    JOptionPane.showMessageDialog(null, "Ruolo già inserito", "Errore", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -74,8 +85,11 @@ public class ModificaRuolo {
                     ruolo.add((String) tableModificaRuolo.getValueAt(indice, 2));
                 controller.eliminaRuolo(idCalciatore, ruolo);
                 JOptionPane.showMessageDialog(null, "Ruolo eliminato con successo");
-                for (int indice : tableModificaRuolo.getSelectedRows())
-                    tableModel.removeRow(indice);
+                tableModel.setRowCount(0);
+                for (Ha ha : controller.visualizzaRuoloCalciatore(idCalciatore)) {
+                    tableModel.addRow(new Object[]{idCalciatore, ha.getCalciatore().getNome() + " " +
+                            ha.getCalciatore().getCognome(), ha.getRuolo().getPosizione()});
+                }
             }
         });
 

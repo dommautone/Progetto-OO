@@ -22,10 +22,11 @@ public interface ImplementazioneDAO {
     void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro,
                             int golFatti, Integer golSubiti, String squadra);
     ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore);
-    void inserisciRuolo (int idCalciatore, String ruolo);
+    void inserisciRuolo (int idCalciatore, String ruolo) throws Exception;
     void eliminaRuolo (int idCalciatore, ArrayList<String> ruolo);
     ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore);
-    void inserisciNazionalità (int idCalciatore, String nazionalità);
+    void inserisciNazionalità (int idCalciatore, String nazionalità) throws Exception;
     void eliminaNazionalità (int idCalciatore, ArrayList<String> nazionalità);
+    void eliminaCalciatore(ArrayList<Integer> idCalciatore);
 
 }

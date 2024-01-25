@@ -142,6 +142,7 @@ public class AggiungiCalciatore {
             public void actionPerformed(ActionEvent e) {
                 labelDataRitiro.setVisible(false);
                 textDataRitiro.setVisible(false);
+                textDataRitiro.setText("");
             }
         });
         DefaultListModel modelRuolo = new DefaultListModel();
@@ -166,6 +167,7 @@ public class AggiungiCalciatore {
             public void actionPerformed(ActionEvent e) {
                 labelDataFine.setVisible(false);
                 textDataFine.setVisible(false);
+                textDataFine.setText("");
             }
         });
         radioButtonNo2.addActionListener(new ActionListener() {

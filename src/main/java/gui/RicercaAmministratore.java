@@ -8,10 +8,7 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -145,6 +142,16 @@ public class RicercaAmministratore {
                 }
             }
         });
+        textNome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxCognome.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,6 +160,16 @@ public class RicercaAmministratore {
                 } else {
                     textCognome.setEnabled(false);
                     textCognome.setText("");
+                }
+            }
+        });
+        textCognome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_SPACE)) {
+                    e.consume();
                 }
             }
         });
@@ -175,6 +192,19 @@ public class RicercaAmministratore {
                 } else {
                     comboBoxNazionalità.setEnabled(false);
                     comboBoxNazionalità.setSelectedIndex(0);
+                }
+            }
+        });
+        checkBoxGenere.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (checkBoxGenere.isSelected()) {
+                    radioButtonMaschio.setEnabled(true);
+                    radioButtonFemmina.setEnabled(true);
+                } else {
+                    radioButtonMaschio.setEnabled(false);
+                    radioButtonFemmina.setEnabled(false);
+                    buttonGroupSesso.clearSelection();
                 }
             }
         });

@@ -199,8 +199,8 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             sceltaDati.append(" AND sesso = '" + sesso + "'");
         if (squadra != null && !squadra.equals(""))
             sceltaDati.append(" AND squadra.nome = '" + squadra + "'");
-        if (nazionalità != null && !nazionalità.equals(""))
-            sceltaDati.append(" AND appartiene.nazionalità IN ('" + nazionalità + "')");
+       /* if (nazionalità != null && !nazionalità.equals(""))
+            sceltaDati.append(" AND appartiene.nazionalità = '" + nazionalità + "'");*/
         if (piede != null && !piede.equals("")) {
             piede = piede.toLowerCase();
             sceltaDati.append(" AND piede = '" + piede + "'");
@@ -216,16 +216,24 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             sceltaDati.append(" AND dataRitiro IS NOT NULL");
         else if (dataRitiro == null)
             sceltaDati.append(" AND dataRitiro IS NULL");
-        if (ruolo != null && !ruolo.equals(""))
-            sceltaDati.append(" AND ruolo IN (' + ruolo + ')");
+        /*if (ruolo != null && !ruolo.equals(""))
+            sceltaDati.append(" AND ruolo = '" + ruolo + "'");*/
         if (golFatti != null)
             sceltaDati.append(" AND golSegnati = " + golFatti);
         if (golSubiti != null)
             sceltaDati.append(" AND golSubiti = " + golSubiti);
         sceltaDati.append(" GROUP BY idCalciatore,idSquadra, calciatore.nome, cognome, sesso, squadra.nome, Appartiene.nazionalità, piede, dataNascita, " +
                 "dataRitiro, Ha.ruolo) " +
-                "GROUP BY idCalciatore, idSquadra, nome_calciatore, cognome, sesso, nome_squadra, piede, dataNascita, dataRitiro " +
-                "ORDER BY nome_calciatore, cognome");
+                "GROUP BY idCalciatore, idSquadra, nome_calciatore, cognome, sesso, nome_squadra, piede, dataNascita, dataRitiro ");
+        if(nazionalità != null && !nazionalità.equals("") && ruolo != null && !ruolo.equals(""))
+            sceltaDati.append(" HAVING STRING_AGG(DISTINCT nazione_calciatore, '/') LIKE '%" + nazionalità + "%'" +
+                    " AND STRING_AGG(DISTINCT ruolo, '/') LIKE '%" + ruolo + "%'");
+        else if(nazionalità.equals("") && ruolo != null && !ruolo.equals(""))
+            sceltaDati.append(" HAVING STRING_AGG(DISTINCT ruolo, '/') LIKE '%" + ruolo + "%'");
+        else if(ruolo.equals("") && nazionalità != null && !nazionalità.equals(""))
+            sceltaDati.append(" HAVING STRING_AGG(DISTINCT nazione_calciatore, '/') LIKE '%" + nazionalità + "%'");
+        sceltaDati.append(" ORDER BY nome_calciatore, cognome, sesso, dataNascita, dataRitiro");
+
         try {
             getGiocatori = connection.prepareStatement(sceltaDati.toString());
             rs = getGiocatori.executeQuery();
@@ -289,11 +297,11 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             recuperoidSquadra = connection.prepareStatement(queryidSquadra);
             recuperoidSquadra.setString(1, squadra);
             //Per evitare problemi con squadre che hanno lo stesso identico nome ma che appartengono a categorie differenti
-            recuperoidSquadra.setString(2, "sesso");
+            recuperoidSquadra.setString(2, String.valueOf(sesso));
             rs = recuperoidSquadra.executeQuery();
             rs.next();
-
             int idSquadra = rs.getInt("idSquadra");
+
             String queryMilitanza = "INSERT INTO Militanza (calciatore, squadra, dataInizio, dataFine) VALUES (?, ?, ?, ?)";
             aggiungiMilitanza = connection.prepareStatement(queryMilitanza);
             aggiungiMilitanza.setInt(1, idCalciatore);
@@ -355,230 +363,335 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         }
     }
 
-        public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro,
-        int golFatti, Integer golSubiti, String squadra){
+    public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro,
+                                   int golFatti, Integer golSubiti, String squadra){
+        PreparedStatement modificaCalciatore = null;
+        PreparedStatement modificaMilitanza = null;
+        PreparedStatement getidSquadra = null;
+        ResultSet rs = null;
 
-            PreparedStatement modificaCalciatore = null;
-            PreparedStatement modificaMilitanza = null;
-            PreparedStatement getidSquadra = null;
-            ResultSet rs = null;
-
-            try{
-                String query = "UPDATE Calciatore " +
+        try{
+            String query = "UPDATE Calciatore " +
                         "SET nome = ?, cognome = ?, sesso = ?, piede = ?, dataNascita = ?, dataRitiro = ?" +
                         " WHERE idCalciatore = ?";
-                modificaCalciatore = connection.prepareStatement(query);
-                modificaCalciatore.setString(1, nome);
-                modificaCalciatore.setString(2, cognome);
-                modificaCalciatore.setString(3, String.valueOf(sesso));
-                modificaCalciatore.setString(4, piede);
-                modificaCalciatore.setDate(5, Date.valueOf(dataNascita));
-                if(dataRitiro != null)
-                    modificaCalciatore.setDate(6, Date.valueOf(dataRitiro));
-                else
-                    modificaCalciatore.setNull(6, Types.DATE);
-                modificaCalciatore.setInt(7, idCalciatore);
-                modificaCalciatore.executeUpdate();
+            modificaCalciatore = connection.prepareStatement(query);
+            modificaCalciatore.setString(1, nome);
+            modificaCalciatore.setString(2, cognome);
+            modificaCalciatore.setString(3, String.valueOf(sesso));
+            modificaCalciatore.setString(4, piede);
+            modificaCalciatore.setDate(5, Date.valueOf(dataNascita));
+            if(dataRitiro != null)
+                modificaCalciatore.setDate(6, Date.valueOf(dataRitiro));
+            else
+                modificaCalciatore.setNull(6, Types.DATE);
+            modificaCalciatore.setInt(7, idCalciatore);
+            modificaCalciatore.executeUpdate();
 
-                String getidSquadraQuery = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
-                getidSquadra = connection.prepareStatement(getidSquadraQuery);
-                getidSquadra.setString(1, squadra);
-                getidSquadra.setString(2, String.valueOf(sesso));
-                rs = getidSquadra.executeQuery();
-                rs.next();
-                int idSquadra2 = rs.getInt("idSquadra");
+            String getidSquadraQuery = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
+            getidSquadra = connection.prepareStatement(getidSquadraQuery);
+            getidSquadra.setString(1, squadra);
+            getidSquadra.setString(2, String.valueOf(sesso));
+            rs = getidSquadra.executeQuery();
+            rs.next();
+            int idSquadra2 = rs.getInt("idSquadra");
 
-                String queryMilitanza = "UPDATE Militanza " +
+            String queryMilitanza = "UPDATE Militanza " +
                         "SET golSegnati = ?, golSubiti = ?, squadra = ? " +
                         "WHERE calciatore = ? AND Squadra = ?";
-                modificaMilitanza = connection.prepareStatement(queryMilitanza);
-                modificaMilitanza.setInt(1, golFatti);
-                if(golSubiti != null)
-                    modificaMilitanza.setInt(2, golSubiti);
-                else
-                    modificaMilitanza.setNull(2, Types.INTEGER);
-                modificaMilitanza.setInt(3, idSquadra2);
-                modificaMilitanza.setInt(4, idCalciatore);
-                modificaMilitanza.setInt(5, idSquadra);
-                modificaMilitanza.executeUpdate();
+            modificaMilitanza = connection.prepareStatement(queryMilitanza);
+            modificaMilitanza.setInt(1, golFatti);
+            if(golSubiti != null)
+                modificaMilitanza.setInt(2, golSubiti);
+            else
+                modificaMilitanza.setNull(2, Types.INTEGER);
+            modificaMilitanza.setInt(3, idSquadra2);
+            modificaMilitanza.setInt(4, idCalciatore);
+            modificaMilitanza.setInt(5, idSquadra);
+            modificaMilitanza.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (modificaCalciatore != null)
+                    modificaCalciatore.close();
             } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (modificaCalciatore != null)
-                        modificaCalciatore.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
-                try {
-                    if (modificaMilitanza != null)
-                        modificaMilitanza.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
-                try {
-                    if (getidSquadra != null)
-                        getidSquadra.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (modificaMilitanza != null)
+                    modificaMilitanza.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (getidSquadra != null)
+                    getidSquadra.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
             }
         }
+    }
 
-        public ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore){
-            PreparedStatement visualizzaRuoloCalciatore = null;
-            ResultSet rs = null;
-            ArrayList<Ha> ha = new ArrayList<>();
-            try{
-                String query = "SELECT * FROM Ha JOIN Calciatore ON idCalciatore = Calciatore" +
+    public ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore){
+        PreparedStatement visualizzaRuoloCalciatore = null;
+        ResultSet rs = null;
+        LocalDate dataRitiro;
+        ArrayList<Ha> ha = new ArrayList<>();
+        try{
+            String query = "SELECT * FROM Ha JOIN Calciatore ON idCalciatore = Calciatore " +
                                 "JOIN Ruolo ON Posizione = Ruolo " +
-                                " WHERE Calciatore = ?";
-                visualizzaRuoloCalciatore = connection.prepareStatement(query);
-                visualizzaRuoloCalciatore.setInt(1, idCalciatore);
-                rs = visualizzaRuoloCalciatore.executeQuery();
-                while(rs.next()){
-                    ha.add(new Ha(new Calciatore(rs.getInt("idCalciatore"), rs.getString("nome"), rs.getString("cognome"), rs.getString("piede"),
-                            rs.getString("sesso").charAt(0), rs.getDate("dataNascita").toLocalDate(), rs.getDate("dataRitiro").toLocalDate()),
-                            new Ruolo(rs.getString("Posizione"), rs.getString("Descrizione"))));
-                }
-            } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (visualizzaRuoloCalciatore != null)
-                        visualizzaRuoloCalciatore.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
-            }
-            return ha;
-        }
+                                "WHERE Calciatore = ?";
+            visualizzaRuoloCalciatore = connection.prepareStatement(query);
+            visualizzaRuoloCalciatore.setInt(1, idCalciatore);
+            rs = visualizzaRuoloCalciatore.executeQuery();
+            while(rs.next()) {
+                if (rs.getDate("dataRitiro") == null)
+                    dataRitiro = null;
+                else
+                    dataRitiro = rs.getDate("dataRitiro").toLocalDate();
 
-        public void inserisciRuolo(int idCalciatore, String ruolo){
-            PreparedStatement inserisciRuolo = null;
-            try{
-                String query = "INSERT INTO Ha (Calciatore, Ruolo) " +
-                                "VALUES (?, ?)";
-                inserisciRuolo = connection.prepareStatement(query);
-                inserisciRuolo.setInt(1, idCalciatore);
-                inserisciRuolo.setString(2, ruolo);
-                inserisciRuolo.executeUpdate();
+                ha.add(new Ha(new Calciatore(rs.getInt("idCalciatore"), rs.getString("nome"), rs.getString("cognome"), rs.getString("piede"),
+                        rs.getString("sesso").charAt(0), rs.getDate("dataNascita").toLocalDate(), dataRitiro),
+                        new Ruolo(rs.getString("Posizione"), rs.getString("Descrizione"))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (visualizzaRuoloCalciatore != null)
+                    visualizzaRuoloCalciatore.close();
             } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (inserisciRuolo != null)
-                        inserisciRuolo.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+                System.out.println("Errore: " + e.getMessage());
             }
         }
+        return ha;
+    }
 
-        public void eliminaRuolo(int idCalciatore, ArrayList<String> ruolo){
-            PreparedStatement eliminaRuolo = null;
-            try{
-                String query = "DELETE FROM Ha " +
-                                "WHERE Calciatore = ? AND Ruolo = ?";
-                eliminaRuolo = connection.prepareStatement(query);
-                for(String ruolo1: ruolo) {
-                    eliminaRuolo.setInt(1, idCalciatore);
-                    eliminaRuolo.setString(2, ruolo1);
-                    eliminaRuolo.executeUpdate();
-                }
+    public void inserisciRuolo(int idCalciatore, String ruolo) throws Exception{
+        PreparedStatement inserisciRuolo = null;
+        try{
+            String query = "INSERT INTO Ha (Calciatore, Ruolo) " +
+                    "VALUES (?, ?)";
+            inserisciRuolo = connection.prepareStatement(query);
+            inserisciRuolo.setInt(1, idCalciatore);
+            inserisciRuolo.setString(2, ruolo);
+            inserisciRuolo.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+            throw new Exception();
+        } finally {
+            try {
+                if (inserisciRuolo != null)
+                    inserisciRuolo.close();
             } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (eliminaRuolo != null)
-                        eliminaRuolo.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+                System.out.println("Errore: " + e.getMessage());
             }
         }
+    }
 
-        public ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore){
-            PreparedStatement visualizzaNazionalitàCalciatore = null;
-            ResultSet rs = null;
-            LocalDate dataRitiro;
-            ArrayList<Appartiene> appartiene = new ArrayList<>();
-            try{
-                String query = "SELECT idCalciatore, calciatore.nome AS nome_calciatore, cognome, piede, sesso, dataNascita," +
-                                "dataRitiro, nazionalità.nome AS nome_nazionalità, continente" +
-                                " FROM Appartiene JOIN Calciatore ON idCalciatore = Calciatore" +
-                                " JOIN Nazionalità ON Nazionalità.nome = Nazionalità" +
-                                " WHERE Calciatore = ?";
-                visualizzaNazionalitàCalciatore = connection.prepareStatement(query);
-                visualizzaNazionalitàCalciatore.setInt(1, idCalciatore);
-                rs = visualizzaNazionalitàCalciatore.executeQuery();
-                while(rs.next()){
-                    if(rs.getDate("dataRitiro") == null)
-                        dataRitiro = null;
-                    else
-                        dataRitiro = rs.getDate("dataRitiro").toLocalDate();
-                    appartiene.add(new Appartiene(new Calciatore(rs.getInt("idCalciatore"),
-                            rs.getString("nome_calciatore"), rs.getString("cognome"),
-                            rs.getString("piede"), rs.getString("sesso").charAt(0),
-                            rs.getDate("dataNascita").toLocalDate(), dataRitiro),
-                            new Nazionalità(rs.getString("nome_nazionalità"), rs.getString("continente"))));
-                }
-            } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (visualizzaNazionalitàCalciatore != null)
-                        visualizzaNazionalitàCalciatore.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+    public void eliminaRuolo(int idCalciatore, ArrayList<String> ruolo){
+        PreparedStatement eliminaRuolo = null;
+        try{
+            String query = "DELETE FROM Ha " +
+                    "WHERE Calciatore = ? AND Ruolo = ?";
+            eliminaRuolo = connection.prepareStatement(query);
+            for(String ruolo1: ruolo) {
+                eliminaRuolo.setInt(1, idCalciatore);
+                eliminaRuolo.setString(2, ruolo1);
+                eliminaRuolo.executeUpdate();
             }
-            return appartiene;
-        }
-
-        public void inserisciNazionalità(int idCalciatore, String nazionalità){
-            PreparedStatement inserisciNazionalità = null;
-            try{
-                String query = "INSERT INTO Appartiene (Calciatore, Nazionalità) " +
-                                "VALUES (?, ?)";
-                inserisciNazionalità = connection.prepareStatement(query);
-                inserisciNazionalità.setInt(1, idCalciatore);
-                inserisciNazionalità.setString(2, nazionalità);
-                inserisciNazionalità.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (eliminaRuolo != null)
+                    eliminaRuolo.close();
             } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (inserisciNazionalità != null)
-                        inserisciNazionalità.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+                System.out.println("Errore: " + e.getMessage());
             }
         }
+    }
 
-        public void eliminaNazionalità(int idCalciatore, ArrayList<String> nazionalit){
-            PreparedStatement eliminaNazionalità = null;
-            try{
-                String query = "DELETE FROM Appartiene " +
-                                "WHERE Calciatore = ? AND Nazionalità = ?";
-                eliminaNazionalità = connection.prepareStatement(query);
-                for(String nazionalità: nazionalit) {
-                    eliminaNazionalità.setInt(1, idCalciatore);
-                    eliminaNazionalità.setString(2, nazionalità);
-                    eliminaNazionalità.executeUpdate();
-                }
+    public ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore){
+        PreparedStatement visualizzaNazionalitàCalciatore = null;
+        ResultSet rs = null;
+        LocalDate dataRitiro;
+        ArrayList<Appartiene> appartiene = new ArrayList<>();
+        try{
+            String query = "SELECT idCalciatore, calciatore.nome AS nome_calciatore, cognome, piede, sesso, dataNascita," +
+                    "dataRitiro, nazionalità.nome AS nome_nazionalità, continente" +
+                    " FROM Appartiene JOIN Calciatore ON idCalciatore = Calciatore" +
+                    " JOIN Nazionalità ON Nazionalità.nome = Nazionalità" +
+                    " WHERE Calciatore = ?";
+            visualizzaNazionalitàCalciatore = connection.prepareStatement(query);
+            visualizzaNazionalitàCalciatore.setInt(1, idCalciatore);
+            rs = visualizzaNazionalitàCalciatore.executeQuery();
+            while(rs.next()){
+                if(rs.getDate("dataRitiro") == null)
+                    dataRitiro = null;
+                else
+                    dataRitiro = rs.getDate("dataRitiro").toLocalDate();
+                appartiene.add(new Appartiene(new Calciatore(rs.getInt("idCalciatore"),
+                        rs.getString("nome_calciatore"), rs.getString("cognome"),
+                        rs.getString("piede"), rs.getString("sesso").charAt(0),
+                        rs.getDate("dataNascita").toLocalDate(), dataRitiro),
+                        new Nazionalità(rs.getString("nome_nazionalità"), rs.getString("continente"))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (visualizzaNazionalitàCalciatore != null)
+                    visualizzaNazionalitàCalciatore.close();
             } catch (SQLException e) {
-                System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
-            } finally {
-                try {
-                    if (eliminaNazionalità != null)
-                        eliminaNazionalità.close();
-                } catch (SQLException e) {
-                    System.out.println("Errore: " + e.getMessage());
-                }
+                System.out.println("Errore: " + e.getMessage());
             }
         }
+        return appartiene;
+    }
 
+    public void inserisciNazionalità(int idCalciatore, String nazionalità) throws Exception{
+        PreparedStatement inserisciNazionalità = null;
+        try{
+            String query = "INSERT INTO Appartiene (Calciatore, Nazionalità) " +
+                    "VALUES (?, ?)";
+            inserisciNazionalità = connection.prepareStatement(query);
+            inserisciNazionalità.setInt(1, idCalciatore);
+            inserisciNazionalità.setString(2, nazionalità);
+            inserisciNazionalità.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+            throw new Exception();
+        } finally {
+            try {
+                if (inserisciNazionalità != null)
+                    inserisciNazionalità.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+    }
+
+    public void eliminaNazionalità(int idCalciatore, ArrayList<String> nazionalit){
+        PreparedStatement eliminaNazionalità = null;
+        try{
+            String query = "DELETE FROM Appartiene " +
+                    "WHERE Calciatore = ? AND Nazionalità = ?";
+            eliminaNazionalità = connection.prepareStatement(query);
+            for(String nazionalità: nazionalit) {
+                eliminaNazionalità.setInt(1, idCalciatore);
+                eliminaNazionalità.setString(2, nazionalità);
+                eliminaNazionalità.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (eliminaNazionalità != null)
+                    eliminaNazionalità.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+    }
+
+    public void eliminaCalciatore(ArrayList<Integer> idCalciatore){
+        PreparedStatement eliminaCalciatore = null;
+        PreparedStatement eliminaMilitanza = null;
+        PreparedStatement eliminaAppartiene = null;
+        PreparedStatement eliminaHa = null;
+        PreparedStatement eliminaVinceCalciatore = null;
+        PreparedStatement eliminaPossiede = null;
+        try{
+            String queryMilitanza = "DELETE FROM Militanza " +
+                    "WHERE Calciatore = ?";
+            eliminaMilitanza = connection.prepareStatement(queryMilitanza);
+            for(int id: idCalciatore) {
+                eliminaMilitanza.setInt(1, id);
+                eliminaMilitanza.executeUpdate();
+            }
+
+            String queryAppartiene = "DELETE FROM Appartiene " +
+                    "WHERE Calciatore = ?";
+            eliminaAppartiene = connection.prepareStatement(queryAppartiene);
+            for(int id: idCalciatore) {
+                eliminaAppartiene.setInt(1, id);
+                eliminaAppartiene.executeUpdate();
+            }
+
+            String queryHa = "DELETE FROM Ha " +
+                    "WHERE Calciatore = ?";
+            eliminaHa = connection.prepareStatement(queryHa);
+            for(int id: idCalciatore) {
+                eliminaHa.setInt(1, id);
+                eliminaHa.executeUpdate();
+            }
+
+            String queryVinceCalciatore = "DELETE FROM VinceCalciatore " +
+                    "WHERE Calciatore = ?";
+            eliminaVinceCalciatore = connection.prepareStatement(queryVinceCalciatore);
+            for(int id: idCalciatore) {
+                eliminaVinceCalciatore.setInt(1, id);
+                eliminaVinceCalciatore.executeUpdate();
+            }
+
+            String queryPossiede = "DELETE FROM Possiede " +
+                    "WHERE Calciatore = ?";
+            eliminaPossiede = connection.prepareStatement(queryPossiede);
+            for(int id: idCalciatore) {
+                eliminaPossiede.setInt(1, id);
+                eliminaPossiede.executeUpdate();
+            }
+
+            String query = "DELETE FROM Calciatore " +
+                    "WHERE idCalciatore = ?";
+            eliminaCalciatore = connection.prepareStatement(query);
+            for(int id: idCalciatore) {
+                eliminaCalciatore.setInt(1, id);
+                eliminaCalciatore.executeUpdate();
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (eliminaCalciatore != null)
+                    eliminaCalciatore.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (eliminaMilitanza != null)
+                    eliminaMilitanza.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (eliminaAppartiene != null)
+                    eliminaAppartiene.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (eliminaHa != null)
+                    eliminaHa.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (eliminaVinceCalciatore != null)
+                    eliminaVinceCalciatore.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+            try {
+                if (eliminaPossiede != null)
+                    eliminaPossiede.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+    }
 }
 

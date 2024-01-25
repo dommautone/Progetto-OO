@@ -1,6 +1,7 @@
 package gui;
 
 import controller.Controller;
+import controller.NazionalitàGiàInseritaException;
 import model.Appartiene;
 import model.Ha;
 import model.Nazionalità;
@@ -60,12 +61,16 @@ public class ModificaNazionalità {
                 }
                 JOptionPane.showMessageDialog(null, comboBoxNazionalità, "Inserisci la nazionalità", JOptionPane.QUESTION_MESSAGE);
                 String nazionalità = (String) comboBoxNazionalità.getSelectedItem();
-                controller.inserisciNazionalità(idCalciatore, nazionalità);
-                JOptionPane.showMessageDialog(null, "Nazionalità inserita con successo");
-                tableModel.setRowCount(0);
-                for (Appartiene appartiene : controller.visualizzaNazionalitàCalciatore(idCalciatore)) {
-                    tableModel.addRow(new Object[]{idCalciatore, appartiene.getCalciatore().getNome() + " " +
-                            appartiene.getCalciatore().getCognome(), appartiene.getNazionalità().getNome()});
+                try {
+                    controller.inserisciNazionalità(idCalciatore, nazionalità);
+                    tableModel.setRowCount(0);
+                    for (Appartiene appartiene : controller.visualizzaNazionalitàCalciatore(idCalciatore)) {
+                        tableModel.addRow(new Object[]{idCalciatore, appartiene.getCalciatore().getNome() + " " +
+                                appartiene.getCalciatore().getCognome(), appartiene.getNazionalità().getNome()});
+                    }
+                    JOptionPane.showMessageDialog(null, "Nazionalità inserita con successo");
+                } catch (NazionalitàGiàInseritaException ex) {
+                    JOptionPane.showMessageDialog(null, "Nazionalità già inserita", "Errore", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

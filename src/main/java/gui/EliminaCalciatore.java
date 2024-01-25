@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class EliminaCalciatore {
@@ -36,7 +37,17 @@ public class EliminaCalciatore {
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        //tableGiocatori.setModel(tableModel);
+        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
+        tableGiocatori.setModel(tableModel);
+
+        tableGiocatori.getColumnModel().getColumn(10).setPreferredWidth(350);
+        tableGiocatori.getColumnModel().getColumn(8).setPreferredWidth(150);
+        tableGiocatori.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableGiocatori.getColumnModel().getColumn(0).setMinWidth(0);
+        tableGiocatori.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableGiocatori.getColumnModel().getColumn(7).setMaxWidth(0);
+        tableGiocatori.getColumnModel().getColumn(7).setMinWidth(0);
+        tableGiocatori.getColumnModel().getColumn(7).setPreferredWidth(0);
 
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +60,30 @@ public class EliminaCalciatore {
         buttonElimina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (tableGiocatori.getSelectedRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "Seleziona una riga");
+                    return;
+                }
+                ArrayList<Integer> idCalciatore = new ArrayList<>();
+                for (int indice : tableGiocatori.getSelectedRows()) {
+                    idCalciatore.add((Integer) tableGiocatori.getValueAt(indice, 0));
+                }
+                controller.eliminaCalciatore(idCalciatore);
                 JOptionPane.showMessageDialog(null, "Calciatore eliminato con successo");
+                int indice[] = tableGiocatori.getSelectedRows();
+                for (int riga : indice) {
+                    tableModel.removeRow(riga);
+                }
+                tableGiocatori.setModel(controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro));
+
+                tableGiocatori.getColumnModel().getColumn(10).setPreferredWidth(350);
+                tableGiocatori.getColumnModel().getColumn(8).setPreferredWidth(150);
+                tableGiocatori.getColumnModel().getColumn(0).setMaxWidth(0);
+                tableGiocatori.getColumnModel().getColumn(0).setMinWidth(0);
+                tableGiocatori.getColumnModel().getColumn(0).setPreferredWidth(0);
+                tableGiocatori.getColumnModel().getColumn(7).setMaxWidth(0);
+                tableGiocatori.getColumnModel().getColumn(7).setMinWidth(0);
+                tableGiocatori.getColumnModel().getColumn(7).setPreferredWidth(0);
             }
         });
     }
