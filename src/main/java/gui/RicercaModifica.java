@@ -35,12 +35,20 @@ public class RicercaModifica {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableModifica.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-
+        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
         tableModifica.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        //tableModifica.setModel(tableModel);
+        tableModifica.setModel(tableModel);
         tableModifica.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableModifica.getColumnModel().getColumn(8).setPreferredWidth(350);
         tableModifica.getColumnModel().getColumn(6).setPreferredWidth(150);
+        tableModifica.getColumnModel().getColumn(10).setPreferredWidth(350);
+        tableModifica.getColumnModel().getColumn(8).setPreferredWidth(150);
+        tableModifica.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableModifica.getColumnModel().getColumn(0).setMinWidth(0);
+        tableModifica.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableModifica.getColumnModel().getColumn(7).setMaxWidth(0);
+        tableModifica.getColumnModel().getColumn(7).setMinWidth(0);
+        tableModifica.getColumnModel().getColumn(7).setPreferredWidth(0);
 
 
         buttonIndietro.addActionListener(new ActionListener() {
@@ -58,23 +66,25 @@ public class RicercaModifica {
                     JOptionPane.showMessageDialog(null, "Seleziona un calciatore", "Errore", JOptionPane.ERROR_MESSAGE);
                 else {
                     int riga = tableModifica.getSelectedRow();
-                    String nome = (String) tableModifica.getValueAt(riga, 0);
-                    String cognome = (String) tableModifica.getValueAt(riga, 1);
-                    String piede = (String) tableModifica.getValueAt(riga, 2);
-                    String sessoS = (String) tableModifica.getValueAt(riga, 3);
+                    int idCalciatore = (Integer) tableModifica.getValueAt(riga, 0);
+                    String nome = (String) tableModifica.getValueAt(riga, 1);
+                    String cognome = (String) tableModifica.getValueAt(riga, 2);
+                    String piede = (String) tableModifica.getValueAt(riga, 3);
+                    String sessoS = (String) tableModifica.getValueAt(riga, 4);
                     char sesso = sessoS.charAt(0);
-                    Date dataNascitaD = (Date) tableModifica.getValueAt(riga, 4);
+                    Date dataNascitaD = (Date) tableModifica.getValueAt(riga, 5);
                     LocalDate dataNascita = dataNascitaD.toLocalDate();
-                    Date dataRitiroD = (Date) tableModifica.getValueAt(riga, 5);
+                    Date dataRitiroD = (Date) tableModifica.getValueAt(riga, 6);
                     LocalDate dataRitiro;
                     if (dataRitiroD == null)
                         dataRitiro = null;
                     else
                         dataRitiro = dataRitiroD.toLocalDate();
-                    String squadra = (String) tableModifica.getValueAt(riga, 6);
-                    Integer golFatti = (Integer) tableModifica.getValueAt(riga, 9);
-                    Integer golSubiti = (Integer) tableModifica.getValueAt(riga, 10);
-                    Modifica modifica = new Modifica(frame, controller, nome, cognome, piede, sesso, dataNascita, dataRitiro,
+                    int idSquadra = (Integer) tableModifica.getValueAt(riga, 7);
+                    String squadra = (String) tableModifica.getValueAt(riga, 8);
+                    Integer golFatti = (Integer) tableModifica.getValueAt(riga, 11);
+                    Integer golSubiti = (Integer) tableModifica.getValueAt(riga, 12);
+                    Modifica modifica = new Modifica(frame, controller, idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita, dataRitiro,
                             squadra, golFatti, golSubiti);
                     modifica.frame.setVisible(true);
                     frame.setVisible(false);

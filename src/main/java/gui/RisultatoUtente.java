@@ -33,31 +33,18 @@ public class RisultatoUtente {
         frame.setVisible(true);
         tableRicercaUtente.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableRicercaUtente.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-      /*  DefaultTableModel ricercaCalciatori = new DefaultTableModel(new Object[][]{}, new String[]{"Nome", "Cognome", "Piede",
-                "Sesso", "Data di nascita", "Data di ritiro", "Squadra", "Nazionalità", "Ruolo", "Gol fatti", "Gol subiti"}) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-
-        for (Object calciatori : controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro)) {
-            Calciatore calciatore = (Calciatore) calciatori;
-            Nazionalità nazionalità1 = (Nazionalità) calciatori;
-            Squadra squadra1 = (Squadra) calciatori;
-            Militanza militanza = (Militanza) calciatori;
-            Ha ha = (Ha) calciatori;
-            Appartiene appartiene = (Appartiene) calciatori;
-            ricercaCalciatori.addRow(new Object[]{calciatore.getNome(), calciatore.getCognome(), calciatore.getPiede(),
-                    calciatore.getSesso(), calciatore.getDataNascita(), calciatore.getDataRitiro(), squadra1.getNome(),
-                    appartiene.getNazionalità(), ha.getRuolo(), militanza.getGolSegnati(), militanza.getGolSubiti()});
-        }*/
 
         DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
         tableRicercaUtente.setModel(tableModel);
 
-        tableRicercaUtente.getColumnModel().getColumn(8).setPreferredWidth(350);
-        tableRicercaUtente.getColumnModel().getColumn(6).setPreferredWidth(150);
+        tableRicercaUtente.getColumnModel().getColumn(10).setPreferredWidth(350);
+        tableRicercaUtente.getColumnModel().getColumn(8).setPreferredWidth(150);
+        tableRicercaUtente.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableRicercaUtente.getColumnModel().getColumn(0).setMinWidth(0);
+        tableRicercaUtente.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tableRicercaUtente.getColumnModel().getColumn(7).setMaxWidth(0);
+        tableRicercaUtente.getColumnModel().getColumn(7).setMinWidth(0);
+        tableRicercaUtente.getColumnModel().getColumn(7).setPreferredWidth(0);
 
 
         buttonNuovaRicerca.addActionListener(new ActionListener() {

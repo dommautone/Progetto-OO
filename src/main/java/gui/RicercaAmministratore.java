@@ -277,7 +277,7 @@ public class RicercaAmministratore {
                     ricercaModifica.frame.setVisible(true);
                     frame.dispose();
                 } else {
-                    EliminaCalciatore eliminaCalciatore = new EliminaCalciatore(frame, controller, textNome.getText(), textCognome.getText(), radioButtonMaschio.isSelected() ? 'M' : 'F', comboBoxSquadra.getSelectedItem().toString(), comboBoxNazionalità.getSelectedItem().toString(),
+                    EliminaCalciatore eliminaCalciatore = new EliminaCalciatore(frame, controller, textNome.getText(), textCognome.getText(), sesso, comboBoxSquadra.getSelectedItem().toString(), comboBoxNazionalità.getSelectedItem().toString(),
                             comboBoxPiede.getSelectedItem().toString(), età, comboBoxRuolo.getSelectedItem().toString(), golFatti, golSubiti, dataRitiro);
                     eliminaCalciatore.frame.setVisible(true);
                     frame.dispose();

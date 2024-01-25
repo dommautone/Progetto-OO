@@ -62,8 +62,9 @@ public class Modifica {
     private JPanel panelIndietro;
     private Controller controller;
     public static JFrame frame;
+    private LocalDate dataRitiro2;
 
-    public Modifica(JFrame frameChiamante, Controller controller, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti) {
+    public Modifica(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti) {
         frame = new JFrame("Modifica");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -184,7 +185,7 @@ public class Modifica {
         buttonModificaRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ModificaRuolo modificaRuolo = new ModificaRuolo(frame, controller);
+                ModificaRuolo modificaRuolo = new ModificaRuolo(frame, controller, idCalciatore, ruolo);
                 modificaRuolo.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -200,6 +201,13 @@ public class Modifica {
         buttonInvio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (textNome.getText().equals("") || textCognome.getText().equals("") || textFieldPiede.getText().equals("") || textDataNascita.getText().equals("") || textDataRitiro.getText().equals("") || textSquadra.getText().equals("") || textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Inserire tutti i campi");
+                    return;
+                }
+                if (textDataRitiro.getText().equals(""))
+                    dataRitiro2 = null;
+                controller.modificaCalciatore(idCalciatore, idSquadra, textNome.getText(), textCognome.getText(), textFieldPiede.getText(), textFieldSesso.getText().charAt(0), LocalDate.parse(textDataNascita.getText()), dataRitiro2, Integer.parseInt(textGolFatti.getText()), Integer.parseInt(textGolSubiti.getText()), textSquadra.getText());
                 JOptionPane.showMessageDialog(null, "Calciatore modificato con successo");
             }
         });
