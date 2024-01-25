@@ -322,10 +322,22 @@ public class RicercaAmministratore {
                     età = Integer.parseInt(textEtà.getText());
                 if (textDataRitiro.getText().isEmpty() && !checkBoxDataRitiro.isSelected())
                     dataRitiro = LocalDate.of(1111, 1, 1);
-                else if (!textDataRitiro.getText().isEmpty() && checkBoxDataRitiro.isSelected())
-                    dataRitiro = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-                else
+                if (textDataRitiro.getText().isEmpty() && radioButtonDataRitiro.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Inserire una data di ritiro valida", "Errore", JOptionPane.ERROR_MESSAGE);
+                    return;
+                } else if (radioButtonRitirati.isSelected())
+                    dataRitiro = LocalDate.of(2222, 2, 2);
+                else if (radioButtonNonRitirati.isSelected())
                     dataRitiro = null;
+                else if (textDataRitiro.getText().isEmpty())
+                    dataRitiro = LocalDate.of(1111, 1, 1);
+                else
+                    try {
+                        dataRitiro = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    } catch (Exception exception) {
+                        JOptionPane.showMessageDialog(null, "Inserire una data di ritiro valida", "Errore", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 if (radioButtonFemmina.isSelected())
                     sesso = 'F';
                 else if (radioButtonMaschio.isSelected())

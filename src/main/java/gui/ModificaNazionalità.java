@@ -1,10 +1,16 @@
 package gui;
 
+import controller.Controller;
+import model.Appartiene;
+import model.Ha;
+import model.Nazionalità;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ModificaNazionalità {
     private JPanel panel;
@@ -17,10 +23,11 @@ public class ModificaNazionalità {
     private JPanel panelAggiungiNazionalità;
     private JPanel panelRimuoviNazionalità;
     private JPanel panelIndietro;
+    Controller controller;
 
     public static JFrame frame;
 
-    public ModificaNazionalità(JFrame frameChiamante) {
+    public ModificaNazionalità(JFrame frameChiamante, Controller controller, int idCalciatore) {
         frame = new JFrame("Modifica nazionalità");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,31 +39,55 @@ public class ModificaNazionalità {
         tableModificaNazionalità.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
 
         tableModificaNazionalità.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Calciatore", "Nazionalità"});
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Calciatore", "Nazionalità"});
         tableModificaNazionalità.setModel(tableModel);
+        tableModificaNazionalità.setModel(tableModel);
+        tableModificaNazionalità.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableModificaNazionalità.getColumnModel().getColumn(0).setMinWidth(0);
+        tableModificaNazionalità.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        for (Appartiene appartiene : controller.visualizzaNazionalitàCalciatore(idCalciatore)) {
+            tableModel.addRow(new Object[]{idCalciatore, appartiene.getCalciatore().getNome() + " " +
+                    appartiene.getCalciatore().getCognome(), appartiene.getNazionalità().getNome()});
+        }
 
         buttonAggiungiNazionalità.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox nazionalità = new JComboBox();
-                nazionalità.setEditable(true);
-                //nazionalità.addItem("Italia");
-                JOptionPane.showMessageDialog(null, nazionalità, "Inserisci la nazionalità", JOptionPane.QUESTION_MESSAGE);
-
-
+                JComboBox comboBoxNazionalità = new JComboBox();
+                for (Nazionalità nazionalità : controller.getNazionalità()) {
+                    comboBoxNazionalità.addItem(nazionalità.getNome());
+                }
+                JOptionPane.showMessageDialog(null, comboBoxNazionalità, "Inserisci la nazionalità", JOptionPane.QUESTION_MESSAGE);
+                String nazionalità = (String) comboBoxNazionalità.getSelectedItem();
+                controller.inserisciNazionalità(idCalciatore, nazionalità);
+                JOptionPane.showMessageDialog(null, "Nazionalità inserita con successo");
+                tableModel.setRowCount(0);
+                for (Appartiene appartiene : controller.visualizzaNazionalitàCalciatore(idCalciatore)) {
+                    tableModel.addRow(new Object[]{idCalciatore, appartiene.getCalciatore().getNome() + " " +
+                            appartiene.getCalciatore().getCognome(), appartiene.getNazionalità().getNome()});
+                }
             }
         });
 
         buttonRimuoviNazionalità.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int rigaSelezionata = tableModificaNazionalità.getSelectedRow();
-                if (rigaSelezionata == -1) {
+                if (tableModificaNazionalità.getSelectedRowCount() == 0) {
                     JOptionPane.showMessageDialog(null, "Seleziona una riga");
                     return;
                 }
-                DefaultTableModel tableModel = (DefaultTableModel) tableModificaNazionalità.getModel();
-                tableModel.removeRow(rigaSelezionata);
+                int idCalciatore = (Integer) tableModificaNazionalità.getValueAt(tableModificaNazionalità.getSelectedRow(), 0);
+                ArrayList<String> nazionalità = new ArrayList<>();
+                for (int indice : tableModificaNazionalità.getSelectedRows())
+                    nazionalità.add((String) tableModificaNazionalità.getValueAt(indice, 2));
+                controller.eliminaNazionalità(idCalciatore, nazionalità);
+                JOptionPane.showMessageDialog(null, "Nazionalità eliminata con successo");
+                tableModel.setRowCount(0);
+                for (Appartiene appartiene : controller.visualizzaNazionalitàCalciatore(idCalciatore)) {
+                    tableModel.addRow(new Object[]{idCalciatore, appartiene.getCalciatore().getNome() + " " +
+                            appartiene.getCalciatore().getCognome(), appartiene.getNazionalità().getNome()});
+                }
             }
         });
 
@@ -68,6 +99,7 @@ public class ModificaNazionalità {
             }
         });
     }
+
     {
 // GUI initializer generated by IntelliJ IDEA GUI Designer
 // >>> IMPORTANT!! <<<
@@ -118,4 +150,5 @@ public class ModificaNazionalità {
     public JComponent $$$getRootComponent$$$() {
         return panel;
     }
+
 }

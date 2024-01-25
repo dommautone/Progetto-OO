@@ -1,6 +1,9 @@
 package gui;
 
 import controller.Controller;
+import model.Nazionalità;
+import model.Ruolo;
+import model.Squadra;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
@@ -13,7 +16,7 @@ import java.util.Locale;
 
 public class Modifica {
 
-    private final ButtonGroup buttonGroupSesso;
+    private ButtonGroup buttonGroupSesso;
     private JPanel panel;
     private JTextField textNome;
     private JButton buttonAggiungiNazionalità;
@@ -21,11 +24,8 @@ public class Modifica {
     private JButton buttonInvio;
     private JButton buttonIndietro;
     private JTextField textCognome;
-    private JTextField textFieldPiede;
-    private JTextField textFieldSesso;
     private JTextField textDataNascita;
     private JTextField textDataRitiro;
-    private JTextField textSquadra;
     private JTextField textGolFatti;
     private JTextField textGolSubiti;
     private JCheckBox checkBoxNome;
@@ -68,8 +68,9 @@ public class Modifica {
     private Controller controller;
     public static JFrame frame;
     private LocalDate dataRitiro2;
+    private char sesso2;
 
-    public Modifica(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti) {
+    public Modifica(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti, String ruolo, String nazionalità) {
         frame = new JFrame("Modifica");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,16 +81,26 @@ public class Modifica {
         frame.setVisible(true);
         textNome.setEnabled(false);
         textCognome.setEnabled(false);
-        comboBoxPiede.setEnabled(false);
         textDataNascita.setEnabled(false);
         textDataRitiro.setEnabled(false);
         textGolFatti.setEnabled(false);
         textGolSubiti.setEnabled(false);
+
+        comboBoxPiede.addItem("Destro");
+        comboBoxPiede.addItem("Sinistro");
+        comboBoxPiede.addItem("Ambidestro");
+
+        for (Squadra squadraD : controller.getSquadre()) {
+            comboBoxSquadra.addItem(squadraD.getNome());
+        }
+
         textNome.setText(nome);
         textCognome.setText(cognome);
         textDataNascita.setText(String.valueOf(dataNascita));
         textDataRitiro.setText(String.valueOf(dataRitiro));
-        textSquadra.setText(squadra);
+        comboBoxSquadra.setSelectedItem(squadra);
+        piede = piede.substring(0, 1).toUpperCase() + piede.substring(1).toLowerCase();
+        comboBoxPiede.setSelectedItem(piede);
         textGolFatti.setText(String.valueOf(golFatti));
         textGolSubiti.setText(String.valueOf(golSubiti));
         buttonGroupSesso = new ButtonGroup();
@@ -97,6 +108,13 @@ public class Modifica {
         buttonGroupSesso.add(radioButtonMaschio);
         radioButtonFemmina.setEnabled(false);
         radioButtonMaschio.setEnabled(false);
+        comboBoxPiede.setEnabled(false);
+        comboBoxSquadra.setEnabled(false);
+
+        if (sesso == 'M')
+            radioButtonMaschio.setSelected(true);
+        else
+            radioButtonFemmina.setSelected(true);
 
         checkBoxNome.addActionListener(new ActionListener() {
             @Override
@@ -164,9 +182,9 @@ public class Modifica {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (checkBoxSquadra.isSelected()) {
-                    textSquadra.setEnabled(true);
+                    comboBoxSquadra.setEnabled(true);
                 } else {
-                    textSquadra.setEnabled(false);
+                    comboBoxSquadra.setEnabled(false);
                 }
             }
         });
@@ -193,7 +211,7 @@ public class Modifica {
         buttonModificaRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ModificaRuolo modificaRuolo = new ModificaRuolo(frame, controller, idCalciatore);
+                ModificaRuolo modificaRuolo = new ModificaRuolo(frame, controller, idCalciatore, nome, cognome, ruolo);
                 modificaRuolo.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -201,7 +219,7 @@ public class Modifica {
         buttonAggiungiNazionalità.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ModificaNazionalità modificaNazionalità = new ModificaNazionalità(frame);
+                ModificaNazionalità modificaNazionalità = new ModificaNazionalità(frame, controller, idCalciatore);
                 modificaNazionalità.frame.setVisible(true);
                 frame.setVisible(false);
             }
@@ -209,13 +227,17 @@ public class Modifica {
         buttonInvio.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textNome.getText().equals("") || textCognome.getText().equals("") || textFieldPiede.getText().equals("") || textDataNascita.getText().equals("") || textDataRitiro.getText().equals("") || textSquadra.getText().equals("") || textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
+                if (textNome.getText().equals("") || textCognome.getText().equals("") || textDataNascita.getText().equals("") || textDataRitiro.getText().equals("") || textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Inserire tutti i campi");
                     return;
                 }
                 if (textDataRitiro.getText().equals(""))
                     dataRitiro2 = null;
-                controller.modificaCalciatore(idCalciatore, idSquadra, textNome.getText(), textCognome.getText(), textFieldPiede.getText(), textFieldSesso.getText().charAt(0), LocalDate.parse(textDataNascita.getText()), dataRitiro2, Integer.parseInt(textGolFatti.getText()), Integer.parseInt(textGolSubiti.getText()), textSquadra.getText());
+                if (radioButtonMaschio.isSelected())
+                    sesso2 = 'M';
+                else
+                    sesso2 = 'F';
+                controller.modificaCalciatore(idCalciatore, idSquadra, textNome.getText(), textCognome.getText(), (String) comboBoxPiede.getSelectedItem(), sesso2, LocalDate.parse(textDataNascita.getText()), dataRitiro2, Integer.parseInt(textGolFatti.getText()), Integer.parseInt(textGolSubiti.getText()), (String) comboBoxSquadra.getSelectedItem());
                 JOptionPane.showMessageDialog(null, "Calciatore modificato con successo");
             }
         });
@@ -227,6 +249,8 @@ public class Modifica {
             }
         });
     }
+
+
     {
 // GUI initializer generated by IntelliJ IDEA GUI Designer
 // >>> IMPORTANT!! <<<

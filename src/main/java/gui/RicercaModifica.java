@@ -71,6 +71,7 @@ public class RicercaModifica {
                     String cognome = (String) tableModifica.getValueAt(riga, 2);
                     String piede = (String) tableModifica.getValueAt(riga, 3);
                     String sessoS = (String) tableModifica.getValueAt(riga, 4);
+
                     char sesso = sessoS.charAt(0);
                     Date dataNascitaD = (Date) tableModifica.getValueAt(riga, 5);
                     LocalDate dataNascita = dataNascitaD.toLocalDate();
@@ -82,10 +83,12 @@ public class RicercaModifica {
                         dataRitiro = dataRitiroD.toLocalDate();
                     int idSquadra = (Integer) tableModifica.getValueAt(riga, 7);
                     String squadra = (String) tableModifica.getValueAt(riga, 8);
+                    String nazionalità = (String) tableModifica.getValueAt(riga, 9);
+                    String ruolo = (String) tableModifica.getValueAt(riga, 10);
                     Integer golFatti = (Integer) tableModifica.getValueAt(riga, 11);
                     Integer golSubiti = (Integer) tableModifica.getValueAt(riga, 12);
                     Modifica modifica = new Modifica(frame, controller, idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita, dataRitiro,
-                            squadra, golFatti, golSubiti);
+                            squadra, golFatti, golSubiti, ruolo, nazionalità);
                     modifica.frame.setVisible(true);
                     frame.setVisible(false);
                 }

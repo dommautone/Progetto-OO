@@ -64,6 +64,24 @@ public class Controller {
                                    int golFatti, Integer golSubiti, String squadra){
         implementazionePostgresDAO.modificaCalciatore(idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita, dataRitiro, golFatti, golSubiti, squadra);
     }
+    public ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore){
+        return implementazionePostgresDAO.visualizzaRuoloCalciatore(idCalciatore);
+    }
+    public void inserisciRuolo (int idCalciatore, String ruolo){
+        implementazionePostgresDAO.inserisciRuolo(idCalciatore, ruolo);
+    }
+    public void eliminaRuolo (int idCalciatore, ArrayList<String> ruolo){
+        implementazionePostgresDAO.eliminaRuolo(idCalciatore, ruolo);
+    }
+    public ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore){
+        return implementazionePostgresDAO.visualizzaNazionalitàCalciatore(idCalciatore);
+    }
+    public void inserisciNazionalità (int idCalciatore, String nazionalità){
+        implementazionePostgresDAO.inserisciNazionalità(idCalciatore, nazionalità);
+    }
+    public void eliminaNazionalità (int idCalciatore, ArrayList<String> nazionalità){
+        implementazionePostgresDAO.eliminaNazionalità(idCalciatore, nazionalità);
+    }
 
 }
 

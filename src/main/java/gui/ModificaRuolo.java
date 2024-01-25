@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ModificaRuolo {
     private JPanel panel;
@@ -24,7 +25,7 @@ public class ModificaRuolo {
 
     public static JFrame frame;
 
-    public ModificaRuolo(JFrame frameChiamante, Controller controller, int idCalciatore) {
+    public ModificaRuolo(JFrame frameChiamante, Controller controller, int idCalciatore, String nome, String cognome, String ruolo) {
         frame = new JFrame("Modifica ruolo");
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,35 +35,47 @@ public class ModificaRuolo {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         tableModificaRuolo.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-
         tableModificaRuolo.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"Calciatore", "Ruolo"});
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Calciatore", "Ruolo"});
         tableModificaRuolo.setModel(tableModel);
+        tableModificaRuolo.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableModificaRuolo.getColumnModel().getColumn(0).setMinWidth(0);
+        tableModificaRuolo.getColumnModel().getColumn(0).setPreferredWidth(0);
+
+        String calciatore = nome + " " + cognome;
+        for (String ruolo1 : ruolo.split("/"))
+            tableModel.addRow(new Object[]{idCalciatore, calciatore, ruolo1});
 
         buttonAggiungiRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JComboBox comboBoxruolo = new JComboBox();
-                comboBoxruolo.setEditable(true);
                 for (Ruolo ruolo : controller.getRuoli()) {
                     comboBoxruolo.addItem(ruolo.getPosizione());
                 }
                 JOptionPane.showMessageDialog(null, comboBoxruolo, "Inserisci il ruolo", JOptionPane.QUESTION_MESSAGE);
-
-
+                String ruolo = (String) comboBoxruolo.getSelectedItem();
+                controller.inserisciRuolo(idCalciatore, ruolo);
+                JOptionPane.showMessageDialog(null, "Ruolo inserito con successo");
+                tableModel.addRow(new Object[]{idCalciatore, calciatore, ruolo});
             }
         });
 
         buttonEliminaRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int rigaSelezionata = tableModificaRuolo.getSelectedRow();
-                if (rigaSelezionata == -1) {
+                if (tableModificaRuolo.getSelectedRowCount() == 0) {
                     JOptionPane.showMessageDialog(null, "Seleziona una riga");
                     return;
                 }
-                DefaultTableModel tableModel = (DefaultTableModel) tableModificaRuolo.getModel();
-                tableModel.removeRow(rigaSelezionata);
+                int idCalciatore = (int) tableModificaRuolo.getValueAt(tableModificaRuolo.getSelectedRow(), 0);
+                ArrayList<String> ruolo = new ArrayList<>();
+                for (int indice : tableModificaRuolo.getSelectedRows())
+                    ruolo.add((String) tableModificaRuolo.getValueAt(indice, 2));
+                controller.eliminaRuolo(idCalciatore, ruolo);
+                JOptionPane.showMessageDialog(null, "Ruolo eliminato con successo");
+                for (int indice : tableModificaRuolo.getSelectedRows())
+                    tableModel.removeRow(indice);
             }
         });
 
