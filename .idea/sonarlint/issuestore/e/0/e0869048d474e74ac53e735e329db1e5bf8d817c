@@ -1,130 +1,129 @@
 
 Q
-java:S3740@"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8£ž„‚Ô1
+java:S3740>"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8£ž„‚Ô1
 L
-java:S3740C"/Provide the parametrized type for this generic.(ï—î8¨ž„‚Ô1
+java:S3740A"/Provide the parametrized type for this generic.(ï—î8¨ž„‚Ô1
 M
-java:S3740"/Provide the parametrized type for this generic.(‘ý£†8©ž„‚Ô1
+java:S3740¦"/Provide the parametrized type for this generic.(‘ý£†8©ž„‚Ô1
 R
-java:S3740‘"/Provide the parametrized type for this generic.(¤²èÔüÿÿÿÿ8©ž„‚Ô1
+java:S3740§"/Provide the parametrized type for this generic.(¤²èÔüÿÿÿÿ8©ž„‚Ô1
 R
-java:S3740‘"/Provide the parametrized type for this generic.(¤²èÔüÿÿÿÿ8©ž„‚Ô1
+java:S3740§"/Provide the parametrized type for this generic.(¤²èÔüÿÿÿÿ8©ž„‚Ô1
 M
-java:S3740Ÿ"/Provide the parametrized type for this generic.(œÒ½°8©ž„‚Ô1
-m	java:S117Ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’³ã8²ž„‚Ô1
+java:S3740µ"/Provide the parametrized type for this generic.(œÒ½°8©ž„‚Ô1
+r	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñÜ£´ÿÿÿÿÿ8ÉÇ¶‡Ô1
+n	java:S117Ü"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†‹ß©8ÊÇ¶‡Ô1
 J
-java:S1604e"(Make this anonymous inner class a lambda(ã¥›šÿÿÿÿÿ8³ž„‚Ô1
+java:S1604u"(Make this anonymous inner class a lambda(ã¥›šÿÿÿÿÿ8³ž„‚Ô1
 J
-java:S1604o"(Make this anonymous inner class a lambda(›©¤–ýÿÿÿÿ8³ž„‚Ô1
-J
-java:S1604y"(Make this anonymous inner class a lambda(å ÇÖøÿÿÿÿ8³ž„‚Ô1
+java:S1604"(Make this anonymous inner class a lambda(›©¤–ýÿÿÿÿ8³ž„‚Ô1
 K
-java:S1604ƒ"(Make this anonymous inner class a lambda(ÙŽ¯éüÿÿÿÿ8³ž„‚Ô1
+java:S1604‰"(Make this anonymous inner class a lambda(å ÇÖøÿÿÿÿ8³ž„‚Ô1
+K
+java:S1604“"(Make this anonymous inner class a lambda(ÙŽ¯éüÿÿÿÿ8³ž„‚Ô1
 F
-java:S1604"(Make this anonymous inner class a lambda(—ï´©8´ž„‚Ô1
+java:S1604Ÿ"(Make this anonymous inner class a lambda(—ï´©8´ž„‚Ô1
 K
-java:S1604™"(Make this anonymous inner class a lambda(Àƒ¤¢ýÿÿÿÿ8´ž„‚Ô1
+java:S1604©"(Make this anonymous inner class a lambda(Àƒ¤¢ýÿÿÿÿ8´ž„‚Ô1
 E
-java:S1604£"(Make this anonymous inner class a lambda(ü©§8´ž„‚Ô1
+java:S1604³"(Make this anonymous inner class a lambda(ü©§8´ž„‚Ô1
 F
-java:S1604­"(Make this anonymous inner class a lambda(«¼›8´ž„‚Ô1
+java:S1604½"(Make this anonymous inner class a lambda(«¼›8´ž„‚Ô1
 K
-java:S1604·"(Make this anonymous inner class a lambda(Êè¬Žúÿÿÿÿ8´ž„‚Ô1
+java:S1604Ç"(Make this anonymous inner class a lambda(Êè¬Žúÿÿÿÿ8´ž„‚Ô1
 F
-java:S1604Á"(Make this anonymous inner class a lambda(Åö¸¡8´ž„‚Ô1
+java:S1604Ñ"(Make this anonymous inner class a lambda(Åö¸¡8´ž„‚Ô1
+E
+java:S1604Ù"(Make this anonymous inner class a lambda(×óÇ8ØÇ¶‡Ô1
 K
-java:S1604É"(Make this anonymous inner class a lambda(ÿØ ÿÿÿÿÿÿ8´ž„‚Ô1
+java:S1604á"(Make this anonymous inner class a lambda(âä™²üÿÿÿÿ8ÙÇ¶‡Ô1
 K
-java:S1604Ñ"(Make this anonymous inner class a lambda(âä™²üÿÿÿÿ8´ž„‚Ô1
-K
-java:S1604Þ"(Make this anonymous inner class a lambda(áŒÃåýÿÿÿÿ8´ž„‚Ô1
+java:S1604ò"(Make this anonymous inner class a lambda(áŒÃåýÿÿÿÿ8´ž„‚Ô1
 s
-java:S1104E"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘þøÿÿÿÿ8»ž„‚Ô1
+java:S1104C"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘þøÿÿÿÿ8»ž„‚Ô1
 M
-java:S1444E"+Make this "public static frame" field final(¹å‘þøÿÿÿÿ8»ž„‚Ô1
-†	java:S116"eRename this field "buttonAggiungiNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷îÚëýÿÿÿÿ8ã©„‚Ô1
-…	java:S1167"dRename this field "panelModificaNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï­ÒŠýÿÿÿÿ8ä©„‚Ô1
-{
-java:S1450C"^Remove the "comboBoxSquadra" field and declare it as a local variable in the relevant methods.(ï—î8í©„‚Ô1
+java:S1444C"+Make this "public static frame" field final(¹å‘þøÿÿÿÿ8»ž„‚Ô1
+†	java:S116"eRename this field "buttonModificaNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÚÎ„þÿÿÿÿ8ËÛ¶‡Ô1
+…	java:S1165"dRename this field "panelModificaNazionalitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï­ÒŠýÿÿÿÿ8ä©„‚Ô1
 w
-java:S1450-"[Remove the "labelCognome" field and declare it as a local variable in the relevant methods.(›þ×8ð©„‚Ô1
+java:S1450+"[Remove the "labelCognome" field and declare it as a local variable in the relevant methods.(›þ×8ð©„‚Ô1
 
-java:S1450/"_Remove the "labelDataNascita" field and declare it as a local variable in the relevant methods.(äú£Üúÿÿÿÿ8ò©„‚Ô1
+java:S1450-"_Remove the "labelDataNascita" field and declare it as a local variable in the relevant methods.(äú£Üúÿÿÿÿ8ò©„‚Ô1
 €
-java:S14501"^Remove the "labelDataRitiro" field and declare it as a local variable in the relevant methods.(²®›Çøÿÿÿÿ8ô©„‚Ô1
+java:S1450/"^Remove the "labelDataRitiro" field and declare it as a local variable in the relevant methods.(²®›Çøÿÿÿÿ8ô©„‚Ô1
 ~
-java:S14503"\Remove the "labelGolFatti" field and declare it as a local variable in the relevant methods.(ƒòÁÿÿÿÿÿ8ö©„‚Ô1
+java:S14501"\Remove the "labelGolFatti" field and declare it as a local variable in the relevant methods.(ƒòÁÿÿÿÿÿ8ö©„‚Ô1
 z
-java:S14505"]Remove the "labelGolSubiti" field and declare it as a local variable in the relevant methods.(ÑÉØ–8ø©„‚Ô1
+java:S14503"]Remove the "labelGolSubiti" field and declare it as a local variable in the relevant methods.(ÑÉØ–8ø©„‚Ô1
 ˆ
-java:S1450)"fRemove the "labelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¨âäþÿÿÿÿ8ù©„‚Ô1
+java:S1450'"fRemove the "labelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¨âäþÿÿÿÿ8ù©„‚Ô1
 u
-java:S1450+"XRemove the "labelNome" field and declare it as a local variable in the relevant methods.(¬Ñ‚—8û©„‚Ô1
+java:S1450)"XRemove the "labelNome" field and declare it as a local variable in the relevant methods.(¬Ñ‚—8û©„‚Ô1
 v
-java:S1450?"YRemove the "labelPiede" field and declare it as a local variable in the relevant methods.(Ò¾Þ„8ü©„‚Ô1
+java:S1450="YRemove the "labelPiede" field and declare it as a local variable in the relevant methods.(Ò¾Þ„8ü©„‚Ô1
 {
-java:S1450;"YRemove the "labelSesso" field and declare it as a local variable in the relevant methods.(ü¬ò¨üÿÿÿÿ8þ©„‚Ô1
+java:S14509"YRemove the "labelSesso" field and declare it as a local variable in the relevant methods.(ü¬ò¨üÿÿÿÿ8þ©„‚Ô1
 }
-java:S1450B"[Remove the "labelSquadra" field and declare it as a local variable in the relevant methods.(ê¬…ÿþÿÿÿÿ8€ª„‚Ô1
+java:S1450@"[Remove the "labelSquadra" field and declare it as a local variable in the relevant methods.(ê¬…ÿþÿÿÿÿ8€ª„‚Ô1
 x
-java:S1450,"[Remove the "panelCognome" field and declare it as a local variable in the relevant methods.(ö‘¶é8‚ª„‚Ô1
+java:S1450*"[Remove the "panelCognome" field and declare it as a local variable in the relevant methods.(ö‘¶é8‚ª„‚Ô1
 
-java:S1450."_Remove the "panelDataNascita" field and declare it as a local variable in the relevant methods.(ê«äëøÿÿÿÿ8„ª„‚Ô1
+java:S1450,"_Remove the "panelDataNascita" field and declare it as a local variable in the relevant methods.(ê«äëøÿÿÿÿ8„ª„‚Ô1
 €
-java:S14500"^Remove the "panelDataRitiro" field and declare it as a local variable in the relevant methods.(½Æ½Ëþÿÿÿÿ8†ª„‚Ô1
+java:S1450."^Remove the "panelDataRitiro" field and declare it as a local variable in the relevant methods.(½Æ½Ëþÿÿÿÿ8†ª„‚Ô1
 ~
-java:S14502"\Remove the "panelGolFatti" field and declare it as a local variable in the relevant methods.(ïàí„ùÿÿÿÿ8‡ª„‚Ô1
+java:S14500"\Remove the "panelGolFatti" field and declare it as a local variable in the relevant methods.(ïàí„ùÿÿÿÿ8‡ª„‚Ô1
 
-java:S14504"]Remove the "panelGolSubiti" field and declare it as a local variable in the relevant methods.(¥ÆÁ“þÿÿÿÿ8‰ª„‚Ô1
+java:S14502"]Remove the "panelGolSubiti" field and declare it as a local variable in the relevant methods.(¥ÆÁ“þÿÿÿÿ8‰ª„‚Ô1
 y
-java:S14509"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥8Šª„‚Ô1
+java:S14507"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥8Šª„‚Ô1
 {
-java:S14508"YRemove the "panelInvio" field and declare it as a local variable in the relevant methods.(ý½–¤ýÿÿÿÿ8Œª„‚Ô1
+java:S14506"YRemove the "panelInvio" field and declare it as a local variable in the relevant methods.(ý½–¤ýÿÿÿÿ8Œª„‚Ô1
 ƒ
-java:S1450("fRemove the "panelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¥®¨î8ª„‚Ô1
+java:S1450&"fRemove the "panelModificaCalciatore" field and declare it as a local variable in the relevant methods.(¥®¨î8ª„‚Ô1
 Š
-java:S14507"hRemove the "panelModificaNazionalitÃ " field and declare it as a local variable in the relevant methods.(ï­ÒŠýÿÿÿÿ8ª„‚Ô1
+java:S14505"hRemove the "panelModificaNazionalitÃ " field and declare it as a local variable in the relevant methods.(ï­ÒŠýÿÿÿÿ8ª„‚Ô1
 ƒ
-java:S14506"aRemove the "panelModificaRuolo" field and declare it as a local variable in the relevant methods.(ü—óœûÿÿÿÿ8‘ª„‚Ô1
+java:S14504"aRemove the "panelModificaRuolo" field and declare it as a local variable in the relevant methods.(ü—óœûÿÿÿÿ8‘ª„‚Ô1
 u
-java:S1450*"XRemove the "panelNome" field and declare it as a local variable in the relevant methods.(²ƒÉ³8•ª„‚Ô1
+java:S1450("XRemove the "panelNome" field and declare it as a local variable in the relevant methods.(²ƒÉ³8•ª„‚Ô1
 v
-java:S1450>"YRemove the "panelPiede" field and declare it as a local variable in the relevant methods.(Óõ› 8´ª„‚Ô1
+java:S1450<"YRemove the "panelPiede" field and declare it as a local variable in the relevant methods.(Óõ› 8´ª„‚Ô1
 {
-java:S1450:"YRemove the "panelSesso" field and declare it as a local variable in the relevant methods.(ñŸö§ÿÿÿÿÿ8·ª„‚Ô1
+java:S14508"YRemove the "panelSesso" field and declare it as a local variable in the relevant methods.(ñŸö§ÿÿÿÿÿ8·ª„‚Ô1
 }
-java:S1450A"[Remove the "panelSquadra" field and declare it as a local variable in the relevant methods.(Ï”«Æøÿÿÿÿ8¹ª„‚Ô1
-^	java:S107H"BConstructor has 13 parameters, which is greater than 7 authorized.(‡Îúž8¿ª„‚Ô1
-o
-java:S3776H"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(‡Îúž8Ìª„‚Ô1
+java:S1450?"[Remove the "panelSquadra" field and declare it as a local variable in the relevant methods.(Ï”«Æøÿÿÿÿ8¹ª„‚Ô1
+c	java:S107G"BConstructor has 15 parameters, which is greater than 7 authorized.(ñÜ£´ÿÿÿÿÿ8Òà¶‡Ô1
+t
+java:S3776G"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(ñÜ£´ÿÿÿÿÿ8àà¶‡Ô1
 ?
-java:S3010I""Remove this assignment of "frame".(Ã¸ÜÁ8Íª„‚Ô1
-T
-java:S1172H"7Remove these unused method parameters "piede", "sesso".(‡Îúž8¿ª”‚Ô1
+java:S3010H""Remove this assignment of "frame".(Ã¸ÜÁ8Íª„‚Ô1
+U
+java:S1172G"3Remove this unused method parameter "nazionalitÃ ".(ñÜ£´ÿÿÿÿÿ8ãà¶‡Ô1
 f
-java:S3252K"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8Ïª„‚Ô1
+java:S3252J"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8Ïª„‚Ô1
 d
-java:S1126h"BReplace this if-then-else statement by a single method invocation.(¼ä÷ßûÿÿÿÿ8Öª„‚Ô1
-d
-java:S1126r"BReplace this if-then-else statement by a single method invocation.(½Âøÿÿÿÿ8Úª„‚Ô1
-_
-java:S1126|"BReplace this if-then-else statement by a single method invocation.(§æÝÙ8Üª„‚Ô1
-_
-java:S1126’"BReplace this if-then-else statement by a single method invocation.(‹Ó8áª„‚Ô1
+java:S1126x"BReplace this if-then-else statement by a single method invocation.(¼ä÷ßûÿÿÿÿ8Öª„‚Ô1
 e
-java:S1126œ"BReplace this if-then-else statement by a single method invocation.(™Ëà¢þÿÿÿÿ8íª„‚Ô1
+java:S1126‚"BReplace this if-then-else statement by a single method invocation.(½Âøÿÿÿÿ8Úª„‚Ô1
 `
-java:S1126¦"BReplace this if-then-else statement by a single method invocation.(ùÖ×Æ8òª„‚Ô1
+java:S1126Œ"BReplace this if-then-else statement by a single method invocation.(§æÝÙ8Üª„‚Ô1
+_
+java:S1126¢"BReplace this if-then-else statement by a single method invocation.(‹Ó8áª„‚Ô1
 e
-java:S1126°"BReplace this if-then-else statement by a single method invocation.(–¯ëÂÿÿÿÿÿ8õª„‚Ô1
+java:S1126¬"BReplace this if-then-else statement by a single method invocation.(™Ëà¢þÿÿÿÿ8íª„‚Ô1
+`
+java:S1126¶"BReplace this if-then-else statement by a single method invocation.(ùÖ×Æ8òª„‚Ô1
 e
-java:S1126º"BReplace this if-then-else statement by a single method invocation.(©…ýÄüÿÿÿÿ8úª„‚Ô1
+java:S1126À"BReplace this if-then-else statement by a single method invocation.(–¯ëÂÿÿÿÿÿ8õª„‚Ô1
+e
+java:S1126Ê"BReplace this if-then-else statement by a single method invocation.(©…ýÄüÿÿÿÿ8úª„‚Ô1
 X
-java:S2209Å"5Change this instance-reference to a static reference.(šû¼Äúÿÿÿÿ8þª„‚Ô1
+java:S2209Õ"5Change this instance-reference to a static reference.(šû¼Äúÿÿÿÿ8þª„‚Ô1
 X
-java:S2209Í"5Change this instance-reference to a static reference.(ÆÏ¾âþÿÿÿÿ8‚«„‚Ô1
+java:S2209Ý"5Change this instance-reference to a static reference.(ÆÏ¾âþÿÿÿÿ8‚«„‚Ô1
 |
-java:S1171æ"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8™«„‚Ô1
-p	java:S100ô"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8š«„‚Ô1
-p	java:S100¦"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œÐ—ýÿÿÿÿ8Œ­„‚Ô1
-p	java:S100¼"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8¡­„‚Ô1
+java:S1171ü"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8™«„‚Ô1
+p	java:S100Š"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8š«„‚Ô1
+p	java:S100¼"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œÐ—ýÿÿÿÿ8¡­„‚Ô1
+p	java:S100Ò"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8éê¶‡Ô1

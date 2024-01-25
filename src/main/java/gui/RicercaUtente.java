@@ -35,7 +35,7 @@ public class RicercaUtente {
     private JCheckBox checkBoxSquadra;
     private JCheckBox checkBoxNazionalità;
     private JCheckBox checkBoxPiede;
-    private JCheckBox checkBoEtà;
+    private JCheckBox checkBoxEtà;
     private JCheckBox checkBoxRuolo;
     private JCheckBox checkBoxGolFatti;
     private JCheckBox checkBoxGolSubiti;
@@ -44,7 +44,7 @@ public class RicercaUtente {
     private JLabel labelNazionalità;
     private JLabel labelPiede;
     private JLabel labelEtà;
-    private JLabel Ruolo;
+    private JLabel labelRuolo;
     private JLabel labelGolFatti;
     private JLabel labelGolSubiti;
     private JComboBox comboBoxSquadra;
@@ -52,8 +52,8 @@ public class RicercaUtente {
     private JComboBox comboBoxPiede;
     private JComboBox comboBoxRuolo;
     private JTextField textEtà;
-    private JTextField textFieldGolFatti;
-    private JTextField textFieldGolSubiti;
+    private JTextField textGolFatti;
+    private JTextField textGolSubiti;
     private JButton buttonIndietro;
     private JPanel panelIndietro;
     private JLabel labelTesto;
@@ -96,8 +96,8 @@ public class RicercaUtente {
         comboBoxPiede.setEnabled(false);
         textEtà.setEnabled(false);
         comboBoxRuolo.setEnabled(false);
-        textFieldGolFatti.setEnabled(false);
-        textFieldGolSubiti.setEnabled(false);
+        textGolFatti.setEnabled(false);
+        textGolSubiti.setEnabled(false);
         textDataRitiro.setEnabled(false);
         buttonGroupSesso = new ButtonGroup();
         buttonGroupSesso.add(radioButtonMaschio);
@@ -218,10 +218,10 @@ public class RicercaUtente {
                 }
             }
         });
-        checkBoEtà.addItemListener(new ItemListener() {
+        checkBoxEtà.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if (checkBoEtà.isSelected()) {
+                if (checkBoxEtà.isSelected()) {
                     textEtà.setEnabled(true);
                 } else {
                     textEtà.setEnabled(false);
@@ -301,14 +301,14 @@ public class RicercaUtente {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (checkBoxGolFatti.isSelected()) {
-                    textFieldGolFatti.setEnabled(true);
+                    textGolFatti.setEnabled(true);
                 } else {
-                    textFieldGolFatti.setEnabled(false);
-                    textFieldGolFatti.setText("");
+                    textGolFatti.setEnabled(false);
+                    textGolFatti.setText("");
                 }
             }
         });
-        textFieldGolFatti.addKeyListener(new KeyAdapter() {
+        textGolFatti.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
@@ -322,14 +322,14 @@ public class RicercaUtente {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (checkBoxGolSubiti.isSelected()) {
-                    textFieldGolSubiti.setEnabled(true);
+                    textGolSubiti.setEnabled(true);
                 } else {
-                    textFieldGolSubiti.setEnabled(false);
-                    textFieldGolSubiti.setText("");
+                    textGolSubiti.setEnabled(false);
+                    textGolSubiti.setText("");
                 }
             }
         });
-        textFieldGolSubiti.addKeyListener(new KeyAdapter() {
+        textGolSubiti.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
@@ -350,14 +350,14 @@ public class RicercaUtente {
         buttonRicerca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textFieldGolFatti.getText().isEmpty())
+                if (textGolFatti.getText().isEmpty())
                     golFatti = null;
                 else
-                    golFatti = Integer.parseInt(textFieldGolFatti.getText());
-                if (textFieldGolSubiti.getText().isEmpty())
+                    golFatti = Integer.parseInt(textGolFatti.getText());
+                if (textGolSubiti.getText().isEmpty())
                     golSubiti = null;
                 else
-                    golSubiti = Integer.parseInt(textFieldGolSubiti.getText());
+                    golSubiti = Integer.parseInt(textGolSubiti.getText());
                 if (textEtà.getText().isEmpty())
                     età = null;
                 else
@@ -482,10 +482,10 @@ public class RicercaUtente {
         panelEtà.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelEtà.setBackground(new Color(-4859649));
         panel.add(panelEtà, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        checkBoEtà = new JCheckBox();
-        checkBoEtà.setBackground(new Color(-4859649));
-        checkBoEtà.setText("");
-        panelEtà.add(checkBoEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        checkBoxEtà = new JCheckBox();
+        checkBoxEtà.setBackground(new Color(-4859649));
+        checkBoxEtà.setText("");
+        panelEtà.add(checkBoxEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         labelEtà = new JLabel();
         labelEtà.setText("Età");
         panelEtà.add(labelEtà, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
@@ -499,9 +499,9 @@ public class RicercaUtente {
         checkBoxRuolo.setBackground(new Color(-4859649));
         checkBoxRuolo.setText("");
         panelRuolo.add(checkBoxRuolo, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        Ruolo = new JLabel();
-        Ruolo.setText("Ruolo");
-        panelRuolo.add(Ruolo, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        labelRuolo = new JLabel();
+        labelRuolo.setText("Ruolo");
+        panelRuolo.add(labelRuolo, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         comboBoxRuolo = new JComboBox();
         panelRuolo.add(comboBoxRuolo, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         panelGolFatti = new JPanel();
@@ -515,8 +515,8 @@ public class RicercaUtente {
         labelGolFatti = new JLabel();
         labelGolFatti.setText("Gol Fatti");
         panelGolFatti.add(labelGolFatti, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        textFieldGolFatti = new JTextField();
-        panelGolFatti.add(textFieldGolFatti, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(150, -1), null, 0, false));
+        textGolFatti = new JTextField();
+        panelGolFatti.add(textGolFatti, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(150, -1), null, 0, false));
         panelGolSubiti = new JPanel();
         panelGolSubiti.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
         panelGolSubiti.setBackground(new Color(-4859649));
@@ -528,8 +528,8 @@ public class RicercaUtente {
         labelGolSubiti = new JLabel();
         labelGolSubiti.setText("Gol Subiti");
         panelGolSubiti.add(labelGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        textFieldGolSubiti = new JTextField();
-        panelGolSubiti.add(textFieldGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(150, -1), null, 0, false));
+        textGolSubiti = new JTextField();
+        panelGolSubiti.add(textGolSubiti, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(150, -1), null, 0, false));
         panelRicerca = new JPanel();
         panelRicerca.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         panelRicerca.setBackground(new Color(-4859649));
