@@ -147,3 +147,11 @@ T
 $src/main/java/gui/RicercaUtente.java,f\7\f7358948190fa1da9bda3f00dfcc667c32333b5c
 V
 &src/main/java/gui/RicercaModifica.java,d\1\d1f3b06526e8ca1579cd50562a1411d3332e5d3b
+V
+&src/main/java/gui/RisultatoUtente.form,6\9\692bcf1d60a2c835d75efa4d582cafa780211529
+V
+&src/main/java/gui/RicercaModifica.form,d\e\de4e41bc58d99dd39dafd0e605c7a417670d60d1
+T
+$src/main/java/gui/ModificaRuolo.form,8\0\8012bd4571681fbe175f6283f6898024d31fc037
+[
++src/main/java/gui/ModificaNazionalità.form,4\0\40f01324dc794b238ed145baf877ee0a2a751490

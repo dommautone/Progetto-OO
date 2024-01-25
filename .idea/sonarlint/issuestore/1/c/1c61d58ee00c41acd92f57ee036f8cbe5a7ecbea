@@ -22,6 +22,6 @@ java:S2209%"5Change this instance-reference to a static reference.(ÈøÂQ8ù†«Ñ1
 f
 java:S3252."IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8”°ÛÆĞ1
 {
-java:S11717"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8™°ÛÆĞ1
-o	java:S100E"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8œ°ÛÆĞ1
-h	java:S100i"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ
+java:S11716"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8™°ÛÆĞ1
+o	java:S100D"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8œ°ÛÆĞ1
+h	java:S100h"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ

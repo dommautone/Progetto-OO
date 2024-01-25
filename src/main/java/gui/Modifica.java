@@ -1,8 +1,6 @@
 package gui;
 
 import controller.Controller;
-import model.Nazionalità;
-import model.Ruolo;
 import model.Squadra;
 
 import javax.swing.*;
@@ -19,7 +17,7 @@ public class Modifica {
     private ButtonGroup buttonGroupSesso;
     private JPanel panel;
     private JTextField textNome;
-    private JButton buttonAggiungiNazionalità;
+    private JButton buttonModificaNazionalità;
     private JButton buttonModificaRuolo;
     private JButton buttonInvio;
     private JButton buttonIndietro;
@@ -216,7 +214,7 @@ public class Modifica {
                 frame.setVisible(false);
             }
         });
-        buttonAggiungiNazionalità.addActionListener(new ActionListener() {
+        buttonModificaNazionalità.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ModificaNazionalità modificaNazionalità = new ModificaNazionalità(frame, controller, idCalciatore);
@@ -368,9 +366,9 @@ public class Modifica {
         panelModificaNazionalità.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         panelModificaNazionalità.setBackground(new Color(-4859649));
         panel.add(panelModificaNazionalità, new com.intellij.uiDesigner.core.GridConstraints(11, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        buttonAggiungiNazionalità = new JButton();
-        buttonAggiungiNazionalità.setText("Modifica nazionalità");
-        panelModificaNazionalità.add(buttonAggiungiNazionalità, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonModificaNazionalità = new JButton();
+        buttonModificaNazionalità.setText("Modifica nazionalità");
+        panelModificaNazionalità.add(buttonModificaNazionalità, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         panel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer2 = new com.intellij.uiDesigner.core.Spacer();

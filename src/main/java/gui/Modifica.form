@@ -284,7 +284,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="f15" class="javax.swing.JButton" binding="buttonAggiungiNazionalità">
+          <component id="f15" class="javax.swing.JButton" binding="buttonModificaNazionalità">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
