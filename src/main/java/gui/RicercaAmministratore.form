@@ -211,7 +211,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="2997b" class="javax.swing.JLabel" binding="Ruolo">
+          <component id="2997b" class="javax.swing.JLabel" binding="labelRuolo">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -291,7 +291,7 @@
               <text value="Gol Subiti"/>
             </properties>
           </component>
-          <component id="a882d" class="javax.swing.JTextField" binding="textFieldGolSubiti">
+          <component id="a882d" class="javax.swing.JTextField" binding="textGolSubiti">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>

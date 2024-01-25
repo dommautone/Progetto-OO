@@ -1,28 +1,38 @@
 
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ˆ¤İ8–îâ‡Ô1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¡Áöûÿÿÿÿ8—îâ‡Ô1
 J
-java:S1604$"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8íˆµîĞ1
+java:S1604)"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8íˆµîĞ1
 E
-java:S1604+"(Make this anonymous inner class a lambda(•¯‘­8íˆµîĞ1
+java:S16041"(Make this anonymous inner class a lambda(•¯‘­8íˆµîĞ1
 s
-java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8îˆµîĞ1
+java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8îˆµîĞ1
 M
-java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8îˆµîĞ1
+java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8îˆµîĞ1
 }
-java:S1450"[Remove the "panelElimina" field and declare it as a local variable in the relevant methods.(™ãğğùÿÿÿÿ8³‰µîĞ1
+java:S1450"[Remove the "panelElimina" field and declare it as a local variable in the relevant methods.(™ãğğùÿÿÿÿ8³‰µîĞ1
 
-java:S1450"]Remove the "panelGiocatori" field and declare it as a local variable in the relevant methods.(Ïˆ¿ÿşÿÿÿÿ8´‰µîĞ1
+java:S1450"]Remove the "panelGiocatori" field and declare it as a local variable in the relevant methods.(Ïˆ¿ÿşÿÿÿÿ8´‰µîĞ1
 y
-java:S1450"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥8µ‰µîĞ1
+java:S1450"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥8µ‰µîĞ1
 }
-java:S1450"`Remove the "scrollpaneTabella" field and declare it as a local variable in the relevant methods.(£ñÀ’8µ‰µîĞ1
+java:S1450"`Remove the "scrollpaneTabella" field and declare it as a local variable in the relevant methods.(£ñÀ’8µ‰µîĞ1
+^	java:S107"BConstructor has 13 parameters, which is greater than 7 authorized.(“ˆ¤İ8Öğâ‡Ô1
 ?
-java:S3010""Remove this assignment of "frame".(Ò÷®8¹‰µîĞ1
+java:S3010""Remove this assignment of "frame".(Ò÷®8¹‰µîĞ1
+Í
+java:S1172"¯Remove these unused method parameters "frameChiamante", "nome", "cognome", "sesso", "squadra", "nazionalitÃ ", "piede", "etÃ ", "ruolo", "golFatti", "golSubiti", "dataRitiro".(“ˆ¤İ8Üğâ‡Ô1
 f
-java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8º‰µîĞ1
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8º‰µîĞ1
 _
-java:S3252"=Use static access with "java.awt.Frame" for "MAXIMIZED_BOTH".(Ê¤³ñúÿÿÿÿ8¼‰µîĞ1
+java:S3252#"=Use static access with "java.awt.Frame" for "MAXIMIZED_BOTH".(Ê¤³ñúÿÿÿÿ8¼‰µîĞ1
+X	java:S125'"<This block of commented-out lines of code should be removed.(ğªª´8éğâ‡Ô1
+R
+java:S2209-"5Change this instance-reference to a static reference.(‘¬°8ïğâ‡Ô1
 {
-java:S11713"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ã‰µîĞ1
-o	java:S100A"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8Ã‰µîĞ1
-o	java:S100h"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œĞ—ıÿÿÿÿ8Ö‰µîĞ1
-o	java:S100~"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8İ‰µîĞ1
+java:S11719"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8Ã‰µîĞ1
+o	java:S100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8Ã‰µîĞ1
+o	java:S100n"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œĞ—ıÿÿÿÿ8Ö‰µîĞ1
+p	java:S100„"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8İ‰µîĞ1
+b
+java:S1128"@Remove this unused import 'javax.swing.table.DefaultTableModel'.(è†åûÿÿÿÿ8âñâ‡Ô1
