@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import model.*;
 
@@ -46,7 +46,7 @@ public interface ImplementazioneDAO {
      *
      * @return the array list
      */
-    ArrayList<Nazionalita> getNazionalità();
+    ArrayList<Nazionalita> getNazionalita();
 
     /**
      * Gets squadre.
@@ -62,17 +62,18 @@ public interface ImplementazioneDAO {
      * @param cognome     the cognome
      * @param sesso       the sesso
      * @param squadra     the squadra
-     * @param nazionalità the nazionalità
+     * @param nazionalita the nazionalità
      * @param piede       the piede
-     * @param età         the età
+     * @param eta         the età
      * @param ruolo       the ruolo
      * @param golFatti    the gol fatti
      * @param golSubiti   the gol subiti
      * @param dataRitiro  the data ritiro
      * @return the calciatori
      */
-    DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
-                                    String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro);
+    DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
+                                    String piede, Integer eta, String ruolo, Integer golFatti, Integer golSubiti,
+                                    LocalDate dataRitiro);
 
     /**
      * Aggiungi calciatore.
@@ -81,7 +82,7 @@ public interface ImplementazioneDAO {
      * @param cognome     the cognome
      * @param sesso       the sesso
      * @param squadra     the squadra
-     * @param nazionalità the nazionalità
+     * @param nazionalita the nazionalità
      * @param piede       the piede
      * @param dataNascita the data nascita
      * @param ruolo       the ruolo
@@ -89,9 +90,9 @@ public interface ImplementazioneDAO {
      * @param dataInizio  the data inizio
      * @param dataFine    the data fine
      */
-    void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalità,
-                            String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro, LocalDate dataInizio,
-                            LocalDate dataFine) throws Exception;
+    void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalita,
+                            String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
+                            LocalDate dataInizio, LocalDate dataFine) throws Exception;
 
     /**
      * Modifica calciatore.
@@ -108,8 +109,8 @@ public interface ImplementazioneDAO {
      * @param golSubiti    the gol subiti
      * @param squadra      the squadra
      */
-    void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro,
-                            int golFatti, Integer golSubiti, String squadra);
+    void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso,
+                            LocalDate dataNascita, LocalDate dataRitiro, int golFatti, Integer golSubiti, String squadra);
 
     /**
      * Visualizza ruolo calciatore array list.
@@ -142,24 +143,24 @@ public interface ImplementazioneDAO {
      * @param idCalciatore the id calciatore
      * @return the array list
      */
-    ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore);
+    ArrayList<Appartiene> visualizzaNazionalitaCalciatore(int idCalciatore);
 
     /**
      * Inserisci nazionalità.
      *
      * @param idCalciatore the id calciatore
-     * @param nazionalità  the nazionalità
+     * @param nazionalita  the nazionalità
      * @throws Exception the exception
      */
-    void inserisciNazionalità (int idCalciatore, String nazionalità) throws Exception;
+    void inserisciNazionalita(int idCalciatore, String nazionalita) throws Exception;
 
     /**
      * Elimina nazionalità.
      *
      * @param idCalciatore the id calciatore
-     * @param nazionalità  the nazionalità
+     * @param nazionalita  the nazionalità
      */
-    void eliminaNazionalità (int idCalciatore, ArrayList<String> nazionalità);
+    void eliminaNazionalita(int idCalciatore, ArrayList<String> nazionalita);
 
     /**
      * Elimina calciatore.
