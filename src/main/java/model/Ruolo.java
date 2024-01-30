@@ -1,17 +1,17 @@
 package model;
 
 /**
- * The type Ruolo.
+ * La classe Ruolo contiene le informazioni di un ruolo
  */
 public class Ruolo {
     private String posizione;
     private String descrizione;
 
     /**
-     * Instantiates a new Ruolo.
+     * Istanzia un nuovo ruolo.
      *
-     * @param posizione   the posizione
-     * @param descrizione the descrizione
+     * @param posizione   la posizione
+     * @param descrizione la descrizione
      */
     public Ruolo(String posizione, String descrizione){
         this.posizione=posizione;

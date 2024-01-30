@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * The type Ricerca utente.
+ * La gui Ricera Utente permette di ricercare un calciatore se si è utenti.
  */
 public class RicercaUtente {
     private JPanel panel;

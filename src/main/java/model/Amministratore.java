@@ -1,17 +1,17 @@
 package model;
 
 /**
- * The type Amministratore.
+ * La classe Amministratore contiene le informazioni di un amministratore
  */
 public class Amministratore {
     private String username;
     private String password;
 
     /**
-     * Instantiates a new Amministratore.
+     * Istanzia un nuovo amministratore
      *
-     * @param username the username
-     * @param password the password
+     * @param username l'username
+     * @param password la password
      */
     public Amministratore(String username, String password){
         this.username=username;

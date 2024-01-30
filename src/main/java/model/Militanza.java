@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 /**
- * The type Militanza.
+ * La classe Militanza contiene le informazioni di una militanza
  */
 public class Militanza {
     /**
@@ -36,15 +36,15 @@ public class Militanza {
     Squadra squadra;
 
     /**
-     * Instantiates a new Militanza.
+     * Istanzia una nuova militanza.
      *
-     * @param dataInizio     the data inizio
-     * @param dataFine       the data fine
-     * @param partiteGiocate the partite giocate
-     * @param golSegnati     the gol segnati
-     * @param golSubiti      the gol subiti
-     * @param calciatore     the calciatore
-     * @param squadra        the squadra
+     * @param dataInizio     la data inizio
+     * @param dataFine       la  data fine
+     * @param partiteGiocate le partite giocate
+     * @param golSegnati     i gol segnati
+     * @param golSubiti      i gol subiti
+     * @param calciatore     il calciatore
+     * @param squadra        la squadra
      */
     public Militanza(LocalDate dataInizio, LocalDate dataFine, int partiteGiocate, int golSegnati, Integer golSubiti, Calciatore calciatore, Squadra squadra) {
         this.dataInizio = dataInizio;

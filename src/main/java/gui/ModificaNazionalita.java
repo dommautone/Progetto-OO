@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * The type Modifica nazionalità.
+ * La gui Modifica Nazionalità permette di modificare le nazionalità di un calciatore se si è amministratori.
  */
 public class ModificaNazionalita {
     private JPanel panel;

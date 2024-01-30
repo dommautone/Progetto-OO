@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Squadra.
+ * La classe Squadra contiene le informazioni di una squadra
  */
 public class Squadra {
     private int idSquadra;
@@ -11,13 +11,13 @@ public class Squadra {
     private Nazionalita nazionalita;
 
     /**
-     * Instantiates a new Squadra.
+     * Istanzia una nuova squadra.
      *
-     * @param idSquadra      the id squadra
-     * @param nome           the nome
-     * @param categoria      the categoria
-     * @param annoFondazione the anno fondazione
-     * @param nazionalita    the nazionalita
+     * @param idSquadra      id squadra
+     * @param nome           il nome
+     * @param categoria      la categoria
+     * @param annoFondazione l'anno fondazione
+     * @param nazionalita    la nazionalita
      */
     public Squadra(int idSquadra, String nome, char categoria, int annoFondazione, Nazionalita nazionalita){
         this.idSquadra=idSquadra;

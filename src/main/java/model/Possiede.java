@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Possiede.
+ * La classe Possiede contiene le informazioni di un calciatore e una feature
  */
 public class Possiede {
     /**
@@ -14,10 +14,10 @@ public class Possiede {
     Feature feature;
 
     /**
-     * Instantiates a new Possiede.
+     * Istanzia un nuovo possiede.
      *
-     * @param calciatore the calciatore
-     * @param feature    the feature
+     * @param calciatore il calciatore
+     * @param feature    la feature
      */
     public Possiede(Calciatore calciatore, Feature feature) {
         this.calciatore = calciatore;

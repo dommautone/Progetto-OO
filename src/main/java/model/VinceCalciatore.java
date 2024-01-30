@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Vince calciatore.
+ * La classe VinceCalciatore contiene le informazioni di un calciatore che vince un trofeo
  */
 public class VinceCalciatore {
     /**
@@ -18,11 +18,11 @@ public class VinceCalciatore {
     int stagione;
 
     /**
-     * Instantiates a new Vince calciatore.
+     * Istanzia un nuovo vince calciatore.
      *
-     * @param calciatore       the calciatore
-     * @param trofeoCalciatore the trofeo calciatore
-     * @param stagione         the stagione
+     * @param calciatore       il calciatore
+     * @param trofeoCalciatore il trofeo calciatore
+     * @param stagione         la stagione
      */
     public VinceCalciatore(Calciatore calciatore, TrofeoCalciatore trofeoCalciatore, int stagione) {
         this.calciatore = calciatore;

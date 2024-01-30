@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Trofeo calciatore.
+ * La classe TrofeoCalciatore contiene le informazioni di un trofeo assegnato ad un calciatore
  */
 public class TrofeoCalciatore {
     private String nome;
@@ -9,11 +9,11 @@ public class TrofeoCalciatore {
     private char categoria;
 
     /**
-     * Instantiates a new Trofeo calciatore.
+     * Istanzia un nuovo trofeo calciatore.
      *
-     * @param nome        the nome
-     * @param descrizione the descrizione
-     * @param categoria   the categoria
+     * @param nome        il nome
+     * @param descrizione la descrizione
+     * @param categoria   la categoria
      */
     public TrofeoCalciatore(String nome, String descrizione, char categoria){
         this.nome=nome;

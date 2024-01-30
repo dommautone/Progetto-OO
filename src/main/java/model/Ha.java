@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Ha.
+ * La classe Ha contiene le informazioni di un calciatore e il suo ruolo
  */
 public class Ha {
     /**
@@ -14,10 +14,10 @@ public class Ha {
     Ruolo ruolo;
 
     /**
-     * Instantiates a new Ha.
+     * Istanzia un nuovo ha.
      *
-     * @param calciatore the calciatore
-     * @param ruolo      the ruolo
+     * @param calciatore il calciatore
+     * @param ruolo      il ruolo
      */
     public Ha(Calciatore calciatore, Ruolo ruolo) {
         this.calciatore = calciatore;

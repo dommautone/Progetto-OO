@@ -1,17 +1,17 @@
 package model;
 
 /**
- * The type Nazionalita.
+ * La classe Nazionalita contiene le informazioni di una nazionalità
  */
 public class Nazionalita {
     private String nome;
     private String continente;
 
     /**
-     * Instantiates a new Nazionalita.
+     * Istanzia una nuova nazionalità.
      *
-     * @param nome       the nome
-     * @param continente the continente
+     * @param nome       il nome
+     * @param continente il continente
      */
     public Nazionalita(String nome, String continente){
         this.nome=nome;

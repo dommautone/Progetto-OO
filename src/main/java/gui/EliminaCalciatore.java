@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * The type Elimina calciatore.
+ * La gui EliminaCalciatore permette di eliminare un calciatore se si è amministratori.
  */
 public class EliminaCalciatore {
     private JPanel panel;

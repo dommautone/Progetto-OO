@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import static gui.PannelloAmministratore.flag;
 
 /**
- * The type Ricerca amministratore.
+ * La gui Ricerca Amministratore permette di ricercare un calciatore da modificare o eliminare.
  */
 public class RicercaAmministratore {
     private JPanel panelNome;

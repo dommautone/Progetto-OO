@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Pannello amministratore.
+ * La gui Pannello Amministratore permette di scegliere se aggiungere, modificare o eliminare un calciatore.
  */
 public class PannelloAmministratore {
     private JPanel panel;

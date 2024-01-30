@@ -1,11 +1,7 @@
 package model;
 
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 /**
- * The type Partecipa.
+ * La classe Partecipa contiene le informazioni di una partecipazione
  */
 public class Partecipa {
     /**
@@ -22,11 +18,11 @@ public class Partecipa {
     int stagione;
 
     /**
-     * Instantiates a new Partecipa.
+     * Istanzia una nuova partecipazione.
      *
-     * @param competizione the competizione
-     * @param squadra      the squadra
-     * @param stagione     the stagione
+     * @param competizione la competizione
+     * @param squadra      la squadra
+     * @param stagione     la stagione
      */
     public Partecipa(Competizione competizione, Squadra squadra, int stagione) {
         this.competizione = competizione;

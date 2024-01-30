@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * The type Modifica ruolo.
+ * La gui Modifica Ruolo permette di modificare i ruoli di un calciatore se si è amministratori.
  */
 public class ModificaRuolo {
     private JPanel panel;

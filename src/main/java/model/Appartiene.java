@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Appartiene.
+ * La classe Appartiene contiene le informazioni di un calciatore e la sua nazionalità
  */
 public class Appartiene {
     /**
@@ -14,10 +14,10 @@ public class Appartiene {
     Nazionalita nazionalita;
 
     /**
-     * Instantiates a new Appartiene.
+     * Istanzia un nuovo appartiene.
      *
-     * @param calciatore  the calciatore
-     * @param nazionalita the nazionalità
+     * @param calciatore  il calciatore
+     * @param nazionalita la nazionalità
      */
     public Appartiene(Calciatore calciatore, Nazionalita nazionalita) {
         this.calciatore = calciatore;

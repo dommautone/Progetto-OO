@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Competizione.
+ * La classe Competizione contiene le informazioni di una competizione
  */
 public class Competizione {
     private String nome;
@@ -11,13 +11,13 @@ public class Competizione {
     private TrofeoCompetizione trofeoCompetizione;
 
     /**
-     * Instantiates a new Competizione.
+     * Istanzia una nuova competizione.
      *
-     * @param nome               the nome
-     * @param descrizione        the descrizione
-     * @param categoria          the categoria
-     * @param nazionalita        the nazionalità
-     * @param trofeoCompetizione the trofeo competizione
+     * @param nome               il nome
+     * @param descrizione        la descrizione
+     * @param categoria          la categoria
+     * @param nazionalita        la nazionalità
+     * @param trofeoCompetizione il trofeo competizione
      */
     public Competizione(String nome, String descrizione, char categoria, Nazionalita nazionalita, TrofeoCompetizione trofeoCompetizione){
         this.nome=nome;

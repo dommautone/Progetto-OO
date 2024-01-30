@@ -11,7 +11,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 /**
- * The type Ricerca modifica.
+ * La gui Ricerca Modifica permette di ricercare un calciatore e modificarlo se si è amministratori.
  */
 public class RicercaModifica {
 

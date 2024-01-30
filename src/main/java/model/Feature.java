@@ -1,17 +1,17 @@
 package model;
 
 /**
- * The type Feature.
+ * La classe Feature contiene le informazioni di una feature
  */
 public class Feature {
     private String tipoFeature;
     private String descrizione;
 
     /**
-     * Instantiates a new Feature.
+     * Istanzia una nuova feature.
      *
-     * @param tipoFeature the tipo feature
-     * @param descrizione the descrizione
+     * @param tipoFeature il tipo feature
+     * @param descrizione la descrizione
      */
     public Feature(String tipoFeature, String descrizione){
         this.tipoFeature=tipoFeature;

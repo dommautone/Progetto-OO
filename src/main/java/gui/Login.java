@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 
 /**
- * The type Login.
+ * La gui Login permette di effettuare il login come amministratore.
  */
 public class Login {
     private JPanel panel;

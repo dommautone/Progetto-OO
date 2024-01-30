@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 /**
- * The type Calciatore.
+ * La classe Calciatore contiene le informazioni di un calciatore
  */
 public class Calciatore {
     private int idCalciatore;
@@ -15,15 +15,15 @@ public class Calciatore {
     private LocalDate dataRitiro;
 
     /**
-     * Instantiates a new Calciatore.
+     * Istanzia un nuovo calciatore.
      *
-     * @param idCalciatore the id calciatore
-     * @param nome         the nome
-     * @param cognome      the cognome
-     * @param piede        the piede
-     * @param sesso        the sesso
-     * @param dataNascita  the data nascita
-     * @param dataRitiro   the data ritiro
+     * @param idCalciatore id calciatore
+     * @param nome         il nome
+     * @param cognome      il cognome
+     * @param piede        il piede
+     * @param sesso        il sesso
+     * @param dataNascita  la data nascita
+     * @param dataRitiro   la data ritiro
      */
     public Calciatore (int idCalciatore, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro){
         this.idCalciatore=idCalciatore;

@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
- * The type Aggiungi calciatore.
+ * La gui AggiungiCalciatore permette di aggiungere un calciatore se si ha eseguita l'accesso come amministratore.
  */
 public class AggiungiCalciatore {
     private JPanel panel;

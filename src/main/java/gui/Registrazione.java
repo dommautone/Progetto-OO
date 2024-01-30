@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Registrazione.
+ * La gui Registrazione permette di registrarsi come amministratore.
  */
 public class Registrazione {
     /**

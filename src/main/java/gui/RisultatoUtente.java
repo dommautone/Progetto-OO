@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 /**
- * The type Risultato utente.
+ * La gui Risultato Utente permette di visualizzare i risultati della ricerca effettuata da un utente.
  */
 public class RisultatoUtente {
     private JPanel panel;

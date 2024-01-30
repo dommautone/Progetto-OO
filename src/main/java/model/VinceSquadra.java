@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Vince squadra.
+ * La classe VinceSquadra contiene le informazioni di una vittoria di una squadra
  */
 public class VinceSquadra {
     /**
@@ -18,11 +18,11 @@ public class VinceSquadra {
     int stagione;
 
     /**
-     * Instantiates a new Vince squadra.
+     * Istanzia una nuova vince squadra.
      *
-     * @param squadra            the squadra
-     * @param trofeoCompetizione the trofeo competizione
-     * @param stagione           the stagione
+     * @param squadra            la squadra
+     * @param trofeoCompetizione il trofeo competizione
+     * @param stagione           la stagione
      */
     public VinceSquadra(Squadra squadra, TrofeoCompetizione trofeoCompetizione, int stagione) {
         this.squadra = squadra;
