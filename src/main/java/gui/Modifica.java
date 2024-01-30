@@ -15,7 +15,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
 /**
- * The type Modifica.
+ * La gui Modifica permette di modificare il calciatore.
  */
 public class Modifica {
 

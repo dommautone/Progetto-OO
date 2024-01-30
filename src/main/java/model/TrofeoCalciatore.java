@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Trofeo calciatore.
+ * La classe Trofeo calciatore descrive un trofeo che può essere vinto da un calciatore.
  */
 public class TrofeoCalciatore {
     private String nome;

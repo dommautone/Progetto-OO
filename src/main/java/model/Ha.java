@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Ha.
+ * La classe Ha contiene le informazioni sul ruolo del calciatore.
  */
 public class Ha {
     /**

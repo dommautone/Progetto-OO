@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * The type Modifica nazionalità.
+ * La gui Modifica nazionalità permette di modificare la nazionalità ai vari giocatori.
  */
 public class ModificaNazionalità {
     private JPanel panel;

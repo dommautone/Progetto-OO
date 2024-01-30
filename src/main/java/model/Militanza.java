@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 /**
- * The type Militanza.
+ * La classe Militanza indica il periodo di un determinato calciatore che ha fatto parte di una determinata squadra con le sue informazioni.
  */
 public class Militanza {
     /**

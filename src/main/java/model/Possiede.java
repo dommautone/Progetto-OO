@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Possiede.
+ * La classe Possiede descrive le feature che appartengono ad un calciatore.
  */
 public class Possiede {
     /**

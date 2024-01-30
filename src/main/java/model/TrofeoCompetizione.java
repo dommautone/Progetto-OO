@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Trofeo competizione.
+ * La classe Trofeo competizione descrive un trofeo di una competizione.
  */
 public class TrofeoCompetizione {
     private String nome;

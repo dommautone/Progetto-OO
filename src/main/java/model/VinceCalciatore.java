@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Vince calciatore.
+ * La classe Vince calciatore descrive il calciatore in che stagione vince quel trofeo.
  */
 public class VinceCalciatore {
     /**

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Appartiene.
+ * La classe Appartiene contiene le informazioni della nazionalita del calciatore.
  */
 public class Appartiene {
     /**

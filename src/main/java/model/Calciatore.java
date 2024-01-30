@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 /**
- * The type Calciatore.
+ * La classe Calciatore contiene le informazioni relative al calciatore.
  */
 public class Calciatore {
     private int idCalciatore;

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Nazionalita.
+ * La classe Nazionalita descrive le informazioni delle nazionalità.
  */
 public class Nazionalita {
     private String nome;

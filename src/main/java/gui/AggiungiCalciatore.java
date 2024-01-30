@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * The type Aggiungi calciatore.
+ * La gui AggiungiCalciatore permette di aggiungere un calciatore se si è eseguito l'accesso come amministratore.
  */
 public class AggiungiCalciatore {
     private JPanel panel;

@@ -17,7 +17,7 @@ import java.util.Locale;
 import static gui.PannelloAmministratore.Flag;
 
 /**
- * The type Ricerca amministratore.
+ * La gui Ricerca amministratore permette di visualizzare tutti i giocatori che poi si vogliono modificare.
  */
 public class RicercaAmministratore {
     private JPanel panelNome;

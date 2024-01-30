@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * The type Accesso.
+ * La gui Accesso permette di scegliere se accedere come amministratore o utente.
  */
 public class Accesso {
     private JPanel panel;

@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 /**
- * The type Ricerca utente.
+ * La gui Ricerca utente.
  */
 public class RicercaUtente {
     private JPanel panel;

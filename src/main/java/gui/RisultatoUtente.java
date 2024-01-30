@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 /**
- * The type Risultato utente.
+ * La gui Risultato utente permette all'utente di visualizzare ciò che cercava.
  */
 public class RisultatoUtente {
     private JPanel panel;

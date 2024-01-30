@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.Locale;
 
 /**
- * The type Ricerca modifica.
+ * La gui Ricerca modifica.
  */
 public class RicercaModifica {
 

@@ -13,10 +13,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-
-
 /**
- * The type Login.
+ * La gui Login permette di fare il login.
  */
 public class Login {
     private JPanel panel;

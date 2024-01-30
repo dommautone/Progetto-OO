@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Squadra.
+ * La classe Squadra contiene le informazioni riguardanti le squadre.
  */
 public class Squadra {
     private int idSquadra;

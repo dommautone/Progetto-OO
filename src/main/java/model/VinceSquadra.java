@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Vince squadra.
+ * La classe Vince squadra rappresenta la classe che descrive quando una squadra vince un trofeo.
  */
 public class VinceSquadra {
     /**

@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.Locale;
 
 /**
- * The type Registrazione.
+ * La gui Registrazione permette di registrare un nuovo amministratore.
  */
 public class Registrazione {
     /**

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * The type Implementazione postgres dao.
+ * La classe Implementazione implementa i metodi per la gestione dei dati riguardanti il database.
  */
 public class ImplementazionePostgresDAO implements ImplementazioneDAO {
 
@@ -19,7 +19,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
     private Controller controller;
 
     /**
-     * Instantiates a new Implementazione postgres dao.
+     * Istanzia a new Implementazione postgres dao.
      */
     public ImplementazionePostgresDAO() {
         try {
@@ -30,6 +30,9 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         }
     }
 
+    /**
+     * setSchema setta lo schema su cui andremo a lavorare.
+     */
     public void setSchema() {
         PreparedStatement setSchema = null;
         try {

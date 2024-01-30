@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Feature.
+ * la classe Feature contiene le informazioni riguardanti le feature che un calciatore può avere.
  */
 public class Feature {
     private String tipoFeature;

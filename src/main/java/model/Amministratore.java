@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Amministratore.
+ * La classe Amministratore contiene le informazioni dell'amministratore.
  */
 public class Amministratore {
     private String username;

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Competizione.
+ * La classe Competizione contiene le informazioni riguardanti la competizione.
  */
 public class Competizione {
     private String nome;

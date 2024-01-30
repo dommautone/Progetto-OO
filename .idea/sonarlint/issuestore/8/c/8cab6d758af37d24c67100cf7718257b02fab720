@@ -1,50 +1,50 @@
 
 D
-java:S1604@"(Make this anonymous inner class a lambda(ú¶ÊX8õÛŒ¼Ğ1
+java:S1604>"(Make this anonymous inner class a lambda(ú¶ÊX8õÛŒ¼Ğ1
 J
-java:S1604I"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8‘ ÿĞ1
+java:S1604G"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8‘ ÿĞ1
 D
-java:S1604P"(Make this anonymous inner class a lambda(¿Ó.8“ ÿĞ1
+java:S1604N"(Make this anonymous inner class a lambda(¿Ó.8“ ÿĞ1
 D
-java:S1604V"(Make this anonymous inner class a lambda(Ô³Ôs8ĞîëªÔ1
+java:S1604T"(Make this anonymous inner class a lambda(Ô³Ôs8ĞîëªÔ1
 s
-java:S1104*"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8– ÿĞ1
+java:S1104("QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8– ÿĞ1
 p
-java:S1104."SMake accesso a static final constant or non-public and provide accessors if needed.(ÌæÎÃ8«ÒòäĞ1
+java:S1104,"SMake accesso a static final constant or non-public and provide accessors if needed.(ÌæÎÃ8«ÒòäĞ1
 M
-java:S1444*"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8— ÿĞ1
+java:S1444("+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8— ÿĞ1
 z
-java:S1450%"XRemove the "labelLogo" field and declare it as a local variable in the relevant methods.(òşÈÿÿÿÿÿ8ÈÂÈŸĞ1
+java:S1450#"XRemove the "labelLogo" field and declare it as a local variable in the relevant methods.(òşÈÿÿÿÿÿ8ÈÂÈŸĞ1
 y
-java:S1450!"\Remove the "labelPassword" field and declare it as a local variable in the relevant methods.(­Ã¼ê8ËÂÈŸĞ1
+java:S1450"\Remove the "labelPassword" field and declare it as a local variable in the relevant methods.(­Ã¼ê8ËÂÈŸĞ1
 ~
-java:S1450#"\Remove the "labelUsername" field and declare it as a local variable in the relevant methods.(†„¢úÿÿÿÿ8çÂÈŸĞ1
+java:S1450!"\Remove the "labelUsername" field and declare it as a local variable in the relevant methods.(†„¢úÿÿÿÿ8çÂÈŸĞ1
 |
-java:S1450"ZRemove the "panelAccedi" field and declare it as a local variable in the relevant methods.(¿°×ûşÿÿÿÿ8êÂÈŸĞ1
+java:S1450"ZRemove the "panelAccedi" field and declare it as a local variable in the relevant methods.(¿°×ûşÿÿÿÿ8êÂÈŸĞ1
 {
-java:S1450"_Remove the "panelDimenticata" field and declare it as a local variable in the relevant methods.(íÿÂ8¾Ê§Ñ1
+java:S1450"_Remove the "panelDimenticata" field and declare it as a local variable in the relevant methods.(íÿÂ8¾Ê§Ñ1
 r
-java:S1450"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥
+java:S1450"\Remove the "panelIndietro" field and declare it as a local variable in the relevant methods.(½¸å¥
 u
-java:S1450$"XRemove the "panelLogo" field and declare it as a local variable in the relevant methods.(ıÈ8®š¬ŸĞ1
+java:S1450""XRemove the "panelLogo" field and declare it as a local variable in the relevant methods.(ıÈ8®š¬ŸĞ1
 ~
-java:S1450 "\Remove the "panelPassword" field and declare it as a local variable in the relevant methods.(•ŸóÎüÿÿÿÿ8®ÃÈŸĞ1
+java:S1450"\Remove the "panelPassword" field and declare it as a local variable in the relevant methods.(•ŸóÎüÿÿÿÿ8®ÃÈŸĞ1
 €
-java:S1450&"^Remove the "panelRegistrati" field and declare it as a local variable in the relevant methods.(Äêüãıÿÿÿÿ8ÊÃÈŸĞ1
+java:S1450$"^Remove the "panelRegistrati" field and declare it as a local variable in the relevant methods.(Äêüãıÿÿÿÿ8ÊÃÈŸĞ1
 ~
-java:S1450""\Remove the "panelUsername" field and declare it as a local variable in the relevant methods.(ßÖÎüÿÿÿÿ8ÌÃÈŸĞ1
+java:S1450 "\Remove the "panelUsername" field and declare it as a local variable in the relevant methods.(ßÖÎüÿÿÿÿ8ÌÃÈŸĞ1
 =
-java:S30108""Remove this assignment of "frame".(¿Ş¡Êúÿÿÿÿ
+java:S30106""Remove this assignment of "frame".(¿Ş¡Êúÿÿÿÿ
 f
-java:S32529"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8­¡ÿĞ1
+java:S32527"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8­¡ÿĞ1
 W
-java:S2209D"5Change this instance-reference to a static reference.(…Ÿ‹Õÿÿÿÿÿ8ÔôŒ¼Ğ1
+java:S2209B"5Change this instance-reference to a static reference.(…Ÿ‹Õÿÿÿÿÿ8ÔôŒ¼Ğ1
 W
-java:S2209L"5Change this instance-reference to a static reference.(¦¬åíùÿÿÿÿ8¾êòäĞ1
+java:S2209J"5Change this instance-reference to a static reference.(¦¬åíùÿÿÿÿ8¾êòäĞ1
 R
-java:S2209t"5Change this instance-reference to a static reference.(‘¬°8ĞôëªÔ1
+java:S2209r"5Change this instance-reference to a static reference.(‘¬°8ĞôëªÔ1
 {
-java:S1171z"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¹¡ÿĞ1
-p	java:S100ˆ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8¼¡ÿĞ1
-p	java:S100ø"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œĞ—ıÿÿÿÿ8Ì¢ÿĞ1
-p	java:S100‘"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8Ú¢ÿĞ1
+java:S1171x"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¹¡ÿĞ1
+p	java:S100†"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8¼¡ÿĞ1
+p	java:S100ö"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡œĞ—ıÿÿÿÿ8Ì¢ÿĞ1
+p	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ8Ú¢ÿĞ1

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * The type Ruolo.
+ * La classe Ruolo contiene le informazioni riguardanti i ruoli.
  */
 public class Ruolo {
     private String posizione;

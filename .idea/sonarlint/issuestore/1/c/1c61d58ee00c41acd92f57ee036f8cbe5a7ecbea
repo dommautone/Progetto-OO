@@ -1,27 +1,27 @@
 
 D
-java:S1604"(Make this anonymous inner class a lambda(Ô³Ôs8ËÔşÿÓ1
+java:S1604""(Make this anonymous inner class a lambda(Ô³Ôs8Äº ÏÕ1
 J
-java:S1604!"(Make this anonymous inner class a lambda(‘‚…Äıÿÿÿÿ8ÍÔşÿÓ1
+java:S1604*"(Make this anonymous inner class a lambda(‘‚…Äıÿÿÿÿ8Êº ÏÕ1
 s
-java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8âÔşÿÓ1
+java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8Ìº ÏÕ1
 M
-java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8ãÔşÿÓ1
+java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8Øº ÏÕ1
 z
-java:S1450"XRemove the "labelLogo" field and declare it as a local variable in the relevant methods.(òşÈÿÿÿÿÿ8¸ßşÿÓ1
+java:S1450"XRemove the "labelLogo" field and declare it as a local variable in the relevant methods.(òşÈÿÿÿÿÿ8“À ÏÕ1
 |
-java:S1450"ZRemove the "panelAccedi" field and declare it as a local variable in the relevant methods.(¿°×ûşÿÿÿÿ8ÂßşÿÓ1
+java:S1450"ZRemove the "panelAccedi" field and declare it as a local variable in the relevant methods.(¿°×ûşÿÿÿÿ8”À ÏÕ1
 u
-java:S1450"XRemove the "panelLogo" field and declare it as a local variable in the relevant methods.(ıÈ8ÄßşÿÓ1
+java:S1450"XRemove the "panelLogo" field and declare it as a local variable in the relevant methods.(ıÈ8ØÀ ÏÕ1
 |
-java:S1450"ZRemove the "panelUtente" field and declare it as a local variable in the relevant methods.(Çå’øşÿÿÿÿ8ÅßşÿÓ1
+java:S1450"ZRemove the "panelUtente" field and declare it as a local variable in the relevant methods.(Çå’øşÿÿÿÿ8ÚÀ ÏÕ1
 R
-java:S2209"5Change this instance-reference to a static reference.(ÛÌØ8œàşÿÓ1
+java:S2209&"5Change this instance-reference to a static reference.(ÛÌØ8ŸÆ ÏÕ1
 Q
-java:S2209%"5Change this instance-reference to a static reference.(ÈøÂQ8ù†«Ñ1
+java:S2209."5Change this instance-reference to a static reference.(ÈøÂQ8¬Æ ÏÕ1
 f
-java:S3252."IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8”°ÛÆĞ1
+java:S3252<"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8³Æ ÏÕ1
 {
-java:S11716"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8™°ÛÆĞ1
-o	java:S100D"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8œ°ÛÆĞ1
-h	java:S100h"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ
+java:S1171D"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8¸Æ ÏÕ1
+o	java:S100R"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­Œßúÿÿÿÿ8»Æ ÏÕ1
+h	java:S100y"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘ ¨úúÿÿÿÿ

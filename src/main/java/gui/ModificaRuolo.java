@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * The type Modifica ruolo.
+ * La gui Modifica ruolo permette di modificare il ruolo.
  */
 public class ModificaRuolo {
     private JPanel panel;

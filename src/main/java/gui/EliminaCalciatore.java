@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * The type Elimina calciatore.
+ * La gui EliminaCalciatore permette di eliminare un calciatore se si è eseguiti l'accesso come amministratore.
  */
 public class EliminaCalciatore {
     private JPanel panel;

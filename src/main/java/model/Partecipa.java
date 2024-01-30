@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- * The type Partecipa.
+ * La classe Partecipa contiene le informazioni riguardanti una squadra che partecipa ad un determinato campionato.
  */
 public class Partecipa {
     /**

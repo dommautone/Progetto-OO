@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.Locale;
 
 /**
- * The type Pannello amministratore.
+ * La gui PannelloAmministratore permette di visualizzare le operazioni possibili che può fare l'amministratore.
  */
 public class PannelloAmministratore {
     private JPanel panel;
