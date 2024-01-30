@@ -1,17 +1,54 @@
 package model;
 
+/**
+ * The type Appartiene.
+ */
 public class Appartiene {
+    /**
+     * The Calciatore.
+     */
     Calciatore calciatore;
-    Nazionalità nazionalità;
+    /**
+     * The Nazionalita.
+     */
+    Nazionalita nazionalita;
 
-    public Appartiene(Calciatore calciatore, Nazionalità nazionalità) {
+    /**
+     * Instantiates a new Appartiene.
+     *
+     * @param calciatore  the calciatore
+     * @param nazionalita the nazionalità
+     */
+    public Appartiene(Calciatore calciatore, Nazionalita nazionalita) {
         this.calciatore = calciatore;
-        this.nazionalità = nazionalità;
+        this.nazionalita = nazionalita;
     }
 
+    /**
+     * Gets calciatore.
+     *
+     * @return the calciatore
+     */
     public Calciatore getCalciatore() {return calciatore;}
-    public Nazionalità getNazionalità() {return nazionalità;}
 
+    /**
+     * Get nazionalità nazionalità.
+     *
+     * @return the nazionalità
+     */
+    public Nazionalita getNazionalita() {return nazionalita;}
+
+    /**
+     * Sets calciatore.
+     *
+     * @param calciatore the calciatore
+     */
     public void setCalciatore(Calciatore calciatore) {this.calciatore = calciatore;}
-    public void setNazionalità(Nazionalità nazionalità) {this.nazionalità = nazionalità;}
+
+    /**
+     * Set nazionalità.
+     *
+     * @param nazionalita the nazionalità
+     */
+    public void setNazionalita(Nazionalita nazionalita) {this.nazionalita = nazionalita;}
 }

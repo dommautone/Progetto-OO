@@ -1,7 +1,7 @@
 package gui;
 
 import controller.Controller;
-import model.Nazionalità;
+import model.Nazionalita;
 import model.Ruolo;
 import model.Squadra;
 
@@ -16,6 +16,9 @@ import java.util.Locale;
 
 import static gui.PannelloAmministratore.Flag;
 
+/**
+ * The type Ricerca amministratore.
+ */
 public class RicercaAmministratore {
     private JPanel panelNome;
     private JCheckBox checkBoxNome;
@@ -79,8 +82,17 @@ public class RicercaAmministratore {
     private char sesso;
 
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
+    /**
+     * Instantiates a new Ricerca amministratore.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public RicercaAmministratore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Ricerca Amministratore");
         frame.setContentPane(panel);
@@ -122,8 +134,8 @@ public class RicercaAmministratore {
         for (Ruolo ruolo : controller.getRuoli()) {
             comboBoxRuolo.addItem(ruolo.getPosizione());
         }
-        for (Nazionalità nazionalità : controller.getNazionalità()) {
-            comboBoxNazionalità.addItem(nazionalità.getNome());
+        for (Nazionalita nazionalita : controller.getNazionalità()) {
+            comboBoxNazionalità.addItem(nazionalita.getNome());
         }
         for (Squadra squadra : controller.getSquadre()) {
             comboBoxSquadra.addItem(squadra.getNome());

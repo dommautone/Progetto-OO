@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+/**
+ * The type Pannello amministratore.
+ */
 public class PannelloAmministratore {
     private JPanel panel;
     private JButton buttonAggiungi;
@@ -24,10 +27,22 @@ public class PannelloAmministratore {
     private JLabel labelPannello;
     private Controller controller;
 
+    /**
+     * The constant Flag.
+     */
     public static int Flag;
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
 
+    /**
+     * Instantiates a new Pannello amministratore.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public PannelloAmministratore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Pannello di controllo");
         frame.setContentPane(panel);
@@ -156,6 +171,9 @@ public class PannelloAmministratore {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

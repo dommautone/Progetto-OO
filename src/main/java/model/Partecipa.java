@@ -4,48 +4,76 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The type Partecipa.
+ */
 public class Partecipa {
+    /**
+     * The Competizione.
+     */
     Competizione competizione;
+    /**
+     * The Squadra.
+     */
     Squadra squadra;
-    LocalDate stagione;
+    /**
+     * The Stagione.
+     */
+    int stagione;
 
-    public Partecipa(Competizione competizione, Squadra squadra, String stagione) {
+    /**
+     * Instantiates a new Partecipa.
+     *
+     * @param competizione the competizione
+     * @param squadra      the squadra
+     * @param stagione     the stagione
+     */
+    public Partecipa(Competizione competizione, Squadra squadra, int stagione) {
         this.competizione = competizione;
         this.squadra = squadra;
-        setStagione(stagione);
+        this.stagione = stagione;
     }
 
+    /**
+     * Gets competizione.
+     *
+     * @return the competizione
+     */
     public Competizione getCompetizione() {return competizione;}
-    public Squadra getSquadra() {return squadra;}
-    public LocalDate getStagione() {return stagione;}
 
+    /**
+     * Gets squadra.
+     *
+     * @return the squadra
+     */
+    public Squadra getSquadra() {return squadra;}
+
+    /**
+     * Gets stagione.
+     *
+     * @return the stagione
+     */
+    public int getStagione() {return stagione;}
+
+    /**
+     * Sets competizione.
+     *
+     * @param competizione the competizione
+     */
     public void setCompetizione(Competizione competizione) {this.competizione = competizione;}
+
+    /**
+     * Sets squadra.
+     *
+     * @param squadra the squadra
+     */
     public void setSquadra(Squadra squadra) {this.squadra = squadra;}
 
-    public LocalDate controlloData(String data) {
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate parsedDate = LocalDate.parse(data, formatter);
-
-            int giorno = parsedDate.getDayOfMonth();
-            int mese = parsedDate.getMonthValue();
-
-            if ((mese == 4 || mese == 6 || mese == 9 || mese == 11) && giorno > 30) {
-                throw new IllegalArgumentException("Il giorno non può superare 30 per questo mese.");
-            } else if (mese == 2 && giorno > 29) {
-                throw new IllegalArgumentException("Il giorno non può superare 29 per Febbraio.");
-            } else if (giorno > 31) {
-                throw new IllegalArgumentException("Il giorno non può superare 31 per questo mese.");
-            }
-
-            return parsedDate;
-
-        } catch (DateTimeException | IllegalArgumentException e) {
-            System.out.println("Errore nella data di nascita: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public void setStagione(String stagione) {this.stagione = controlloData(stagione);}
+    /**
+     * Sets stagione.
+     *
+     * @param stagione the stagione
+     */
+    public void setStagione(int stagione) {this.stagione = stagione;}
 
 }

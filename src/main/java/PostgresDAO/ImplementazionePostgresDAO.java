@@ -10,11 +10,17 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * The type Implementazione postgres dao.
+ */
 public class ImplementazionePostgresDAO implements ImplementazioneDAO {
 
     private Connection connection;
     private Controller controller;
 
+    /**
+     * Instantiates a new Implementazione postgres dao.
+     */
     public ImplementazionePostgresDAO() {
         try {
             connection = ConnessioneDatabase.getInstance().getConnection();
@@ -113,15 +119,15 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         return ruolo;
     }
 
-    public ArrayList<Nazionalità> getNazionalità() {
+    public ArrayList<Nazionalita> getNazionalità() {
         PreparedStatement setNazionalità = null;
-        ArrayList<Nazionalità> nazionalità = new ArrayList<>();
+        ArrayList<Nazionalita> nazionalita = new ArrayList<>();
         try {
             String query = "SELECT * FROM Nazionalità ORDER BY Nome";
             setNazionalità = connection.prepareStatement(query);
             ResultSet rs = setNazionalità.executeQuery();
             while (rs.next()) {
-                nazionalità.add(new Nazionalità(rs.getString("Nome"), rs.getString("Continente")));
+                nazionalita.add(new Nazionalita(rs.getString("Nome"), rs.getString("Continente")));
             }
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
@@ -133,7 +139,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
                 System.out.println("Errore: " + e.getMessage());
             }
         }
-        return nazionalità;
+        return nazionalita;
     }
 
     public ArrayList<Squadra> getSquadre() {
@@ -144,7 +150,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             setSquadre = connection.prepareStatement(query);
             ResultSet rs = setSquadre.executeQuery();
             while (rs.next()) {
-                squadre.add(new Squadra(rs.getInt("idSquadra"), rs.getString("Nome"), rs.getString("Categoria").charAt(0), rs.getInt("annoFondazione"), new Nazionalità(rs.getString("Nome"), rs.getString("Continente"))));
+                squadre.add(new Squadra(rs.getInt("idSquadra"), rs.getString("Nome"), rs.getString("Categoria").charAt(0), rs.getInt("annoFondazione"), new Nazionalita(rs.getString("Nome"), rs.getString("Continente"))));
             }
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
@@ -178,7 +184,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         PreparedStatement getGiocatori = null;
         ResultSet rs = null;
         DefaultTableModel ricercaCalciatoriUtente = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Nome",
-                "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra", "Nazionalità", "Ruolo",
+                "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra", "Nazionalita", "Ruolo",
                 "Gol fatti", "Gol subiti"}) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -257,7 +263,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
 
     public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalità,
                                    String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro, LocalDate dataInizio,
-                                   LocalDate dataFine) {
+                                   LocalDate dataFine) throws Exception {
 
         PreparedStatement aggiungiCalciatore = null;
         PreparedStatement recuperoidSquadra = null;
@@ -265,14 +271,20 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         PreparedStatement aggiungiAppartiene = null;
         PreparedStatement aggiungiHa = null;
         ResultSet rs = null;
-
-        piede = piede.toLowerCase();
-        nome = nome.trim(); //Rimuove gli spazi all'inizio e alla fine
-        nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase(); //Mette la prima lettera maiuscola e le altre minuscole
-        cognome = cognome.trim();
-        cognome = cognome.substring(0, 1).toUpperCase() + cognome.substring(1).toLowerCase();
+        int idSquadra;
 
         try {
+            String queryidSquadra = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
+            recuperoidSquadra = connection.prepareStatement(queryidSquadra);
+            recuperoidSquadra.setString(1, squadra);
+            //Per evitare problemi con squadre che hanno lo stesso identico nome ma che appartengono a categorie differenti
+            recuperoidSquadra.setString(2, String.valueOf(sesso));
+            rs = recuperoidSquadra.executeQuery();
+            if(rs.next())
+                idSquadra = rs.getInt("idSquadra");
+            else
+                throw new Exception();
+
             String query = "INSERT INTO Calciatore(nome, cognome, sesso, piede, dataNascita, dataRitiro) VALUES (?, ?, ?, ?, ?, ?)";
             aggiungiCalciatore = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             aggiungiCalciatore.setString(1, nome);
@@ -288,15 +300,6 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             rs = aggiungiCalciatore.getGeneratedKeys();
             rs.next();
             int idCalciatore = rs.getInt(1);
-
-            String queryidSquadra = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
-            recuperoidSquadra = connection.prepareStatement(queryidSquadra);
-            recuperoidSquadra.setString(1, squadra);
-            //Per evitare problemi con squadre che hanno lo stesso identico nome ma che appartengono a categorie differenti
-            recuperoidSquadra.setString(2, String.valueOf(sesso));
-            rs = recuperoidSquadra.executeQuery();
-            rs.next();
-            int idSquadra = rs.getInt("idSquadra");
 
             String queryMilitanza = "INSERT INTO Militanza (calciatore, squadra, dataInizio, dataFine) VALUES (?, ?, ?, ?)";
             aggiungiMilitanza = connection.prepareStatement(queryMilitanza);
@@ -538,7 +541,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
                         rs.getString("nome_calciatore"), rs.getString("cognome"),
                         rs.getString("piede"), rs.getString("sesso").charAt(0),
                         rs.getDate("dataNascita").toLocalDate(), dataRitiro),
-                        new Nazionalità(rs.getString("nome_nazionalità"), rs.getString("continente"))));
+                        new Nazionalita(rs.getString("nome_nazionalità"), rs.getString("continente"))));
             }
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());

@@ -7,18 +7,39 @@ import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * The type Controller.
+ */
 public class Controller {
     private Amministratore amministratore;
     private ImplementazioneDAO implementazionePostgresDAO;
 
+    /**
+     * Instantiates a new Controller.
+     *
+     * @param implementazionePostgresDAO the implementazione postgres dao
+     */
     public Controller(ImplementazioneDAO implementazionePostgresDAO) {
         this.implementazionePostgresDAO = implementazionePostgresDAO;
     }
 
+    /**
+     * Sets schema.
+     */
     public void setSchema() {
         implementazionePostgresDAO.setSchema();
     }
 
+    /**
+     * Registrazione amministratore.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the amministratore
+     * @throws PasswordCortaException the password corta exception
+     * @throws UsernameCortoException the username corto exception
+     * @throws AlreadyExistsExeption  the already exists exeption
+     */
     public Amministratore registrazione(String username, String password) throws PasswordCortaException, UsernameCortoException, AlreadyExistsExeption{
          if (password.length() < 8)
             throw new PasswordCortaException();
@@ -34,6 +55,15 @@ public class Controller {
         return amministratore;
     }
 
+    /**
+     * Login.
+     *
+     * @param username the username
+     * @param password the password
+     * @throws DatiNonValidiExeption       the dati non validi exeption
+     * @throws UtenteNonRegistratoExeption the utente non registrato exeption
+     * @throws PasswordNonValidaExeption   the password non valida exeption
+     */
     public void login(String username, String password) throws DatiNonValidiExeption, UtenteNonRegistratoExeption, PasswordNonValidaExeption {
         if(username.length() < 4 || password.length() < 8)
             throw new DatiNonValidiExeption();
@@ -48,25 +78,116 @@ public class Controller {
             throw new PasswordNonValidaExeption();
     }
 
+    /**
+     * Get ruoli array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Ruolo> getRuoli(){return implementazionePostgresDAO.getRuoli();}
-    public ArrayList<Nazionalità> getNazionalità(){return implementazionePostgresDAO.getNazionalità();}
+
+    /**
+     * Get nazionalità array list.
+     *
+     * @return the array list
+     */
+    public ArrayList<Nazionalita> getNazionalità(){return implementazionePostgresDAO.getNazionalità();}
+
+    /**
+     * Get squadre array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Squadra> getSquadre(){return implementazionePostgresDAO.getSquadre();}
+
+    /**
+     * Get calciatori default table model.
+     *
+     * @param nome        the nome
+     * @param cognome     the cognome
+     * @param sesso       the sesso
+     * @param squadra     the squadra
+     * @param nazionalità the nazionalità
+     * @param piede       the piede
+     * @param età         the età
+     * @param ruolo       the ruolo
+     * @param golFatti    the gol fatti
+     * @param golSubiti   the gol subiti
+     * @param dataRitiro  the data ritiro
+     * @return the default table model
+     */
     public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalità,
                                            String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro){
         return implementazionePostgresDAO.getCalciatori(nome, cognome, sesso, squadra, nazionalità, piede, età, ruolo, golFatti, golSubiti, dataRitiro);
     }
+
+    /**
+     * Aggiungi calciatore.
+     *
+     * @param nome        the nome
+     * @param cognome     the cognome
+     * @param sesso       the sesso
+     * @param squadra     the squadra
+     * @param nazionalità the nazionalità
+     * @param piede       the piede
+     * @param dataNascita the data nascita
+     * @param ruolo       the ruolo
+     * @param dataRitiro  the data ritiro
+     * @param dataInizio  the data inizio
+     * @param dataFine    the data fine
+     */
     public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalità,
                                    String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro, LocalDate dataInizio,
-                                   LocalDate dataFine){
-        implementazionePostgresDAO.aggiungiCalciatore(nome, cognome, sesso, squadra, nazionalità, piede, dataNascita, ruolo, dataRitiro, dataInizio, dataFine);
+                                   LocalDate dataFine) throws CategoriaNonCorrispondeException {
+
+        piede = piede.toLowerCase();
+        nome = nome.trim(); //Rimuove gli spazi all'inizio e alla fine
+        nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase(); //Mette la prima lettera maiuscola e le altre minuscole
+        cognome = cognome.trim();
+        cognome = cognome.substring(0, 1).toUpperCase() + cognome.substring(1).toLowerCase();
+        try {
+            implementazionePostgresDAO.aggiungiCalciatore(nome, cognome, sesso, squadra, nazionalità, piede, dataNascita, ruolo, dataRitiro, dataInizio, dataFine);
+        } catch (Exception e) {
+            throw new CategoriaNonCorrispondeException();
+        }
     }
+
+    /**
+     * Modifica calciatore.
+     *
+     * @param idCalciatore the id calciatore
+     * @param idSquadra    the id squadra
+     * @param nome         the nome
+     * @param cognome      the cognome
+     * @param piede        the piede
+     * @param sesso        the sesso
+     * @param dataNascita  the data nascita
+     * @param dataRitiro   the data ritiro
+     * @param golFatti     the gol fatti
+     * @param golSubiti    the gol subiti
+     * @param squadra      the squadra
+     */
     public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro,
                                    int golFatti, Integer golSubiti, String squadra){
         implementazionePostgresDAO.modificaCalciatore(idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita, dataRitiro, golFatti, golSubiti, squadra);
     }
+
+    /**
+     * Visualizza ruolo calciatore array list.
+     *
+     * @param idCalciatore the id calciatore
+     * @return the array list
+     */
     public ArrayList<Ha> visualizzaRuoloCalciatore(int idCalciatore){
         return implementazionePostgresDAO.visualizzaRuoloCalciatore(idCalciatore);
     }
+
+    /**
+     * Inserisci ruolo.
+     *
+     * @param idCalciatore the id calciatore
+     * @param ruolo        the ruolo
+     * @throws RuoloGiàInseritoException the ruolo già inserito exception
+     */
     public void inserisciRuolo (int idCalciatore, String ruolo) throws RuoloGiàInseritoException{
         try {
             implementazionePostgresDAO.inserisciRuolo(idCalciatore, ruolo);
@@ -74,12 +195,34 @@ public class Controller {
             throw new RuoloGiàInseritoException();
         }
     }
+
+    /**
+     * Elimina ruolo.
+     *
+     * @param idCalciatore the id calciatore
+     * @param ruolo        the ruolo
+     */
     public void eliminaRuolo (int idCalciatore, ArrayList<String> ruolo){
         implementazionePostgresDAO.eliminaRuolo(idCalciatore, ruolo);
     }
+
+    /**
+     * Visualizza nazionalità calciatore array list.
+     *
+     * @param idCalciatore the id calciatore
+     * @return the array list
+     */
     public ArrayList<Appartiene> visualizzaNazionalitàCalciatore(int idCalciatore){
         return implementazionePostgresDAO.visualizzaNazionalitàCalciatore(idCalciatore);
     }
+
+    /**
+     * Inserisci nazionalità.
+     *
+     * @param idCalciatore the id calciatore
+     * @param nazionalità  the nazionalità
+     * @throws NazionalitàGiàInseritaException the nazionalità già inserita exception
+     */
     public void inserisciNazionalità (int idCalciatore, String nazionalità) throws NazionalitàGiàInseritaException{
         try{
             implementazionePostgresDAO.inserisciNazionalità(idCalciatore, nazionalità);
@@ -87,9 +230,22 @@ public class Controller {
             throw new NazionalitàGiàInseritaException();
         }
     }
+
+    /**
+     * Elimina nazionalità.
+     *
+     * @param idCalciatore the id calciatore
+     * @param nazionalità  the nazionalità
+     */
     public void eliminaNazionalità (int idCalciatore, ArrayList<String> nazionalità){
         implementazionePostgresDAO.eliminaNazionalità(idCalciatore, nazionalità);
     }
+
+    /**
+     * Elimina calciatore.
+     *
+     * @param idCalciatore the id calciatore
+     */
     public void eliminaCalciatore(ArrayList<Integer> idCalciatore){
         implementazionePostgresDAO.eliminaCalciatore(idCalciatore);
     }

@@ -1,37 +1,99 @@
 package model;
 
+/**
+ * The type Competizione.
+ */
 public class Competizione {
     private String nome;
     private String descrizione;
     private char categoria;
-    private Nazionalità nazionalità;
+    private Nazionalita nazionalita;
     private TrofeoCompetizione trofeoCompetizione;
 
-    public Competizione(String nome, String descrizione, char categoria, Nazionalità nazionalità, TrofeoCompetizione trofeoCompetizione){
+    /**
+     * Instantiates a new Competizione.
+     *
+     * @param nome               the nome
+     * @param descrizione        the descrizione
+     * @param categoria          the categoria
+     * @param nazionalita        the nazionalità
+     * @param trofeoCompetizione the trofeo competizione
+     */
+    public Competizione(String nome, String descrizione, char categoria, Nazionalita nazionalita, TrofeoCompetizione trofeoCompetizione){
         this.nome=nome;
         this.descrizione=descrizione;
-        setCategoria(categoria);
-        this.nazionalità=nazionalità;
+        this.categoria=categoria;
+        this.nazionalita = nazionalita;
         this.trofeoCompetizione=trofeoCompetizione;
     }
 
+    /**
+     * Get nome string.
+     *
+     * @return the string
+     */
     public String getNome(){return nome;}
+
+    /**
+     * Get descrizione string.
+     *
+     * @return the string
+     */
     public String getDescrizione(){return descrizione;}
+
+    /**
+     * Get categoria char.
+     *
+     * @return the char
+     */
     public char getCategoria(){return categoria;}
-    public Nazionalità getNazionalità(){return nazionalità;}
+
+    /**
+     * Get nazionalità nazionalità.
+     *
+     * @return the nazionalità
+     */
+    public Nazionalita getNazionalita(){return nazionalita;}
+
+    /**
+     * Get trofeo competizione trofeo competizione.
+     *
+     * @return the trofeo competizione
+     */
     public TrofeoCompetizione getTrofeoCompetizione(){return trofeoCompetizione;}
 
+    /**
+     * Set nome.
+     *
+     * @param nome the nome
+     */
     public void setNome(String nome){this.nome=nome;}
-    public void setDescrizione(String descrizione){this.descrizione=descrizione;}
-    public void setCategoria(char categoria){
-        if(categoria=='M' || categoria=='F'){
-            this.categoria=categoria;
-        }
-        else{
-            System.out.println("Categoria non valida");
-        }
 
-    }
-    public void setNazionalità(Nazionalità nazionalità){this.nazionalità=nazionalità;}
+    /**
+     * Set descrizione.
+     *
+     * @param descrizione the descrizione
+     */
+    public void setDescrizione(String descrizione){this.descrizione=descrizione;}
+
+    /**
+     * Set categoria.
+     *
+     * @param categoria the categoria
+     */
+    public void setCategoria(char categoria){this.categoria=categoria;}
+
+    /**
+     * Set nazionalità.
+     *
+     * @param nazionalita the nazionalità
+     */
+    public void setNazionalita(Nazionalita nazionalita){this.nazionalita = nazionalita;}
+
+    /**
+     * Set trofeo competizione.
+     *
+     * @param trofeoCompetizione the trofeo competizione
+     */
     public void setTrofeoCompetizione(TrofeoCompetizione trofeoCompetizione){this.trofeoCompetizione=trofeoCompetizione;}
 }

@@ -15,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.util.Locale;
 
 
+/**
+ * The type Login.
+ */
 public class Login {
     private JPanel panel;
     private JButton buttonDimenticata;
@@ -33,10 +36,22 @@ public class Login {
     private JPanel panelLogo;
     private JLabel labelLogo;
     private JPanel panelRegistrati;
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
+    /**
+     * The Accesso.
+     */
     public Accesso accesso;
     private Controller controller;
 
+    /**
+     * Instantiates a new Login.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public Login(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -250,6 +265,9 @@ public class Login {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

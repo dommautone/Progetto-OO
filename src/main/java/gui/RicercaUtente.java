@@ -1,7 +1,7 @@
 package gui;
 
 import controller.Controller;
-import model.Nazionalità;
+import model.Nazionalita;
 import model.Ruolo;
 import model.Squadra;
 
@@ -14,6 +14,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+/**
+ * The type Ricerca utente.
+ */
 public class RicercaUtente {
     private JPanel panel;
     private JPanel panelNome;
@@ -78,8 +81,17 @@ public class RicercaUtente {
     private LocalDate dataRitiro;
     private char sesso;
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
+    /**
+     * Instantiates a new Ricerca utente.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public RicercaUtente(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Ricerca Utente");
         frame.setContentPane(panel);
@@ -123,8 +135,8 @@ public class RicercaUtente {
         for (Ruolo ruolo : controller.getRuoli()) {
             comboBoxRuolo.addItem(ruolo.getPosizione());
         }
-        for (Nazionalità nazionalità : controller.getNazionalità()) {
-            comboBoxNazionalità.addItem(nazionalità.getNome());
+        for (Nazionalita nazionalita : controller.getNazionalità()) {
+            comboBoxNazionalità.addItem(nazionalita.getNome());
         }
         for (Squadra squadra : controller.getSquadre()) {
             comboBoxSquadra.addItem(squadra.getNome());

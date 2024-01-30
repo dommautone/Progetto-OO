@@ -1,7 +1,8 @@
 package gui;
 
+import controller.CategoriaNonCorrispondeException;
 import controller.Controller;
-import model.Nazionalità;
+import model.Nazionalita;
 import model.Ruolo;
 import model.Squadra;
 
@@ -18,6 +19,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * The type Aggiungi calciatore.
+ */
 public class AggiungiCalciatore {
     private JPanel panel;
     private JTextField textNome;
@@ -72,15 +76,39 @@ public class AggiungiCalciatore {
     private JButton buttonIndietro;
     private JPanel panelIndietro;
     private Controller controller;
+    /**
+     * The Data ritiro.
+     */
     LocalDate dataRitiro = null;
+    /**
+     * The Data fine.
+     */
     LocalDate dataFine = null;
+    /**
+     * The Data inizio.
+     */
     LocalDate dataInizio = null;
+    /**
+     * The Data nascita.
+     */
     LocalDate dataNascita = null;
+    /**
+     * The Sesso.
+     */
     char sesso;
 
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
+    /**
+     * Instantiates a new Aggiungi calciatore.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public AggiungiCalciatore(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Aggiungi calciatore");
         frame.setContentPane(panel);
@@ -200,8 +228,8 @@ public class AggiungiCalciatore {
         for (Ruolo ruolo : controller.getRuoli()) {
             modelRuolo.addElement(ruolo.getPosizione());
         }
-        for (Nazionalità nazionalità : controller.getNazionalità()) {
-            modelNazionalità.addElement(nazionalità.getNome());
+        for (Nazionalita nazionalita : controller.getNazionalità()) {
+            modelNazionalità.addElement(nazionalita.getNome());
         }
         for (Squadra squadra : controller.getSquadre()) {
             comboBoxSquadra.addItem(squadra.getNome());
@@ -274,11 +302,18 @@ public class AggiungiCalciatore {
                     JOptionPane.showMessageDialog(null, "Inserire una data di inizio contratto valida");
                     return;
                 }
-                controller.aggiungiCalciatore(textNome.getText(), textCognome.getText(), sesso,
-                        comboBoxSquadra.getSelectedItem().toString(), (ArrayList<String>) listNazionalità.getSelectedValuesList(),
-                        comboBoxPiede.getSelectedItem().toString(), dataNascita, (ArrayList<String>) listRuolo.getSelectedValuesList(),
-                        dataRitiro, dataInizio, dataFine);
-                JOptionPane.showMessageDialog(null, "Calciatore aggiunto con successo");
+                try {
+                    controller.aggiungiCalciatore(textNome.getText(), textCognome.getText(), sesso,
+                            comboBoxSquadra.getSelectedItem().toString(),
+                            (ArrayList<String>) listNazionalità.getSelectedValuesList(),
+                            comboBoxPiede.getSelectedItem().toString(),
+                            dataNascita, (ArrayList<String>) listRuolo.getSelectedValuesList(),
+                            dataRitiro, dataInizio, dataFine);
+                    JOptionPane.showMessageDialog(null, "Calciatore aggiunto con successo");
+                } catch (CategoriaNonCorrispondeException ex) {
+                    JOptionPane.showMessageDialog(null, "Il sesso del calciatore non corrisponde " +
+                            "alla categoria della squadra");
+                }
             }
         });
     }

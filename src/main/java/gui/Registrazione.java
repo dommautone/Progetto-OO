@@ -11,7 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+/**
+ * The type Registrazione.
+ */
 public class Registrazione {
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
     private JPanel panel;
     private JPanel panelRegistrazione;
@@ -33,6 +39,12 @@ public class Registrazione {
     private JLabel labelLogo;
     private Controller controller;
 
+    /**
+     * Instantiates a new Registrazione.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     */
     public Registrazione(JFrame frameChiamante, Controller controller) {
         frame = new JFrame("Registrazione");
         frame.setContentPane(panel);
@@ -233,6 +245,9 @@ public class Registrazione {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

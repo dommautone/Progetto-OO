@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The type Accesso.
+ */
 public class Accesso {
     private JPanel panel;
     private JPanel panelLogo;
@@ -17,9 +20,15 @@ public class Accesso {
     private JPanel panelUtente;
     private JButton buttonAccedi;
     private JButton buttonUtente;
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
     private Controller controller = new Controller(new ImplementazionePostgresDAO());
 
+    /**
+     * Instantiates a new Accesso.
+     */
     public Accesso() {
         controller.setSchema();
         buttonAccedi.addActionListener(new ActionListener() {
@@ -40,6 +49,11 @@ public class Accesso {
         });
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         frame = new JFrame("Accesso");
         frame.setContentPane(new Accesso().panel);
@@ -99,6 +113,9 @@ public class Accesso {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

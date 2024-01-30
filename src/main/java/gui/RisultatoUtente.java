@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
+/**
+ * The type Risultato utente.
+ */
 public class RisultatoUtente {
     private JPanel panel;
     private JTable tableRicercaUtente;
@@ -19,8 +22,28 @@ public class RisultatoUtente {
     private JPanel panelNuovaRicerca;
     private Controller controller;
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
+    /**
+     * Instantiates a new Risultato utente.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param nome           the nome
+     * @param cognome        the cognome
+     * @param sesso          the sesso
+     * @param squadra        the squadra
+     * @param nazionalità    the nazionalità
+     * @param piede          the piede
+     * @param età            the età
+     * @param ruolo          the ruolo
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @param dataRitiro     the data ritiro
+     */
     public RisultatoUtente(JFrame frameChiamante, Controller controller, String nome, String cognome, char sesso, String squadra, String nazionalità,
                            String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro) {
         frame = new JFrame("Risultato ricerca");
@@ -90,6 +113,9 @@ public class RisultatoUtente {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

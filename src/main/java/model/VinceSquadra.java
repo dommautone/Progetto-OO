@@ -1,50 +1,76 @@
 package model;
 
-import java.time.DateTimeException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
+/**
+ * The type Vince squadra.
+ */
 public class VinceSquadra {
+    /**
+     * The Squadra.
+     */
     Squadra squadra;
+    /**
+     * The Trofeo competizione.
+     */
     TrofeoCompetizione trofeoCompetizione;
-    LocalDate stagione;
+    /**
+     * The Stagione.
+     */
+    int stagione;
 
-    public VinceSquadra(Squadra squadra, TrofeoCompetizione trofeoCompetizione, String stagione) {
+    /**
+     * Instantiates a new Vince squadra.
+     *
+     * @param squadra            the squadra
+     * @param trofeoCompetizione the trofeo competizione
+     * @param stagione           the stagione
+     */
+    public VinceSquadra(Squadra squadra, TrofeoCompetizione trofeoCompetizione, int stagione) {
         this.squadra = squadra;
         this.trofeoCompetizione = trofeoCompetizione;
-        setStagione(stagione);
+        this.stagione = stagione;
     }
 
+    /**
+     * Gets squadra.
+     *
+     * @return the squadra
+     */
     public Squadra getSquadra() {return squadra;}
+
+    /**
+     * Gets trofeo competizione.
+     *
+     * @return the trofeo competizione
+     */
     public TrofeoCompetizione getTrofeoCompetizione() {return trofeoCompetizione;}
-    public LocalDate getStagione() {return stagione;}
 
+    /**
+     * Gets stagione.
+     *
+     * @return the stagione
+     */
+    public int getStagione() {return stagione;}
+
+    /**
+     * Sets squadra.
+     *
+     * @param squadra the squadra
+     */
     public void setSquadra(Squadra squadra) {this.squadra = squadra;}
+
+    /**
+     * Sets trofeo competizione.
+     *
+     * @param trofeoCompetizione the trofeo competizione
+     */
     public void setTrofeoCompetizione(TrofeoCompetizione trofeoCompetizione) {this.trofeoCompetizione = trofeoCompetizione;}
-    public LocalDate controlloData(String data) {
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate parsedDate = LocalDate.parse(data, formatter);
 
-            int giorno = parsedDate.getDayOfMonth();
-            int mese = parsedDate.getMonthValue();
-
-            if ((mese == 4 || mese == 6 || mese == 9 || mese == 11) && giorno > 30) {
-                throw new IllegalArgumentException("Il giorno non può superare 30 per questo mese.");
-            } else if (mese == 2 && giorno > 29) {
-                throw new IllegalArgumentException("Il giorno non può superare 29 per Febbraio.");
-            } else if (giorno > 31) {
-                throw new IllegalArgumentException("Il giorno non può superare 31 per questo mese.");
-            }
-
-            return parsedDate;
-
-        } catch (DateTimeException | IllegalArgumentException e) {
-            System.out.println("Errore nella data di nascita: " + e.getMessage());
-            return null;
-        }
-    }
-    public void setStagione(String stagione) {this.stagione = controlloData(stagione);}
+    /**
+     * Sets stagione.
+     *
+     * @param stagione the stagione
+     */
+    public void setStagione(int stagione) {this.stagione = stagione;}
 
 }
 

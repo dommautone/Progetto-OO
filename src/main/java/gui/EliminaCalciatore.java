@@ -13,6 +13,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * The type Elimina calciatore.
+ */
 public class EliminaCalciatore {
     private JPanel panel;
     private JTable tableGiocatori;
@@ -22,9 +25,29 @@ public class EliminaCalciatore {
     private JScrollPane scrollpaneTabella;
     private JPanel panelIndietro;
     private JButton buttonIndietro;
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
     private Controller controller;
 
+    /**
+     * Instantiates a new Elimina calciatore.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param nome           the nome
+     * @param cognome        the cognome
+     * @param sesso          the sesso
+     * @param squadra        the squadra
+     * @param nazionalità    the nazionalità
+     * @param piede          the piede
+     * @param età            the età
+     * @param ruolo          the ruolo
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @param dataRitiro     the data ritiro
+     */
     public EliminaCalciatore(JFrame frameChiamante, Controller controller, String nome, String cognome, char sesso, String squadra, String nazionalità,
                              String piede, Integer età, String ruolo, Integer golFatti, Integer golSubiti, LocalDate dataRitiro) {
         frame = new JFrame("Elimina calciatore");
@@ -161,6 +184,9 @@ public class EliminaCalciatore {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {

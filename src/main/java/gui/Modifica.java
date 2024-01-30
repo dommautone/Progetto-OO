@@ -14,6 +14,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
 
+/**
+ * The type Modifica.
+ */
 public class Modifica {
 
     private ButtonGroup buttonGroupSesso;
@@ -66,11 +69,33 @@ public class Modifica {
     private JLabel labelSquadra;
     private JComboBox comboBoxSquadra;
     private Controller controller;
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
     private LocalDate dataRitiro2;
     private LocalDate dataNascita2;
     private char sesso2;
 
+    /**
+     * Instantiates a new Modifica.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param idCalciatore   the id calciatore
+     * @param idSquadra      the id squadra
+     * @param nome           the nome
+     * @param cognome        the cognome
+     * @param piede          the piede
+     * @param sesso          the sesso
+     * @param dataNascita    the data nascita
+     * @param dataRitiro     the data ritiro
+     * @param squadra        the squadra
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @param ruolo          the ruolo
+     * @param nazionalità    the nazionalità
+     */
     public Modifica(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso, LocalDate dataNascita, LocalDate dataRitiro, String squadra, Integer golFatti, Integer golSubiti, String ruolo, String nazionalità) {
         frame = new JFrame("Modifica");
         frame.setContentPane(panel);
@@ -252,7 +277,7 @@ public class Modifica {
                     JOptionPane.showMessageDialog(null, "Formato data di ritiro non valido");
                     return;
                 }
-                try{
+                try {
                     dataNascita2 = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     isValidFormat = true;
                 } catch (DateTimeParseException e1) {
@@ -404,7 +429,7 @@ public class Modifica {
         panelModificaNazionalità.setBackground(new Color(-4859649));
         panel.add(panelModificaNazionalità, new com.intellij.uiDesigner.core.GridConstraints(11, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonModificaNazionalità = new JButton();
-        buttonModificaNazionalità.setText("Modifica nazionalità");
+        buttonModificaNazionalità.setText("Modifica nazionalita");
         panelModificaNazionalità.add(buttonModificaNazionalità, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer1 = new com.intellij.uiDesigner.core.Spacer();
         panel.add(spacer1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));

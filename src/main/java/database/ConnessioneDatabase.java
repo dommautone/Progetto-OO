@@ -4,11 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * The type Connessione database.
+ */
 public class ConnessioneDatabase {
 
         // ATTRIBUTI
         private static ConnessioneDatabase instance;
-        public Connection connection = null;
+    /**
+     * The Connection.
+     */
+    public Connection connection = null;
         private String nome = "postgres";
         private String password = "admin";
         private String url = "jdbc:postgresql://localhost:5432/Traccia3";
@@ -27,7 +33,13 @@ public class ConnessioneDatabase {
 
         }
 
-        public static ConnessioneDatabase getInstance() throws SQLException {
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     * @throws SQLException the sql exception
+     */
+    public static ConnessioneDatabase getInstance() throws SQLException {
             if (instance == null) {
                 instance = new ConnessioneDatabase();
             } else if (instance.getConnection().isClosed()) {
@@ -36,5 +48,10 @@ public class ConnessioneDatabase {
             return instance;
         }
 
+    /**
+     * Gets connection.
+     *
+     * @return the connection
+     */
     public Connection getConnection() { return connection;}
 }

@@ -13,6 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The type Modifica ruolo.
+ */
 public class ModificaRuolo {
     private JPanel panel;
     private JTable tableModificaRuolo;
@@ -26,8 +29,21 @@ public class ModificaRuolo {
     private JPanel panelIndietro;
     private Controller controller;
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
 
+    /**
+     * Instantiates a new Modifica ruolo.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param idCalciatore   the id calciatore
+     * @param nome           the nome
+     * @param cognome        the cognome
+     * @param ruolo          the ruolo
+     */
     public ModificaRuolo(JFrame frameChiamante, Controller controller, int idCalciatore, String nome, String cognome, String ruolo) {
         frame = new JFrame("Modifica ruolo");
         frame.setContentPane(panel);
@@ -147,6 +163,9 @@ public class ModificaRuolo {
     }
 
     /**
+     * $$$ get root component $$$ j component.
+     *
+     * @return the j component
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
