@@ -110,9 +110,9 @@ public class Controller {
      * @param cognome     il cognome
      * @param sesso       il sesso
      * @param squadra     la squadra
-     * @param nazionalità la nazionalità
+     * @param nazionalita la nazionalità
      * @param piede       il piede
-     * @param età         l' età
+     * @param eta         l' età
      * @param ruolo       il ruolo
      * @param golFatti    i gol fatti
      * @param golSubiti   i gol subiti
@@ -133,7 +133,7 @@ public class Controller {
      * @param cognome     il cognome
      * @param sesso       il sesso
      * @param squadra     la squadra
-     * @param nazionalità la nazionalità
+     * @param nazionalita la nazionalità
      * @param piede       il piede
      * @param dataNascita la data nascita
      * @param ruolo       il ruolo
