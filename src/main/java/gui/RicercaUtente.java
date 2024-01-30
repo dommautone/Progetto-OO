@@ -294,6 +294,18 @@ public class RicercaUtente {
                 }
             }
         });
+        textDataRitiro.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c1 = e.getKeyChar();
+                if (!(Character.isDigit(c1) || c1 == KeyEvent.VK_BACK_SPACE || c1 == KeyEvent.VK_DELETE ||
+                        c1 == KeyEvent.VK_SLASH)) {
+                    e.consume();
+                }
+            }
+        });
+
         checkBoxRuolo.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {

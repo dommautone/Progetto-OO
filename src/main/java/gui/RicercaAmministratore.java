@@ -43,7 +43,7 @@ public class RicercaAmministratore {
     private JPanel panelGolFatti;
     private JCheckBox checkBoxGolFatti;
     private JLabel labelGolFatti;
-    private JTextField textFieldGolFatti;
+    private JTextField textGolFatti;
     private JPanel panelGolSubiti;
     private JCheckBox checkBoxGolSubiti;
     private JLabel labelGolSubiti;
@@ -107,7 +107,7 @@ public class RicercaAmministratore {
         comboBoxNazionalita.setEnabled(false);
         comboBoxPiede.setEnabled(false);
         comboBoxRuolo.setEnabled(false);
-        textFieldGolFatti.setEnabled(false);
+        textGolFatti.setEnabled(false);
         textGolSubiti.setEnabled(false);
         textEta.setEnabled(false);
         radioButtonMaschio.setEnabled(false);
@@ -126,6 +126,7 @@ public class RicercaAmministratore {
         radioButtonRitirati.setEnabled(false);
         radioButtonDataRitiro.setEnabled(false);
         radioButtonNonRitirati.setEnabled(false);
+        textDataRitiro.setEnabled(false);
 
         for (Ruolo ruolo : controller.getRuoli()) {
             comboBoxRuolo.addItem(ruolo.getPosizione());
@@ -240,13 +241,24 @@ public class RicercaAmministratore {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (checkBoxGolFatti.isSelected()) {
-                    textFieldGolFatti.setEnabled(true);
+                    textGolFatti.setEnabled(true);
                 } else {
-                    textFieldGolFatti.setEnabled(false);
-                    textFieldGolFatti.setText("");
+                    textGolFatti.setEnabled(false);
+                    textGolFatti.setText("");
                 }
             }
         });
+        textGolFatti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
+
         checkBoxGolSubiti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -258,6 +270,16 @@ public class RicercaAmministratore {
                 }
             }
         });
+        textGolSubiti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkboxEta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -266,6 +288,16 @@ public class RicercaAmministratore {
                 } else {
                     textEta.setEnabled(false);
                     textEta.setText("");
+                }
+            }
+        });
+        textEta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
                 }
             }
         });
@@ -315,6 +347,17 @@ public class RicercaAmministratore {
                 }
             }
         });
+        textDataRitiro.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c1 = e.getKeyChar();
+                if (!(Character.isDigit(c1) || c1 == KeyEvent.VK_BACK_SPACE || c1 == KeyEvent.VK_DELETE ||
+                        c1 == KeyEvent.VK_SLASH)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxRuolo.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -344,10 +387,10 @@ public class RicercaAmministratore {
         buttonRicerca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (textFieldGolFatti.getText().isEmpty())
+                if (textGolFatti.getText().isEmpty())
                     golFatti = null;
                 else
-                    golFatti = Integer.parseInt(textFieldGolFatti.getText());
+                    golFatti = Integer.parseInt(textGolFatti.getText());
                 if (textGolSubiti.getText().isEmpty())
                     golSubiti = null;
                 else

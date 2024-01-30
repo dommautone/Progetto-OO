@@ -6,6 +6,8 @@ import model.Squadra;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -150,6 +152,16 @@ public class Modifica {
                 }
             }
         });
+        textNome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxCognome.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,6 +169,16 @@ public class Modifica {
                     textCognome.setEnabled(true);
                 } else {
                     textCognome.setEnabled(false);
+                }
+            }
+        });
+        textCognome.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_SPACE)) {
+                    e.consume();
                 }
             }
         });
@@ -192,6 +214,17 @@ public class Modifica {
                 }
             }
         });
+        textDataNascita.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c1 = e.getKeyChar();
+                if (!(Character.isDigit(c1) || c1 == KeyEvent.VK_BACK_SPACE || c1 == KeyEvent.VK_DELETE ||
+                        c1 == KeyEvent.VK_SLASH)) {
+                    e.consume();
+                }
+            }
+        });
         checkDataRitiro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -199,6 +232,17 @@ public class Modifica {
                     textDataRitiro.setEnabled(true);
                 } else {
                     textDataRitiro.setEnabled(false);
+                }
+            }
+        });
+        textDataRitiro.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c1 = e.getKeyChar();
+                if (!(Character.isDigit(c1) || c1 == KeyEvent.VK_BACK_SPACE || c1 == KeyEvent.VK_DELETE ||
+                        c1 == KeyEvent.VK_SLASH)) {
+                    e.consume();
                 }
             }
         });
@@ -222,6 +266,16 @@ public class Modifica {
                 }
             }
         });
+        textGolFatti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
+                }
+            }
+        });
         checkBoxGolSubiti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -229,6 +283,16 @@ public class Modifica {
                     textGolSubiti.setEnabled(true);
                 } else {
                     textGolSubiti.setEnabled(false);
+                }
+            }
+        });
+        textGolSubiti.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) {
+                    e.consume();
                 }
             }
         });
