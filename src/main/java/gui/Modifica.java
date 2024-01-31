@@ -280,6 +280,11 @@ public class Modifica {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (checkBoxGolSubiti.isSelected()) {
+                    if(controller.controlloRuoloPortiere(idCalciatore) == false) {
+                        JOptionPane.showMessageDialog(null, "Il calciatore non è un portiere");
+                        checkBoxGolSubiti.setSelected(false);
+                        return;
+                    }
                     textGolSubiti.setEnabled(true);
                 } else {
                     textGolSubiti.setEnabled(false);
@@ -330,7 +335,7 @@ public class Modifica {
                         isValidFormat = true;
                     } catch (DateTimeParseException e1) {
                         try {
-                            dataRitiro2 = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                            dataRitiro2 = LocalDate.parse(textDataRitiro.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                             isValidFormat = true;
                         } catch (DateTimeParseException e2) {
                             isValidFormat = false;
@@ -346,7 +351,7 @@ public class Modifica {
                     isValidFormat = true;
                 } catch (DateTimeParseException e1) {
                     try {
-                        dataNascita2 = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                        dataNascita2 = LocalDate.parse(textDataNascita.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                         isValidFormat = true;
                     } catch (DateTimeParseException e2) {
                         isValidFormat = false;

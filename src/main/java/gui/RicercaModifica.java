@@ -1,5 +1,6 @@
 package gui;
 
+import controller.CalciatoriNonTrovatiException;
 import controller.Controller;
 
 import javax.swing.*;
@@ -60,8 +61,15 @@ public class RicercaModifica {
         frame.setVisible(true);
         tableModifica.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableModifica.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
-                ruolo, golFatti, golSubiti, dataRitiro);
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore",
+                "Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra",
+                "Nazionalita", "Ruolo", "Gol fatti", "Gol subiti"});
+        try {
+            tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
+                    ruolo, golFatti, golSubiti, dataRitiro);
+        } catch (CalciatoriNonTrovatiException e) {
+            JOptionPane.showMessageDialog(null, "Calciatori non trovati");
+        }
         tableModifica.setModel(tableModel);
         tableModifica.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 

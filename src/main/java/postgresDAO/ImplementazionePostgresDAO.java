@@ -174,10 +174,36 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         return squadre;
     }
 
+    public ArrayList<Squadra> getSquadreCategoria(char categoria) {
+        PreparedStatement setSquadre = null;
+        ArrayList<Squadra> squadre = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM Squadra JOIN Nazionalità ON Squadra.Nazionalità = Nazionalità.Nome" +
+                    " WHERE Categoria = ? ORDER BY Squadra.Nome";
+            setSquadre = connection.prepareStatement(query);
+            setSquadre.setString(1, String.valueOf(categoria));
+            ResultSet rs = setSquadre.executeQuery();
+            while (rs.next()) {
+                squadre.add(new Squadra(rs.getInt("idSquadra"), rs.getString("Nome"),
+                        rs.getString("Categoria").charAt(0), rs.getInt("annoFondazione"),
+                        new Nazionalita(rs.getString("Nome"), rs.getString("Continente"))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (setSquadre != null)
+                    setSquadre.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+        return squadre;
+    }
 
     public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                            String piede, Integer eta, String ruolo, Integer golFatti,
-                                           Integer golSubiti, LocalDate dataRitiro) {
+                                           Integer golSubiti, LocalDate dataRitiro) throws Exception{
         StringBuilder sceltaDati = new StringBuilder(
                 "SELECT idCalciatore, idSquadra, nome_calciatore, cognome, sesso, nome_squadra," +
                         " STRING_AGG(DISTINCT nazione_calciatore, '/') AS nazionalità_calciatore, " +
@@ -252,6 +278,8 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         try {
             getGiocatori = connection.prepareStatement(sceltaDati.toString());
             rs = getGiocatori.executeQuery();
+            if(!rs.next())
+                throw new Exception();
             while (rs.next()) {
                 ricercaCalciatoriUtente.addRow(new Object[]{
                         rs.getInt("idCalciatore"), rs.getString("nome_calciatore"),
@@ -713,6 +741,106 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             try {
                 if (eliminaPossiede != null)
                     eliminaPossiede.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+    }
+    public ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore) {
+        PreparedStatement visualizzaSquadreCalciatore = null;
+        ResultSet rs = null;
+        LocalDate dataRitiro;
+        ArrayList<Militanza> militanza = new ArrayList<>();
+        try {
+            String query = "SELECT idCalciatore, calciatore.nome AS nome_calciatore, cognome, piede, sesso, dataNascita," +
+                    "dataRitiro, idSquadra, squadra.nome AS nome_squadra, categoria, annoFondazione, " +
+                    "nazionalità.nome AS nome_nazionalità, continente, dataInizio, dataFine, golSegnati, golSubiti" +
+                    " FROM Militanza JOIN Calciatore ON idCalciatore = Calciatore" +
+                    " JOIN Squadra ON Militanza.Squadra = Squadra.idSquadra" +
+                    " JOIN Nazionalità ON Nazionalità.nome = Nazionalità" +
+                    " WHERE Calciatore = ?";
+            visualizzaSquadreCalciatore = connection.prepareStatement(query);
+            visualizzaSquadreCalciatore.setInt(1, idCalciatore);
+            rs = visualizzaSquadreCalciatore.executeQuery();
+            while (rs.next()) {
+                if (rs.getDate("dataRitiro") == null)
+                    dataRitiro = null;
+                else
+                    dataRitiro = rs.getDate("dataRitiro").toLocalDate();
+                militanza.add(new Militanza(rs.getDate("dataInizio").toLocalDate(), dataRitiro,
+                        rs.getInt("partiteGiocate"), rs.getInt("golSegnati"),
+                        rs.getInt("golSubiti"), new Calciatore(rs.getInt("idCalciatore"),
+                        rs.getString("nome_calciatore"), rs.getString("cognome"),
+                        rs.getString("Piede"), rs.getString("Sesso").charAt(0),
+                        rs.getDate("dataNascita").toLocalDate(), dataRitiro),
+                        new Squadra(rs.getInt("idSquadra"), rs.getString("nome_squadra"),
+                                rs.getString("categoria").charAt(0), rs.getInt("annoFondazione"),
+                                new Nazionalita(rs.getString("nome_nazionalità"),
+                                        rs.getString("continente")))));
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (visualizzaSquadreCalciatore != null)
+                    visualizzaSquadreCalciatore.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+        return militanza;
+    }
+
+    public void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine,
+                                 int golFatti, Integer golSubiti) throws Exception {
+        PreparedStatement inserisciSquadra = null;
+        try {
+            String query = "INSERT INTO Militanza (Calciatore, Squadra, dataInizio, dataFine, golSegnati, golSubiti) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
+            inserisciSquadra = connection.prepareStatement(query);
+            inserisciSquadra.setInt(1, idCalciatore);
+            inserisciSquadra.setInt(2, idSquadra);
+            inserisciSquadra.setDate(3, Date.valueOf(dataInizio));
+            if (dataFine != null)
+                inserisciSquadra.setDate(4, Date.valueOf(dataFine));
+            else
+                inserisciSquadra.setNull(4, Types.DATE);
+            inserisciSquadra.setInt(5, golFatti);
+            if (golSubiti != null)
+                inserisciSquadra.setInt(6, golSubiti);
+            else
+                inserisciSquadra.setNull(6, Types.INTEGER);
+            inserisciSquadra.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+            throw new Exception();
+        } finally {
+            try {
+                if (inserisciSquadra != null)
+                    inserisciSquadra.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+    }
+
+    public void eliminaSquadra(int idCalciatore, ArrayList<Integer> idSquadra){
+        PreparedStatement eliminaSquadra = null;
+        try{
+            String query = "DELETE FROM Militanza " +
+                    "WHERE Calciatore = ? AND Squadra = ?";
+            eliminaSquadra = connection.prepareStatement(query);
+            for(int id: idSquadra) {
+                eliminaSquadra.setInt(1, idCalciatore);
+                eliminaSquadra.setInt(2, id);
+                eliminaSquadra.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if (eliminaSquadra != null)
+                    eliminaSquadra.close();
             } catch (SQLException e) {
                 System.out.println("Errore: " + e.getMessage());
             }

@@ -154,6 +154,29 @@ public class AggiungiCalciatore {
             }
         });
 
+        radioButtonMaschio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonMaschio.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('M'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+        radioButtonFemmina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonFemmina.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('F'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+
         textDataNascita.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -208,6 +231,11 @@ public class AggiungiCalciatore {
             public void actionPerformed(ActionEvent e) {
                 labelDataRitiro.setVisible(true);
                 textDataRitiro.setVisible(true);
+                labelSquadraAttuale.setVisible(false);
+                radioButtonNo2.setVisible(false);
+                radioButtonSi2.setVisible(false);
+                labelDataFine.setVisible(true);
+                textDataFine.setVisible(true);
             }
         });
         radioButtonNo.addActionListener(new ActionListener() {
@@ -216,6 +244,12 @@ public class AggiungiCalciatore {
                 labelDataRitiro.setVisible(false);
                 textDataRitiro.setVisible(false);
                 textDataRitiro.setText("");
+                labelSquadraAttuale.setVisible(true);
+                radioButtonNo2.setVisible(true);
+                radioButtonSi2.setVisible(true);
+                labelDataFine.setVisible(false);
+                textDataFine.setVisible(false);
+                textDataFine.setText("");
             }
         });
         DefaultListModel modelRuolo = new DefaultListModel();
@@ -279,7 +313,7 @@ public class AggiungiCalciatore {
                     }
                 else
                     dataRitiro = null;
-                if (radioButtonNo2.isSelected())
+                if (radioButtonNo2.isSelected() || radioButtonSi.isSelected())
                     try {
                         dataFine = LocalDate.parse(textDataFine.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     } catch (Exception exception) {

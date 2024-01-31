@@ -55,6 +55,8 @@ public interface ImplementazioneDAO {
      */
     ArrayList<Squadra> getSquadre();
 
+    ArrayList<Squadra> getSquadreCategoria(char categoria);
+
     /**
      * Gets calciatori.
      *
@@ -73,7 +75,7 @@ public interface ImplementazioneDAO {
      */
     DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                     String piede, Integer eta, String ruolo, Integer golFatti, Integer golSubiti,
-                                    LocalDate dataRitiro);
+                                    LocalDate dataRitiro) throws Exception;
 
     /**
      * Aggiungi calciatore.
@@ -168,5 +170,9 @@ public interface ImplementazioneDAO {
      * @param idCalciatore the id calciatore
      */
     void eliminaCalciatore(ArrayList<Integer> idCalciatore);
+
+    ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore);
+    void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int golFatti, Integer golSubiti) throws Exception;
+    void eliminaSquadra(int idCalciatore, ArrayList<Integer> squadra);
 
 }

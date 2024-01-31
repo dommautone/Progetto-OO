@@ -1,97 +1,99 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8­ûè«Ô1
+java:S3740"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8¼Åã€Ö1
 Q
-java:S3740!"/Provide the parametrized type for this generic.(Íó¸Ôøÿÿÿÿ8­ûè«Ô1
+java:S3740!"/Provide the parametrized type for this generic.(Íó¸Ôøÿÿÿÿ8½Åã€Ö1
 Q
-java:S3740""/Provide the parametrized type for this generic.(èïÍ¶şÿÿÿÿ8­ûè«Ô1
+java:S3740""/Provide the parametrized type for this generic.(èïÍ¶şÿÿÿÿ8¾Åã€Ö1
 L
-java:S3740#"/Provide the parametrized type for this generic.(ï—î8­ûè«Ô1
+java:S3740#"/Provide the parametrized type for this generic.(ï—î8¾Åã€Ö1
 M
-java:S3740İ"/Provide the parametrized type for this generic.(ûï®€8­ûè«Ô1
+java:S3740ÿ"/Provide the parametrized type for this generic.(ûï®€8 »©„Ö1
 M
-java:S3740İ"/Provide the parametrized type for this generic.(ûï®€8­ûè«Ô1
+java:S3740ÿ"/Provide the parametrized type for this generic.(ûï®€8 »©„Ö1
 R
-java:S3740Ş"/Provide the parametrized type for this generic.(Ê‘´Ãùÿÿÿÿ8­ûè«Ô1
+java:S3740€"/Provide the parametrized type for this generic.(Ê‘´Ãùÿÿÿÿ8 »©„Ö1
 R
-java:S3740Ş"/Provide the parametrized type for this generic.(Ê‘´Ãùÿÿÿÿ8­ûè«Ô1
+java:S3740€"/Provide the parametrized type for this generic.(Ê‘´Ãùÿÿÿÿ8 »©„Ö1
 i
-java:S1192“"KDefine a constant instead of duplicating this literal "dd/MM/yyyy" 4 times.(¹„ˆñ8·ûè«Ô1
+java:S1192µ"KDefine a constant instead of duplicating this literal "dd/MM/yyyy" 4 times.(¹„ˆñ8¡»©„Ö1
+K
+java:S1604"(Make this anonymous inner class a lambda(ˆò€ıÿÿÿÿ8¡»©„Ö1
 F
-java:S1604Î"(Make this anonymous inner class a lambda(§Úğ8¿ûè«Ô1
+java:S1604¨"(Make this anonymous inner class a lambda(ÖÛ…š8¡»©„Ö1
+F
+java:S1604å"(Make this anonymous inner class a lambda(§Úğ8¢»©„Ö1
 K
-java:S1604Õ"(Make this anonymous inner class a lambda(ßÌûÛÿÿÿÿÿ8¿ûè«Ô1
+java:S1604ñ"(Make this anonymous inner class a lambda(ßÌûÛÿÿÿÿÿ8¢»©„Ö1
 K
-java:S1604î"(Make this anonymous inner class a lambda(¿•¹†úÿÿÿÿ8¿ûè«Ô1
+java:S1604"(Make this anonymous inner class a lambda(¿•¹†úÿÿÿÿ8¢»©„Ö1
 K
-java:S1604ö"(Make this anonymous inner class a lambda(ùæœ·ùÿÿÿÿ8Àûè«Ô1
+java:S1604˜"(Make this anonymous inner class a lambda(ùæœ·ùÿÿÿÿ8¢»©„Ö1
 K
-java:S1604ı"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8Àûè«Ô1
+java:S1604Ÿ"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8¢»©„Ö1
 K
-java:S1604…"(Make this anonymous inner class a lambda(ÉÇûÕúÿÿÿÿ8Àûè«Ô1
+java:S1604§"(Make this anonymous inner class a lambda(ÉÇûÕúÿÿÿÿ8¢»©„Ö1
 s
-java:S1104d"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8Åûè«Ô1
+java:S1104d"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8ÂÅã€Ö1
 M
-java:S1444d"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8Æûè«Ô1
+java:S1444d"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8ÄÅã€Ö1
 t
-java:S3776l"RRefactor this method to reduce its Cognitive Complexity from 48 to the 15 allowed.(Œõúûÿÿÿÿ8Åƒé«Ô1
+java:S3776l"RRefactor this method to reduce its Cognitive Complexity from 59 to the 15 allowed.(Œõúûÿÿÿÿ8úÆã€Ö1
 D
-java:S3010m""Remove this assignment of "frame".(×İ½ùÿÿÿÿ8Æƒé«Ô1
+java:S3010m""Remove this assignment of "frame".(×İ½ùÿÿÿÿ8úÆã€Ö1
 f
-java:S3252o"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8Íƒé«Ô1
+java:S3252o"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8şÆã€Ö1
 N
-java:S1068"1Remove this unused "labelAggiungi" private field.(ƒ·ÖÜ8ø–ÈÏÕ1
+java:S1068"1Remove this unused "labelAggiungi" private field.(ƒ·ÖÜ8½Çã€Ö1
 S
-java:S1068$"1Remove this unused "panelAggiungi" private field.(ô¹É€ÿÿÿÿÿ8ù–ÈÏÕ1
+java:S1068$"1Remove this unused "panelAggiungi" private field.(ô¹É€ÿÿÿÿÿ8½Çã€Ö1
 J
-java:S1068%"-Remove this unused "panelNome" private field.(²ƒÉ³8ú–ÈÏÕ1
+java:S1068%"-Remove this unused "panelNome" private field.(²ƒÉ³8½Çã€Ö1
 J
-java:S1068&"-Remove this unused "labelNome" private field.(¬Ñ‚—8ü–ÈÏÕ1
+java:S1068&"-Remove this unused "labelNome" private field.(¬Ñ‚—8½Çã€Ö1
 M
-java:S1068'"0Remove this unused "panelCognome" private field.(ö‘¶é8ı–ÈÏÕ1
+java:S1068'"0Remove this unused "panelCognome" private field.(ö‘¶é8½Çã€Ö1
 L
-java:S1068("0Remove this unused "labelCognome" private field.(›ş×8ÿ–ÈÏÕ1
+java:S1068("0Remove this unused "labelCognome" private field.(›ş×8½Çã€Ö1
 K
-java:S1068)".Remove this unused "panelPiede" private field.(Óõ› 8€—ÈÏÕ1
+java:S1068)".Remove this unused "panelPiede" private field.(Óõ› 8½Çã€Ö1
 K
-java:S1068*".Remove this unused "labelPiede" private field.(Ò¾Ş„8—ÈÏÕ1
+java:S1068*".Remove this unused "labelPiede" private field.(Ò¾Ş„8½Çã€Ö1
 P
-java:S1068+".Remove this unused "panelSesso" private field.(ñŸö§ÿÿÿÿÿ8ˆ—ÈÏÕ1
+java:S1068+".Remove this unused "panelSesso" private field.(ñŸö§ÿÿÿÿÿ8½Çã€Ö1
 P
-java:S1068,".Remove this unused "labelSesso" private field.(ü¬ò¨üÿÿÿÿ8‹—ÈÏÕ1
+java:S1068,".Remove this unused "labelSesso" private field.(ü¬ò¨üÿÿÿÿ8¾Çã€Ö1
 V
-java:S1068-"4Remove this unused "panelDataNascita" private field.(ê«äëøÿÿÿÿ8Œ—ÈÏÕ1
+java:S1068-"4Remove this unused "panelDataNascita" private field.(ê«äëøÿÿÿÿ8¾Çã€Ö1
 V
-java:S1068."4Remove this unused "labelDataNascita" private field.(äú£Üúÿÿÿÿ8—ÈÏÕ1
+java:S1068."4Remove this unused "labelDataNascita" private field.(äú£Üúÿÿÿÿ8¾Çã€Ö1
 U
-java:S10682"3Remove this unused "panelDataRitiro" private field.(½Æ½Ëşÿÿÿÿ8—ÈÏÕ1
+java:S10682"3Remove this unused "panelDataRitiro" private field.(½Æ½Ëşÿÿÿÿ8¾Çã€Ö1
 K
-java:S10684".Remove this unused "panelRuolo" private field.(º¹ÎŸ8—ÈÏÕ1
+java:S10684".Remove this unused "panelRuolo" private field.(º¹ÎŸ8¾Çã€Ö1
 P
-java:S10685".Remove this unused "labelRuolo" private field.(Œß—Âùÿÿÿÿ8‘—ÈÏÕ1
+java:S10685".Remove this unused "labelRuolo" private field.(Œß—Âùÿÿÿÿ8¾Çã€Ö1
 Q
-java:S10686"4Remove this unused "panelNazionalita" private field.(ôÏì¨8›‹ËÏÕ1
+java:S10686"4Remove this unused "panelNazionalita" private field.(ôÏì¨8¾Çã€Ö1
 P
-java:S10687"4Remove this unused "labelNazionalita" private field.(Ü 8òÖÌÏÕ1
+java:S10687"4Remove this unused "labelNazionalita" private field.(Ü 8¾Çã€Ö1
 Q
-java:S10688"/Remove this unused "panelInivio" private field.(À°»éıÿÿÿÿ8•—ÈÏÕ1
+java:S10688"/Remove this unused "panelInivio" private field.(À°»éıÿÿÿÿ8¾Çã€Ö1
 R
-java:S10689"0Remove this unused "labelSquadra" private field.(ê¬…ÿşÿÿÿÿ8——ÈÏÕ1
+java:S10689"0Remove this unused "labelSquadra" private field.(ê¬…ÿşÿÿÿÿ8¾Çã€Ö1
 R
-java:S1068:"0Remove this unused "panelSquadra" private field.(Ï”«Æøÿÿÿÿ8™—ÈÏÕ1
+java:S1068:"0Remove this unused "panelSquadra" private field.(Ï”«Æøÿÿÿÿ8¾Çã€Ö1
 U
-java:S1068;"3Remove this unused "labelRitiroSiNo" private field.(§ˆô˜úÿÿÿÿ8š—ÈÏÕ1
+java:S1068;"3Remove this unused "labelRitiroSiNo" private field.(§ˆô˜úÿÿÿÿ8¾Çã€Ö1
 U
-java:S1068<"3Remove this unused "scrollPaneRuolo" private field.(ÙÔ éşÿÿÿÿ8œ—ÈÏÕ1
+java:S1068<"3Remove this unused "scrollPaneRuolo" private field.(ÙÔ éşÿÿÿÿ8¾Çã€Ö1
 [
-java:S1068="9Remove this unused "scrollPaneNazionalita" private field.(üÓ¬óüÿÿÿÿ8äµÍÏÕ1
+java:S1068="9Remove this unused "scrollPaneNazionalita" private field.(üÓ¬óüÿÿÿÿ8¾Çã€Ö1
 S
-java:S1068>"1Remove this unused "panelDataFine" private field.(¡ŠÛŒûÿÿÿÿ8—ÈÏÕ1
-Y
-java:S1068?"7Remove this unused "labelSquadraAttuale" private field.(Ò¥†èüÿÿÿÿ8Ÿ—ÈÏÕ1
+java:S1068>"1Remove this unused "panelDataFine" private field.(¡ŠÛŒûÿÿÿÿ8¾Çã€Ö1
 P
-java:S1068@"3Remove this unused "panelDataInizio" private field.(¡ğáù8 —ÈÏÕ1
+java:S1068@"3Remove this unused "panelDataInizio" private field.(¡ğáù8¿Çã€Ö1
 U
-java:S1068A"3Remove this unused "labelDataInizio" private field.(ÿäìùùÿÿÿÿ8¡—ÈÏÕ1
+java:S1068A"3Remove this unused "labelDataInizio" private field.(ÿäìùùÿÿÿÿ8¿Çã€Ö1
 N
-java:S1068I"1Remove this unused "panelIndietro" private field.(½¸å¥8¢—ÈÏÕ1
+java:S1068I"1Remove this unused "panelIndietro" private field.(½¸å¥8¿Çã€Ö1

@@ -103,6 +103,8 @@ public class Controller {
      */
     public ArrayList<Squadra> getSquadre(){return implementazionePostgresDAO.getSquadre();}
 
+    public ArrayList<Squadra> getSquadreCategoria(char categoria){return implementazionePostgresDAO.getSquadreCategoria(categoria);}
+
     /**
      * Get calciatori default table model.
      *
@@ -121,9 +123,14 @@ public class Controller {
      */
     public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                            String piede, Integer eta, String ruolo, Integer golFatti, Integer golSubiti,
-                                           LocalDate dataRitiro){
-        return implementazionePostgresDAO.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta, ruolo,
-                golFatti, golSubiti, dataRitiro);
+                                           LocalDate dataRitiro) throws CalciatoriNonTrovatiException {
+
+        try {
+            return implementazionePostgresDAO.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta, ruolo,
+                    golFatti, golSubiti, dataRitiro);
+        } catch (Exception e) {
+            throw new CalciatoriNonTrovatiException();
+        }
     }
 
     /**
@@ -178,6 +185,15 @@ public class Controller {
                                    String squadra){
         implementazionePostgresDAO.modificaCalciatore(idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita,
                 dataRitiro, golFatti, golSubiti, squadra);
+    }
+
+    public boolean controlloRuoloPortiere(int idCalciatore) {
+        ArrayList<Ha> ruoli = visualizzaRuoloCalciatore(idCalciatore);
+        for (Ha ruolo : ruoli) {
+            if (ruolo.getRuolo().getPosizione().equals("Portiere"))
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -257,6 +273,22 @@ public class Controller {
      */
     public void eliminaCalciatore(ArrayList<Integer> idCalciatore){
         implementazionePostgresDAO.eliminaCalciatore(idCalciatore);
+    }
+
+    public ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore){
+        return implementazionePostgresDAO.visualizzaSquadreCalciatore(idCalciatore);
+    }
+
+    public void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int golFatti, Integer golSubiti) throws SquadraGiàInseritaException{
+        try{
+            implementazionePostgresDAO.inserisciSquadra(idCalciatore, idSquadra, dataInizio, dataFine, golFatti,  golSubiti);
+        } catch (Exception e) {
+            throw new SquadraGiàInseritaException();
+        }
+    }
+
+    public void eliminaSquadra(int idCalciatore, ArrayList<Integer> idSquadra){
+        implementazionePostgresDAO.eliminaSquadra(idCalciatore, idSquadra);
     }
 
 }

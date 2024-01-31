@@ -1,5 +1,6 @@
 package gui;
 
+import controller.CalciatoriNonTrovatiException;
 import controller.Controller;
 
 import javax.swing.*;
@@ -57,8 +58,15 @@ public class EliminaCalciatore {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
         tableGiocatori.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
-        DefaultTableModel tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
-                ruolo, golFatti, golSubiti, dataRitiro);
+        DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore",
+                "Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra",
+                "Nazionalita", "Ruolo", "Gol fatti", "Gol subiti"});
+        try {
+             tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
+                    ruolo, golFatti, golSubiti, dataRitiro);
+        } catch (CalciatoriNonTrovatiException e) {
+            JOptionPane.showMessageDialog(null, "Calciatori non trovati");
+        }
         tableGiocatori.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         tableGiocatori.setModel(tableModel);
 
@@ -79,6 +87,8 @@ public class EliminaCalciatore {
                 frame.dispose();
             }
         });
+
+        DefaultTableModel finalTableModel = tableModel;
         buttonElimina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -94,11 +104,14 @@ public class EliminaCalciatore {
                 JOptionPane.showMessageDialog(null, "Calciatore eliminato con successo");
                 int indice[] = tableGiocatori.getSelectedRows();
                 for (int riga : indice) {
-                    tableModel.removeRow(riga);
+                    finalTableModel.removeRow(riga);
                 }
-                tableGiocatori.setModel(controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
-                        ruolo, golFatti, golSubiti, dataRitiro));
-
+                try {
+                    tableGiocatori.setModel(controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
+                            ruolo, golFatti, golSubiti, dataRitiro));
+                } catch (CalciatoriNonTrovatiException ex) {
+                    JOptionPane.showMessageDialog(null, "Calciatori non trovati");
+                }
                 tableGiocatori.getColumnModel().getColumn(10).setPreferredWidth(350);
                 tableGiocatori.getColumnModel().getColumn(8).setPreferredWidth(150);
                 tableGiocatori.getColumnModel().getColumn(0).setMaxWidth(0);

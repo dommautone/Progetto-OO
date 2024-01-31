@@ -212,6 +212,32 @@ public class RicercaAmministratore {
                     radioButtonMaschio.setEnabled(false);
                     radioButtonFemmina.setEnabled(false);
                     buttonGroupSesso.clearSelection();
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadre())
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+        radioButtonMaschio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonMaschio.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('M'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+        radioButtonFemmina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonFemmina.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('F'))
+                        comboBoxSquadra.addItem(squadra.getNome());
                 }
             }
         });

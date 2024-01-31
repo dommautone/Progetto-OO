@@ -1,28 +1,28 @@
 
 J
-java:S1604J"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8÷©ÆÎÕ1
+java:S1604R"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8Üº©„Ö1
 E
-java:S1604R"(Make this anonymous inner class a lambda(•¯‘­8ø©ÆÎÕ1
+java:S1604\"(Make this anonymous inner class a lambda(•¯‘­8Üº©„Ö1
 s
-java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8ø©ÆÎÕ1
+java:S1104"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8Üº©„Ö1
 M
-java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8ù©ÆÎÕ1
-^	java:S1070"BConstructor has 13 parameters, which is greater than 7 authorized.(íïì¦8 «ÆÎÕ1
+java:S1444"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8Üº©„Ö1
+^	java:S1071"BConstructor has 13 parameters, which is greater than 7 authorized.(íïì¦8òº©„Ö1
 ?
-java:S30103""Remove this assignment of "frame".(Ò÷®8¦«ÆÎÕ1
+java:S30104""Remove this assignment of "frame".(Ò÷®8óº©„Ö1
 f
-java:S32525"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8¬«ÆÎÕ1
+java:S32526"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ôº©„Ö1
 _
-java:S32529"=Use static access with "java.awt.Frame" for "MAXIMIZED_BOTH".(Ê¤³ñúÿÿÿÿ8±«ÆÎÕ1
+java:S3252:"=Use static access with "java.awt.Frame" for "MAXIMIZED_BOTH".(Ê¤³ñúÿÿÿÿ8ôº©„Ö1
 R
-java:S2209N"5Change this instance-reference to a static reference.(‘¬°8Ä«ÆÎÕ1
+java:S2209V"5Change this instance-reference to a static reference.(‘¬°8úº©„Ö1
 L
-java:S1197_"*Move the array designators [] to the type.(’öèÜüÿÿÿÿ8Ñ«ÆÎÕ1
+java:S1197i"*Move the array designators [] to the type.(’öèÜüÿÿÿÿ8ıº©„Ö1
 T
-java:S1068"2Remove this unused "panelGiocatori" private field.(Ïˆ¿ÿşÿÿÿÿ8¾ÂäÏÕ1
+java:S1068"2Remove this unused "panelGiocatori" private field.(Ïˆ¿ÿşÿÿÿÿ8€»©„Ö1
 R
-java:S1068"0Remove this unused "panelElimina" private field.(™ãğğùÿÿÿÿ8¿ÂäÏÕ1
+java:S1068"0Remove this unused "panelElimina" private field.(™ãğğùÿÿÿÿ8€»©„Ö1
 R
-java:S1068"5Remove this unused "scrollpaneTabella" private field.(£ñÀ’8¿ÂäÏÕ1
+java:S1068"5Remove this unused "scrollpaneTabella" private field.(£ñÀ’8€»©„Ö1
 N
-java:S1068"1Remove this unused "panelIndietro" private field.(½¸å¥8¿ÂäÏÕ1
+java:S1068"1Remove this unused "panelIndietro" private field.(½¸å¥8€»©„Ö1

@@ -188,6 +188,9 @@ public class RicercaUtente {
                 } else {
                     comboBoxSquadra.setEnabled(false);
                     comboBoxSquadra.setSelectedIndex(0);
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadre())
+                        comboBoxSquadra.addItem(squadra.getNome());
                 }
             }
         });
@@ -212,6 +215,28 @@ public class RicercaUtente {
                     radioButtonMaschio.setEnabled(false);
                     radioButtonFemmina.setEnabled(false);
                     buttonGroupSesso.clearSelection();
+                }
+            }
+        });
+        radioButtonMaschio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonMaschio.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('M'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+        radioButtonFemmina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonFemmina.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('F'))
+                        comboBoxSquadra.addItem(squadra.getNome());
                 }
             }
         });
@@ -414,7 +439,6 @@ public class RicercaUtente {
                 frame.setVisible(false);
             }
         });
-
     }
 
 }
