@@ -2,6 +2,8 @@ package gui;
 
 import controller.Controller;
 import model.Ha;
+import model.Militanza;
+import model.Squadra;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,12 +22,14 @@ public class ModificaSquadra {
     private JButton buttonEliminaSquadra;
     private JPanel panelIndietro;
     private JButton buttonIndietro;
+    private Controller controller;
 
     public static JFrame frame;
     /**
      * La gui Modifica Squadra permette di modificare la squadra di un calciatore se si è amministratori.
      */
-    public ModificaSquadra(JFrame frameChiamante, Controller controller, int idCalciatore, int idSquadra, String nomeSquadra, String nome, String cognome) {
+    public ModificaSquadra(JFrame frameChiamante, Controller controller, int idCalciatore, String nome, String cognome,
+                           char sesso) {
         frame = new JFrame("Modifica squadra");
         frame.setContentPane(panelModificaSquadra);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,6 +50,10 @@ public class ModificaSquadra {
         tableModificaSquadra.getColumnModel().getColumn(2).setMinWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(2).setPreferredWidth(0);
 
+        for (Militanza militanza : controller.visualizzaSquadreCalciatore(idCalciatore)) {
+            tableModel.addRow(new Object[]{idCalciatore, nome + " " + cognome, militanza.getSquadra().getIdSquadra(),
+                    militanza.getSquadra().getNome()});
+        }
 
         buttonAggiungiSquadra.addActionListener(new ActionListener() {
             @Override
