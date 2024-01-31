@@ -153,8 +153,6 @@ V
 &src/main/java/gui/RicercaModifica.form,d\e\de4e41bc58d99dd39dafd0e605c7a417670d60d1
 T
 $src/main/java/gui/ModificaRuolo.form,8\0\8012bd4571681fbe175f6283f6898024d31fc037
-[
-+src/main/java/gui/ModificaNazionalità.form,4\0\40f01324dc794b238ed145baf877ee0a2a751490
 i
 9src/main/java/PostgresDAO/ImplementazionePostgresDAO.java,a\3\a3f5a671ca57257fc147fec2b42b6af6c6781203
 V
@@ -199,8 +197,6 @@ n
 >src/main/java/controller/CategoriaNonCorrispondeException.java,f\f\ff697a15aef68d459426976f8f4995c7bd563493
 Y
 )src/main/java/DAO/ImplementazioneDAO.java,3\e\3eaa40d1d30dd219d8407565844661faffcdda89
-[
-+src/main/java/gui/ModificaNazionalità.java,c\3\c3c246762388d0b496ccf274bfb4e0e83a827647
 d
 4src/main/java/controller/PasswordCortaException.java,0\b\0be1a80696d70a890353b0f8fa92ea2ad0e11d55
 d
@@ -223,3 +219,7 @@ i
 9src/main/java/postgresDAO/ImplementazionePostgresDAO.java,b\9\b9cdaad0cf175900651613aab740616ab685f311
 Z
 *src/main/java/gui/ModificaNazionalita.form,4\a\4a99401717fa33928881f4ca55fba1a2315e12f0
+V
+&src/main/java/gui/ModificaSquadra.java,2\9\29e20a67a433c6d40178b0a36f619f2de3a16667
+V
+&src/main/java/gui/ModificaSquadra.form,5\b\5bf7b392ba405ecf4f6f7dad51cd12e7c395fc97

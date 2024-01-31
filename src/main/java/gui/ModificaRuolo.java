@@ -2,7 +2,6 @@ package gui;
 
 import controller.Controller;
 import controller.RuoloGiàInseritoException;
-import model.Appartiene;
 import model.Ha;
 import model.Ruolo;
 
@@ -22,7 +21,7 @@ public class ModificaRuolo {
     private JButton buttonAggiungiRuolo;
     private JButton buttonEliminaRuolo;
     private JButton buttonIndietro;
-    private JPanel panelModificaRUolo;
+    private JPanel panelModificaRuolo;
     private JScrollPane scrollPaneModificaRuolo;
     private JPanel panelAggiungiRuolo;
     private JPanel panelEliminaRuolo;
