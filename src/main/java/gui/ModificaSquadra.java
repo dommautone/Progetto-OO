@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The type Modifica squadra.
+ */
 public class ModificaSquadra {
     private JPanel panel;
     private JTable tableModificaSquadra;
@@ -24,9 +27,18 @@ public class ModificaSquadra {
 
     private Controller controller;
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
+
     /**
      * La gui Modifica Squadra permette di modificare la squadra di un calciatore se si è amministratori.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param idCalciatore   the id calciatore
+     * @param sesso          the sesso
      */
     public ModificaSquadra(JFrame frameChiamante, Controller controller, int idCalciatore, char sesso) {
         frame = new JFrame("Modifica squadra");
@@ -56,6 +68,7 @@ public class ModificaSquadra {
         tableModificaSquadra.getColumnModel().getColumn(2).setMinWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(2).setPreferredWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tableModificaSquadra.getColumnModel().getColumn(1).setPreferredWidth(85);
 
         for (Militanza militanza : controller.visualizzaSquadreCalciatore(idCalciatore)) {
             tableModel.addRow(new Object[]{idCalciatore, militanza.getCalciatore().getNome()+ " " +

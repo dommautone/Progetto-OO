@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- La classe Controller rappresentea il controller del programma
+ * La classe Controller rappresentea il controller del programma
  */
 public class Controller {
     private Amministratore amministratore;
@@ -40,7 +40,6 @@ public class Controller {
      * @throws UsernameCortoException username corto exception
      * @throws AlreadyExistsExeption  already exists exeption
      */
-
     public Amministratore registrazione(String username, String password) throws PasswordCortaException,
             UsernameCortoException, AlreadyExistsExeption{
          if (password.length() < 8)
@@ -66,7 +65,6 @@ public class Controller {
      * @throws UtenteNonRegistratoExeption utente non registrato exeption
      * @throws PasswordNonValidaExeption   password non valida exeption
      */
-
     public void login(String username, String password) throws DatiNonValidiExeption, UtenteNonRegistratoExeption,
             PasswordNonValidaExeption {
         if(username.length() < 4 || password.length() < 8)
@@ -103,9 +101,23 @@ public class Controller {
      */
     public ArrayList<Squadra> getSquadre(){return implementazionePostgresDAO.getSquadre();}
 
+    /**
+     * Get squadre categoria array list.
+     *
+     * @param categoria the categoria
+     * @return the array list
+     */
     public ArrayList<Squadra> getSquadreCategoria(char categoria){return implementazionePostgresDAO.getSquadreCategoria(categoria);}
 
+    /**
+     * Get id squadra int.
+     *
+     * @param nomeSquadra the nome squadra
+     * @param categoria   the categoria
+     * @return the int
+     */
     public int getIdSquadra(String nomeSquadra, char categoria){return implementazionePostgresDAO.getIdSquadra(nomeSquadra, categoria);}
+
     /**
      * Get calciatori default table model.
      *
@@ -121,6 +133,7 @@ public class Controller {
      * @param golSubiti   i gol subiti
      * @param dataRitiro  la data ritiro
      * @return the default table model
+     * @throws CalciatoriNonTrovatiException the calciatori non trovati exception
      */
     public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                            String piede, Integer eta, String ruolo, Integer golFatti, Integer golSubiti,
@@ -148,6 +161,8 @@ public class Controller {
      * @param dataRitiro  la data ritiro
      * @param dataInizio  la data inizio
      * @param dataFine    la data fine
+     * @throws CategoriaNonCorrispondeException the categoria non corrisponde exception
+     * @throws DataNonCoerenteException         the data non coerente exception
      */
     public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalita,
                                    String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
@@ -180,17 +195,18 @@ public class Controller {
     /**
      * Modifica calciatore.
      *
-     * @param idCalciatore l' id calciatore
-     * @param idSquadra    l' id squadra
-     * @param nome         il nome
-     * @param cognome      il cognome
-     * @param piede        il piede
-     * @param sesso        il sesso
-     * @param dataNascita  la data nascita
-     * @param dataRitiro   la data ritiro
-     * @param golFatti     i gol fatti
-     * @param golSubiti    i gol subiti
-     * @param squadra      la squadra
+     * @param idCalciatore   l' id calciatore
+     * @param idSquadra      l' id squadra
+     * @param nome           il nome
+     * @param cognome        il cognome
+     * @param piede          il piede
+     * @param sesso          il sesso
+     * @param dataNascita    la data nascita
+     * @param dataRitiro     la data ritiro
+     * @param partiteGiocate the partite giocate
+     * @param golFatti       i gol fatti
+     * @param golSubiti      i gol subiti
+     * @param squadra        la squadra
      */
     public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso,
                                    LocalDate dataNascita, LocalDate dataRitiro, int partiteGiocate, int golFatti,
@@ -199,6 +215,12 @@ public class Controller {
                 dataRitiro, partiteGiocate, golFatti, golSubiti, squadra);
     }
 
+    /**
+     * Controllo ruolo portiere boolean.
+     *
+     * @param idCalciatore the id calciatore
+     * @return the boolean
+     */
     public boolean controlloRuoloPortiere(int idCalciatore) {
         ArrayList<Ha> ruoli = visualizzaRuoloCalciatore(idCalciatore);
         for (Ha ruolo : ruoli) {
@@ -287,10 +309,30 @@ public class Controller {
         implementazionePostgresDAO.eliminaCalciatore(idCalciatore);
     }
 
+    /**
+     * Visualizza squadre calciatore array list.
+     *
+     * @param idCalciatore the id calciatore
+     * @return the array list
+     */
     public ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore){
         return implementazionePostgresDAO.visualizzaSquadreCalciatore(idCalciatore);
     }
 
+    /**
+     * Inserisci squadra.
+     *
+     * @param idCalciatore   the id calciatore
+     * @param sesso          the sesso
+     * @param nomeSquadra    the nome squadra
+     * @param dataInizio     the data inizio
+     * @param dataFine       the data fine
+     * @param partiteGiocate the partite giocate
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @throws SquadraGiàInseritaException the squadra già inserita exception
+     * @throws DataNonCoerenteException    the data non coerente exception
+     */
     public void inserisciSquadra(int idCalciatore, char sesso, String nomeSquadra, LocalDate dataInizio, LocalDate dataFine,
                                  int partiteGiocate, int golFatti, Integer golSubiti) throws SquadraGiàInseritaException,
             DataNonCoerenteException{
@@ -307,6 +349,12 @@ public class Controller {
         }
     }
 
+    /**
+     * Elimina squadra.
+     *
+     * @param idCalciatore the id calciatore
+     * @param idSquadra    the id squadra
+     */
     public void eliminaSquadra(int idCalciatore, ArrayList<Integer> idSquadra){
         implementazionePostgresDAO.eliminaSquadra(idCalciatore, idSquadra);
     }

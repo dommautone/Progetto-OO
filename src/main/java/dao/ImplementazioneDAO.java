@@ -55,7 +55,21 @@ public interface ImplementazioneDAO {
      */
     ArrayList<Squadra> getSquadre();
 
+    /**
+     * Gets squadre categoria.
+     *
+     * @param categoria the categoria
+     * @return the squadre categoria
+     */
     ArrayList<Squadra> getSquadreCategoria(char categoria);
+
+    /**
+     * Gets id squadra.
+     *
+     * @param nomeSquadra the nome squadra
+     * @param categoria   the categoria
+     * @return the id squadra
+     */
     int getIdSquadra(String nomeSquadra, char categoria);
 
     /**
@@ -73,6 +87,7 @@ public interface ImplementazioneDAO {
      * @param golSubiti   the gol subiti
      * @param dataRitiro  the data ritiro
      * @return the calciatori
+     * @throws Exception the exception
      */
     DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                     String piede, Integer eta, String ruolo, Integer golFatti, Integer golSubiti,
@@ -84,7 +99,7 @@ public interface ImplementazioneDAO {
      * @param nome        the nome
      * @param cognome     the cognome
      * @param sesso       the sesso
-     * @param squadra     the squadra
+     * @param idSquadra   the id squadra
      * @param nazionalita the nazionalità
      * @param piede       the piede
      * @param dataNascita the data nascita
@@ -92,6 +107,7 @@ public interface ImplementazioneDAO {
      * @param dataRitiro  the data ritiro
      * @param dataInizio  the data inizio
      * @param dataFine    the data fine
+     * @throws Exception the exception
      */
     void aggiungiCalciatore(String nome, String cognome, char sesso, int idSquadra, ArrayList<String> nazionalita,
                             String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
@@ -100,17 +116,18 @@ public interface ImplementazioneDAO {
     /**
      * Modifica calciatore.
      *
-     * @param idCalciatore the id calciatore
-     * @param idSquadra    the id squadra
-     * @param nome         the nome
-     * @param cognome      the cognome
-     * @param piede        the piede
-     * @param sesso        the sesso
-     * @param dataNascita  the data nascita
-     * @param dataRitiro   the data ritiro
-     * @param golFatti     the gol fatti
-     * @param golSubiti    the gol subiti
-     * @param squadra      the squadra
+     * @param idCalciatore   the id calciatore
+     * @param idSquadra      the id squadra
+     * @param nome           the nome
+     * @param cognome        the cognome
+     * @param piede          the piede
+     * @param sesso          the sesso
+     * @param dataNascita    the data nascita
+     * @param dataRitiro     the data ritiro
+     * @param partiteGiocate the partite giocate
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @param squadra        the squadra
      */
     void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso,
                             LocalDate dataNascita, LocalDate dataRitiro, int partiteGiocate, int golFatti,
@@ -173,9 +190,35 @@ public interface ImplementazioneDAO {
      */
     void eliminaCalciatore(ArrayList<Integer> idCalciatore);
 
+    /**
+     * Visualizza squadre calciatore array list.
+     *
+     * @param idCalciatore the id calciatore
+     * @return the array list
+     */
     ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore);
+
+    /**
+     * Inserisci squadra.
+     *
+     * @param idCalciatore   the id calciatore
+     * @param idSquadra      the id squadra
+     * @param dataInizio     the data inizio
+     * @param dataFine       the data fine
+     * @param partiteGiocate the partite giocate
+     * @param golFatti       the gol fatti
+     * @param golSubiti      the gol subiti
+     * @throws Exception the exception
+     */
     void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int partiteGiocate,
                           int golFatti, Integer golSubiti) throws Exception;
-    void eliminaSquadra(int idCalciatore, ArrayList<Integer> squadra);
+
+    /**
+     * Elimina squadra.
+     *
+     * @param idCalciatore the id calciatore
+     * @param idSquadra      the squadra
+     */
+    void eliminaSquadra(int idCalciatore, ArrayList<Integer> idSquadra);
 
 }

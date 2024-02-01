@@ -95,7 +95,7 @@ public class Modifica {
      * @param dataNascita    the data nascita
      * @param dataRitiro     the data ritiro
      * @param squadra        the squadra
-     * @param partiteGiocate    the partite giocate
+     * @param partiteGiocate the partite giocate
      * @param golFatti       the gol fatti
      * @param golSubiti      the gol subiti
      * @param ruolo          the ruolo
@@ -126,6 +126,29 @@ public class Modifica {
         for (Squadra squadraD : controller.getSquadre()) {
             comboBoxSquadra.addItem(squadraD.getNome());
         }
+
+        radioButtonMaschio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonMaschio.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('M'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
+        radioButtonFemmina.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (radioButtonFemmina.isSelected()) {
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadreCategoria('F'))
+                        comboBoxSquadra.addItem(squadra.getNome());
+                }
+            }
+        });
 
         textNome.setText(nome);
         textCognome.setText(cognome);
@@ -259,6 +282,7 @@ public class Modifica {
             public void actionPerformed(ActionEvent e) {
                 if (checkBoxSquadra.isSelected()) {
                     comboBoxSquadra.setEnabled(true);
+                    comboBoxSquadra.setSelectedItem(squadra);
                 } else {
                     comboBoxSquadra.setEnabled(false);
                 }
@@ -271,6 +295,16 @@ public class Modifica {
                     textPartiteGiocate.setEnabled(true);
                 } else {
                     textPartiteGiocate.setEnabled(false);
+                }
+            }
+        });
+        textPartiteGiocate.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_SPACE)) {
+                    e.consume();
                 }
             }
         });
@@ -348,7 +382,8 @@ public class Modifica {
             public void actionPerformed(ActionEvent e) {
                 if (textNome.getText().equals("") || textCognome.getText().equals("") ||
                         textDataNascita.getText().equals("") ||textPartiteGiocate.getText().equals("") ||
-                        textGolFatti.getText().equals("") || textGolSubiti.getText().equals("")) {
+                        textGolFatti.getText().equals("") || textGolSubiti.getText().equals("") ||
+                        comboBoxSquadra.getSelectedItem().equals("")){
                     JOptionPane.showMessageDialog(null, "Inserire tutti i campi");
                     return;
                 }

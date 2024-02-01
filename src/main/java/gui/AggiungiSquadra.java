@@ -10,6 +10,9 @@ import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The type Aggiungi squadra.
+ */
 public class AggiungiSquadra {
     private JComboBox comboBoxSquadra;
     private JTextField textDataInizio;
@@ -41,9 +44,20 @@ public class AggiungiSquadra {
     private LocalDate dataInizio;
     private LocalDate dataFine;
 
+    /**
+     * The constant frame.
+     */
     public static JFrame frame;
     private Controller controller;
 
+    /**
+     * Instantiates a new Aggiungi squadra.
+     *
+     * @param frameChiamante the frame chiamante
+     * @param controller     the controller
+     * @param idCalciatore   the id calciatore
+     * @param sesso          the sesso
+     */
     public AggiungiSquadra(JFrame frameChiamante, Controller controller, int idCalciatore, char sesso) {
         frame = new JFrame("Aggiungi squadra");
         frame.setContentPane(panel);
