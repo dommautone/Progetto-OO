@@ -16,7 +16,7 @@ public class ConnessioneDatabase {
      */
     public Connection connection = null;
         private String nome = "postgres";
-        private String password = "admin";
+        private String password = "Telecomando0!";
         private String url = "jdbc:postgresql://localhost:5432/Traccia3";
         private String driver = "org.postgresql.Driver";
 

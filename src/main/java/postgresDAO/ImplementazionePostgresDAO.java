@@ -754,7 +754,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         try {
             String query = "SELECT idCalciatore, calciatore.nome AS nome_calciatore, cognome, piede, sesso, dataNascita," +
                     "dataRitiro, idSquadra, squadra.nome AS nome_squadra, categoria, annoFondazione, " +
-                    "nazionalità.nome AS nome_nazionalità, continente, dataInizio, dataFine, golSegnati, golSubiti" +
+                    "nazionalità.nome AS nome_nazionalità, continente, dataInizio, dataFine, golSegnati, golSubiti,partiteGiocate" +
                     " FROM Militanza JOIN Calciatore ON idCalciatore = Calciatore" +
                     " JOIN Squadra ON Militanza.Squadra = Squadra.idSquadra" +
                     " JOIN Nazionalità ON Nazionalità.nome = Nazionalità" +

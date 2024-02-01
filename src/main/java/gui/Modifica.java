@@ -66,6 +66,8 @@ public class Modifica {
     private JPanel panelSquadra;
     private JLabel labelSquadra;
     private JComboBox comboBoxSquadra;
+    private JPanel panelModificaSquadra;
+    private JButton buttonModificaSquadra;
     private Controller controller;
     /**
      * The constant frame.
@@ -301,6 +303,14 @@ public class Modifica {
                 }
             }
         });
+        buttonModificaSquadra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModificaSquadra modificaSquadra = new ModificaSquadra(frame, controller, idCalciatore,nome,cognome,sesso);
+                modificaSquadra.frame.setVisible(true);
+                frame.setVisible(false);
+            }
+        });
         buttonModificaRuolo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -381,6 +391,4 @@ public class Modifica {
             }
         });
     }
-
-
 }

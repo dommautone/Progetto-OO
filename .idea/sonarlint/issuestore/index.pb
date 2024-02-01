@@ -27,3 +27,21 @@ X
 (src/main/java/gui/EliminaCalciatore.java,2\b\2b2c72edb3a83e8cf9f24f917dbcd77677ce486d
 Y
 )src/main/java/gui/AggiungiCalciatore.java,e\3\e3100fd70a7918c7f167d542d2b1ad612f828b39
+V
+&src/main/java/gui/ModificaSquadra.java,2\9\29e20a67a433c6d40178b0a36f619f2de3a16667
+O
+src/main/java/gui/Modifica.form,3\3\33a48eb0852606acc753f2ed344189cb706cd710
+N
+src/main/java/gui/Accesso.java,1\c\1c61d58ee00c41acd92f57ee036f8cbe5a7ecbea
+_
+/src/main/java/database/ConnessioneDatabase.java,c\c\cc6637f4448f72f749fd185cb4312475e161ad72
+V
+&src/main/java/gui/ModificaSquadra.form,5\b\5bf7b392ba405ecf4f6f7dad51cd12e7c395fc97
+T
+$src/main/java/gui/ModificaRuolo.java,0\f\0f156f458820a7219446cf8f5b2257449318de8d
+T
+$src/main/java/gui/ModificaRuolo.form,8\0\8012bd4571681fbe175f6283f6898024d31fc037
+V
+&src/main/java/gui/AggiungiSquadra.java,6\0\6065985b5380bd1c1472edd85e56720f65935f25
+V
+&src/main/java/gui/AggiungiSquadra.form,f\9\f9e1d9ef126c11f6baf4474fdca2c8244ed85d5c
