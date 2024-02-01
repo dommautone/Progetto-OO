@@ -189,8 +189,6 @@ public class RicercaUtente {
                     comboBoxSquadra.setEnabled(false);
                     comboBoxSquadra.setSelectedIndex(0);
                     comboBoxSquadra.addItem("");
-                    for (Squadra squadra : controller.getSquadre())
-                        comboBoxSquadra.addItem(squadra.getNome());
                 }
             }
         });
@@ -215,6 +213,10 @@ public class RicercaUtente {
                     radioButtonMaschio.setEnabled(false);
                     radioButtonFemmina.setEnabled(false);
                     buttonGroupSesso.clearSelection();
+                    comboBoxSquadra.removeAllItems();
+                    comboBoxSquadra.addItem("");
+                    for (Squadra squadra : controller.getSquadre())
+                        comboBoxSquadra.addItem(squadra.getNome());
                 }
             }
         });
