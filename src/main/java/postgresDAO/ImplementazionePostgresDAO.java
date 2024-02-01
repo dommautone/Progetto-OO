@@ -201,6 +201,31 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         return squadre;
     }
 
+    public int getIdSquadra(String nomeSquadra, char categoria){
+        PreparedStatement getIdSquadra = null;
+        ResultSet rs = null;
+        int idSquadra = 0;
+        try{
+            String query = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
+            getIdSquadra = connection.prepareStatement(query);
+            getIdSquadra.setString(1, nomeSquadra);
+            getIdSquadra.setString(2, String.valueOf(categoria));
+            rs = getIdSquadra.executeQuery();
+            rs.next();
+            idSquadra = rs.getInt("idSquadra");
+        } catch (SQLException e) {
+            System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
+        } finally {
+            try {
+                if(getIdSquadra != null)
+                    getIdSquadra.close();
+            } catch (SQLException e) {
+                System.out.println("Errore: " + e.getMessage());
+            }
+        }
+        return idSquadra;
+    }
+
     public DefaultTableModel getCalciatori(String nome, String cognome, char sesso, String squadra, String nazionalita,
                                            String piede, Integer eta, String ruolo, Integer golFatti,
                                            Integer golSubiti, LocalDate dataRitiro) throws Exception{
@@ -208,11 +233,12 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
                 "SELECT idCalciatore, idSquadra, nome_calciatore, cognome, sesso, nome_squadra," +
                         " STRING_AGG(DISTINCT nazione_calciatore, '/') AS nazionalità_calciatore, " +
                         "piede, dataNascita, dataRitiro, STRING_AGG(DISTINCT ruolo, '/') AS ruolo," +
-                        " MAX(golSegnati) AS golSegnati,MAX(golSubiti) AS golSubiti " +
+                        " MAX(golSegnati) AS golSegnati,MAX(golSubiti) AS golSubiti, partiteGiocate " +
                         "FROM ( " +
                         "SELECT idCalciatore, idSquadra, calciatore.nome AS nome_calciatore, cognome, sesso," +
                         " squadra.nome AS nome_squadra,  Appartiene.nazionalità AS nazione_calciatore, piede," +
-                        " dataNascita,dataRitiro, Ha.ruolo, SUM(golSegnati) AS golSegnati, SUM(golSubiti) AS golSubiti " +
+                        " dataNascita,dataRitiro, Ha.ruolo, SUM(golSegnati) AS golSegnati, SUM(golSubiti) AS golSubiti, " +
+                        "partiteGiocate " +
                         "FROM Calciatore LEFT JOIN Militanza ON Calciatore.idCalciatore = Militanza.Calciatore " +
                         "LEFT JOIN Appartiene ON Calciatore.idCalciatore = Appartiene.Calciatore " +
                         "LEFT JOIN Ha ON Calciatore.idCalciatore = Ha.Calciatore " +
@@ -222,7 +248,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         ResultSet rs = null;
         DefaultTableModel ricercaCalciatoriUtente = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore",
                 "Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra",
-                "Nazionalita", "Ruolo", "Gol fatti", "Gol subiti"}) {
+                "Nazionalita", "Ruolo", "Partite giocate", "Gol fatti", "Gol subiti"}) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -263,9 +289,9 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         if (golSubiti != null)
             sceltaDati.append(" AND golSubiti = " + golSubiti);
         sceltaDati.append(" GROUP BY idCalciatore,idSquadra, calciatore.nome, cognome, sesso, squadra.nome," +
-                " Appartiene.nazionalità, piede, dataNascita, dataRitiro, Ha.ruolo) " +
+                " Appartiene.nazionalità, piede, dataNascita, dataRitiro, Ha.ruolo, partiteGiocate) " +
                 "GROUP BY idCalciatore, idSquadra, nome_calciatore, cognome, sesso, nome_squadra, piede, dataNascita," +
-                " dataRitiro ");
+                " dataRitiro, partiteGiocate ");
         if(nazionalita != null && !nazionalita.equals("") && ruolo != null && !ruolo.equals(""))
             sceltaDati.append(" HAVING STRING_AGG(DISTINCT nazione_calciatore, '/') LIKE '%" + nazionalita + "%'" +
                     " AND STRING_AGG(DISTINCT ruolo, '/') LIKE '%" + ruolo + "%'");
@@ -280,16 +306,17 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             rs = getGiocatori.executeQuery();
             if(!rs.next())
                 throw new Exception();
-            while (rs.next()) {
+            do{
                 ricercaCalciatoriUtente.addRow(new Object[]{
                         rs.getInt("idCalciatore"), rs.getString("nome_calciatore"),
                         rs.getString("cognome"), rs.getString("piede"),
                         rs.getString("sesso"), rs.getDate("dataNascita"),
                         rs.getDate("dataRitiro"), rs.getInt("idSquadra"),
                         rs.getString("nome_squadra"), rs.getString("nazionalità_calciatore"),
-                        rs.getString("ruolo"), rs.getInt("golSegnati"),
-                        rs.getInt("golSubiti")});
+                        rs.getString("ruolo"), rs.getInt("partiteGiocate"),
+                        rs.getInt("golSegnati"), rs.getInt("golSubiti")});
             }
+            while (rs.next());
 
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
@@ -304,30 +331,17 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         return ricercaCalciatoriUtente;
     }
 
-    public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalita,
+    public void aggiungiCalciatore(String nome, String cognome, char sesso, int idSquadra, ArrayList<String> nazionalita,
                                    String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
                                    LocalDate dataInizio, LocalDate dataFine) throws Exception {
 
         PreparedStatement aggiungiCalciatore = null;
-        PreparedStatement recuperoidSquadra = null;
         PreparedStatement aggiungiMilitanza = null;
         PreparedStatement aggiungiAppartiene = null;
         PreparedStatement aggiungiHa = null;
         ResultSet rs = null;
-        int idSquadra;
 
         try {
-            String queryidSquadra = "SELECT idSquadra FROM Squadra WHERE nome = ? AND categoria = ?";
-            recuperoidSquadra = connection.prepareStatement(queryidSquadra);
-            recuperoidSquadra.setString(1, squadra);
-            //Per evitare problemi con squadre che hanno lo stesso identico nome ma che appartengono a categorie differenti
-            recuperoidSquadra.setString(2, String.valueOf(sesso));
-            rs = recuperoidSquadra.executeQuery();
-            if(rs.next())
-                idSquadra = rs.getInt("idSquadra");
-            else
-                throw new Exception();
-
             String query = "INSERT INTO Calciatore(nome, cognome, sesso, piede, dataNascita, dataRitiro)" +
                     " VALUES (?, ?, ?, ?, ?, ?)";
             aggiungiCalciatore = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -407,7 +421,7 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
     }
 
     public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede,
-                                   char sesso, LocalDate dataNascita, LocalDate dataRitiro, int golFatti,
+                                   char sesso, LocalDate dataNascita, LocalDate dataRitiro,int partiteGiocate, int golFatti,
                                    Integer golSubiti, String squadra){
         PreparedStatement modificaCalciatore = null;
         PreparedStatement modificaMilitanza = null;
@@ -447,17 +461,18 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
             int idSquadra2 = rs.getInt("idSquadra");
 
             String queryMilitanza = "UPDATE Militanza " +
-                        "SET golSegnati = ?, golSubiti = ?, squadra = ? " +
+                        "SET partiteGiocate = ?, golSegnati = ?, golSubiti = ?, squadra = ? " +
                         "WHERE calciatore = ? AND Squadra = ?";
             modificaMilitanza = connection.prepareStatement(queryMilitanza);
-            modificaMilitanza.setInt(1, golFatti);
+            modificaMilitanza.setInt(1, partiteGiocate);
+            modificaMilitanza.setInt(2, golFatti);
             if(golSubiti != null)
-                modificaMilitanza.setInt(2, golSubiti);
+                modificaMilitanza.setInt(3, golSubiti);
             else
-                modificaMilitanza.setNull(2, Types.INTEGER);
-            modificaMilitanza.setInt(3, idSquadra2);
-            modificaMilitanza.setInt(4, idCalciatore);
-            modificaMilitanza.setInt(5, idSquadra);
+                modificaMilitanza.setNull(3, Types.INTEGER);
+            modificaMilitanza.setInt(4, idSquadra2);
+            modificaMilitanza.setInt(5, idCalciatore);
+            modificaMilitanza.setInt(6, idSquadra);
             modificaMilitanza.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());
@@ -750,11 +765,13 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
         PreparedStatement visualizzaSquadreCalciatore = null;
         ResultSet rs = null;
         LocalDate dataRitiro;
+        LocalDate dataFine;
         ArrayList<Militanza> militanza = new ArrayList<>();
         try {
             String query = "SELECT idCalciatore, calciatore.nome AS nome_calciatore, cognome, piede, sesso, dataNascita," +
                     "dataRitiro, idSquadra, squadra.nome AS nome_squadra, categoria, annoFondazione, " +
-                    "nazionalità.nome AS nome_nazionalità, continente, dataInizio, dataFine, golSegnati, golSubiti,partiteGiocate" +
+                    "nazionalità.nome AS nome_nazionalità, continente, dataInizio, dataFine, golSegnati, golSubiti," +
+                    " partiteGiocate" +
                     " FROM Militanza JOIN Calciatore ON idCalciatore = Calciatore" +
                     " JOIN Squadra ON Militanza.Squadra = Squadra.idSquadra" +
                     " JOIN Nazionalità ON Nazionalità.nome = Nazionalità" +
@@ -767,12 +784,17 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
                     dataRitiro = null;
                 else
                     dataRitiro = rs.getDate("dataRitiro").toLocalDate();
-                militanza.add(new Militanza(rs.getDate("dataInizio").toLocalDate(), dataRitiro,
+                if(rs.getDate("dataFine") == null)
+                    dataFine = null;
+                else
+                    dataFine = rs.getDate("dataFine").toLocalDate();
+                militanza.add(new Militanza(rs.getDate("dataInizio").toLocalDate(), dataFine,
                         rs.getInt("partiteGiocate"), rs.getInt("golSegnati"),
-                        rs.getInt("golSubiti"), new Calciatore(rs.getInt("idCalciatore"),
-                        rs.getString("nome_calciatore"), rs.getString("cognome"),
-                        rs.getString("Piede"), rs.getString("Sesso").charAt(0),
-                        rs.getDate("dataNascita").toLocalDate(), dataRitiro),
+                        rs.getInt("golSubiti"),
+                        new Calciatore(rs.getInt("idCalciatore"), rs.getString("nome_calciatore"),
+                                rs.getString("cognome"), rs.getString("Piede"),
+                                rs.getString("Sesso").charAt(0), rs.getDate("dataNascita").toLocalDate(),
+                                dataRitiro),
                         new Squadra(rs.getInt("idSquadra"), rs.getString("nome_squadra"),
                                 rs.getString("categoria").charAt(0), rs.getInt("annoFondazione"),
                                 new Nazionalita(rs.getString("nome_nazionalità"),
@@ -792,11 +814,12 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
     }
 
     public void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine,
-                                 int golFatti, Integer golSubiti) throws Exception {
+                                 int partiteGiocate, int golFatti, Integer golSubiti) throws Exception {
         PreparedStatement inserisciSquadra = null;
         try {
-            String query = "INSERT INTO Militanza (Calciatore, Squadra, dataInizio, dataFine, golSegnati, golSubiti) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Militanza (Calciatore, Squadra, dataInizio, dataFine, partiteGiocate, golSegnati," +
+                    " golSubiti) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
             inserisciSquadra = connection.prepareStatement(query);
             inserisciSquadra.setInt(1, idCalciatore);
             inserisciSquadra.setInt(2, idSquadra);
@@ -805,11 +828,12 @@ public class ImplementazionePostgresDAO implements ImplementazioneDAO {
                 inserisciSquadra.setDate(4, Date.valueOf(dataFine));
             else
                 inserisciSquadra.setNull(4, Types.DATE);
-            inserisciSquadra.setInt(5, golFatti);
+            inserisciSquadra.setInt(5, partiteGiocate);
+            inserisciSquadra.setInt(6, golFatti);
             if (golSubiti != null)
-                inserisciSquadra.setInt(6, golSubiti);
+                inserisciSquadra.setInt(7, golSubiti);
             else
-                inserisciSquadra.setNull(6, Types.INTEGER);
+                inserisciSquadra.setNull(7, Types.INTEGER);
             inserisciSquadra.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Errore nell'inserimento dei dati: " + e.getMessage());

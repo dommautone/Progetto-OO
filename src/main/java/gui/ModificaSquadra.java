@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ModificaSquadra {
-    private JPanel panel1;
+    private JPanel panel;
     private JTable tableModificaSquadra;
     private JButton buttonIndietro;
     private JButton buttonAggiungiSquadra;
@@ -25,10 +25,12 @@ public class ModificaSquadra {
     private Controller controller;
 
     public static JFrame frame;
-
-    public ModificaSquadra(JFrame frameChiamante, Controller controller,int idCalciatore,String nome,String cognome,char sesso) {
+    /**
+     * La gui Modifica Squadra permette di modificare la squadra di un calciatore se si è amministratori.
+     */
+    public ModificaSquadra(JFrame frameChiamante, Controller controller, int idCalciatore, char sesso) {
         frame = new JFrame("Modifica squadra");
-        frame.setContentPane(panel1);
+        frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setResizable(false);
@@ -39,7 +41,13 @@ public class ModificaSquadra {
         tableModificaSquadra.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableModificaSquadra.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Calciatore",
-                "idSquadra", "Squadra"});
+                "idSquadra", "Squadra", "Data inizio", "Data fine", "Partite giocate", "Gol segnati", "Gol subiti"}) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         tableModificaSquadra.setModel(tableModel);
         tableModificaSquadra.getColumnModel().getColumn(0).setMaxWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(0).setMinWidth(0);
@@ -47,20 +55,24 @@ public class ModificaSquadra {
         tableModificaSquadra.getColumnModel().getColumn(2).setMaxWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(2).setMinWidth(0);
         tableModificaSquadra.getColumnModel().getColumn(2).setPreferredWidth(0);
+        tableModificaSquadra.getColumnModel().getColumn(3).setPreferredWidth(150);
 
         for (Militanza militanza : controller.visualizzaSquadreCalciatore(idCalciatore)) {
-            tableModel.addRow(new Object[]{idCalciatore, nome + " " + cognome, militanza.getSquadra().getIdSquadra(),
-                    militanza.getSquadra().getNome()});
+            tableModel.addRow(new Object[]{idCalciatore, militanza.getCalciatore().getNome()+ " " +
+                    militanza.getCalciatore().getCognome(), militanza.getSquadra().getIdSquadra(),
+                    militanza.getSquadra().getNome(), militanza.getDataInizio(), militanza.getDataFine(),
+                    militanza.getPartiteGiocate(), militanza.getGolSegnati(), militanza.getGolSubiti()});
         }
 
         buttonAggiungiSquadra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AggiungiSquadra aggiungiSquadra = new AggiungiSquadra(frame, controller, idCalciatore);
+                AggiungiSquadra aggiungiSquadra = new AggiungiSquadra(frame, controller, idCalciatore, sesso);
                 aggiungiSquadra.frame.setVisible(true);
-                frame.setVisible(false);
+                frame.dispose();
             }
         });
+
         buttonEliminaSquadra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,25 +81,27 @@ public class ModificaSquadra {
                     return;
                 }
                 int idCalciatore = (int) tableModificaSquadra.getValueAt(tableModificaSquadra.getSelectedRow(), 0);
-                ArrayList<Integer> militanza = new ArrayList<>();
+                ArrayList<Integer> eliminaMilitanza = new ArrayList<>();
                 for (int indice : tableModificaSquadra.getSelectedRows())
-                    militanza.add((Integer) tableModificaSquadra.getValueAt(indice, 2));
-                controller.eliminaSquadra(idCalciatore, militanza);
-                JOptionPane.showMessageDialog(null, "Ruolo eliminato con successo");
+                    eliminaMilitanza.add((Integer) tableModificaSquadra.getValueAt(indice, 2));
+                controller.eliminaSquadra(idCalciatore, eliminaMilitanza);
+                JOptionPane.showMessageDialog(null, "Squadra eliminata con successo");
                 tableModel.setRowCount(0);
-                for (Militanza militanza1 : controller.visualizzaSquadreCalciatore(idCalciatore)) {
-                    tableModel.addRow(new Object[]{idCalciatore, militanza1.getCalciatore().getNome() + " " +
-                            militanza1.getCalciatore().getCognome(), militanza1.getSquadra().getIdSquadra(),
-                            militanza1.getSquadra().getNome()});
+                for (Militanza militanza : controller.visualizzaSquadreCalciatore(idCalciatore)) {
+                    tableModel.addRow(new Object[]{idCalciatore, militanza.getCalciatore().getNome() + " " +
+                            militanza.getCalciatore().getCognome(), militanza.getSquadra().getIdSquadra(),
+                            militanza.getSquadra().getNome(),militanza.getDataInizio(), militanza.getDataFine(),
+                            militanza.getPartiteGiocate(), militanza.getGolSegnati(), militanza.getGolSubiti() });
                 }
-            }
-        });
+            }});
         buttonIndietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameChiamante.setVisible(true);
+                Modifica.frame.setVisible(true);
                 frame.dispose();
             }
         });
     }
 }
+
+

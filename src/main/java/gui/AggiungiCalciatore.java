@@ -2,6 +2,7 @@ package gui;
 
 import controller.CategoriaNonCorrispondeException;
 import controller.Controller;
+import controller.DataNonCoerenteException;
 import model.Nazionalita;
 import model.Ruolo;
 import model.Squadra;
@@ -351,6 +352,9 @@ public class AggiungiCalciatore {
                 } catch (CategoriaNonCorrispondeException ex) {
                     JOptionPane.showMessageDialog(null, "Il sesso del calciatore non corrisponde " +
                             "alla categoria della squadra");
+                } catch (DataNonCoerenteException ex) {
+                    JOptionPane.showMessageDialog(null, "Qualche data non è coerente");
+
                 }
             }
         });

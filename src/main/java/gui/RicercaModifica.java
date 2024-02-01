@@ -63,7 +63,7 @@ public class RicercaModifica {
         tableModifica.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore",
                 "Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra",
-                "Nazionalita", "Ruolo", "Gol fatti", "Gol subiti"});
+                "Nazionalita", "Ruolo", "Partite giocate","Gol fatti", "Gol subiti"});
         try {
             tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
                     ruolo, golFatti, golSubiti, dataRitiro);
@@ -118,13 +118,12 @@ public class RicercaModifica {
                         dataRitiro = dataRitiroD.toLocalDate();
                     int idSquadra = (Integer) tableModifica.getValueAt(riga, 7);
                     String squadra = (String) tableModifica.getValueAt(riga, 8);
-                    String nazionalita = (String) tableModifica.getValueAt(riga, 9);
                     String ruolo = (String) tableModifica.getValueAt(riga, 10);
-                    Integer golFatti = (Integer) tableModifica.getValueAt(riga, 11);
-                    Integer golSubiti = (Integer) tableModifica.getValueAt(riga, 12);
+                    int partiteGiocate = (int) tableModifica.getValueAt(riga, 11);
+                    int golFatti = (int) tableModifica.getValueAt(riga, 12);
+                    Integer golSubiti = (Integer) tableModifica.getValueAt(riga, 13);
                     Modifica modifica = new Modifica(frame, controller, idCalciatore, idSquadra, nome, cognome, piede,
-                            sesso, dataNascita, dataRitiro,
-                            squadra, golFatti, golSubiti, ruolo, nazionalita);
+                            sesso, dataNascita, dataRitiro, squadra, partiteGiocate, golFatti, golSubiti, ruolo);
                     modifica.frame.setVisible(true);
                     frame.setVisible(false);
                 }

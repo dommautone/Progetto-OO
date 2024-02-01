@@ -56,6 +56,7 @@ public interface ImplementazioneDAO {
     ArrayList<Squadra> getSquadre();
 
     ArrayList<Squadra> getSquadreCategoria(char categoria);
+    int getIdSquadra(String nomeSquadra, char categoria);
 
     /**
      * Gets calciatori.
@@ -92,7 +93,7 @@ public interface ImplementazioneDAO {
      * @param dataInizio  the data inizio
      * @param dataFine    the data fine
      */
-    void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalita,
+    void aggiungiCalciatore(String nome, String cognome, char sesso, int idSquadra, ArrayList<String> nazionalita,
                             String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
                             LocalDate dataInizio, LocalDate dataFine) throws Exception;
 
@@ -112,7 +113,8 @@ public interface ImplementazioneDAO {
      * @param squadra      the squadra
      */
     void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso,
-                            LocalDate dataNascita, LocalDate dataRitiro, int golFatti, Integer golSubiti, String squadra);
+                            LocalDate dataNascita, LocalDate dataRitiro, int partiteGiocate, int golFatti,
+                            Integer golSubiti, String squadra);
 
     /**
      * Visualizza ruolo calciatore array list.
@@ -172,7 +174,8 @@ public interface ImplementazioneDAO {
     void eliminaCalciatore(ArrayList<Integer> idCalciatore);
 
     ArrayList<Militanza> visualizzaSquadreCalciatore(int idCalciatore);
-    void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int golFatti, Integer golSubiti) throws Exception;
+    void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int partiteGiocate,
+                          int golFatti, Integer golSubiti) throws Exception;
     void eliminaSquadra(int idCalciatore, ArrayList<Integer> squadra);
 
 }

@@ -1,118 +1,126 @@
 
 Q
-java:S3740A"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8îÄıÖ1
+java:S3740A"/Provide the parametrized type for this generic.(÷©“Òûÿÿÿÿ8ù••¤Ö1
 L
-java:S3740D"/Provide the parametrized type for this generic.(ï—î8ïÄıÖ1
+java:S3740D"/Provide the parametrized type for this generic.(ï—î8ù••¤Ö1
 K
-java:S1604“"(Make this anonymous inner class a lambda(ã¥›šÿÿÿÿÿ8óÄıÖ1
+java:S1604™"(Make this anonymous inner class a lambda(ã¥›šÿÿÿÿÿ8û••¤Ö1
 K
-java:S1604§"(Make this anonymous inner class a lambda(›©¤–ıÿÿÿÿ8óÄıÖ1
+java:S1604­"(Make this anonymous inner class a lambda(›©¤–ıÿÿÿÿ8û••¤Ö1
 K
-java:S1604»"(Make this anonymous inner class a lambda(å ÇÖøÿÿÿÿ8óÄıÖ1
+java:S1604Á"(Make this anonymous inner class a lambda(å ÇÖøÿÿÿÿ8û••¤Ö1
 K
-java:S1604Å"(Make this anonymous inner class a lambda(Ù¯éüÿÿÿÿ8óÄıÖ1
+java:S1604Ë"(Make this anonymous inner class a lambda(Ù¯éüÿÿÿÿ8û••¤Ö1
 F
-java:S1604Ñ"(Make this anonymous inner class a lambda(—ï´©8óÄıÖ1
+java:S1604×"(Make this anonymous inner class a lambda(—ï´©8û••¤Ö1
 K
-java:S1604æ"(Make this anonymous inner class a lambda(Àƒ¤¢ıÿÿÿÿ8óÄıÖ1
+java:S1604ì"(Make this anonymous inner class a lambda(Àƒ¤¢ıÿÿÿÿ8û••¤Ö1
 E
-java:S1604û"(Make this anonymous inner class a lambda(ü©§8óÄıÖ1
+java:S1604"(Make this anonymous inner class a lambda(ü©§8û••¤Ö1
 F
-java:S1604…"(Make this anonymous inner class a lambda(«¼›8ôÄıÖ1
-K
-java:S1604™"(Make this anonymous inner class a lambda(Êè¬úÿÿÿÿ8ôÄıÖ1
-K
-java:S1604²"(Make this anonymous inner class a lambda(¬±¨˜şÿÿÿÿ8ôÄıÖ1
+java:S1604‹"(Make this anonymous inner class a lambda(ÿ¢Óê8û••¤Ö1
 F
-java:S1604º"(Make this anonymous inner class a lambda(Åö¸¡8Ó©©„Ö1
+java:S1604•"(Make this anonymous inner class a lambda(«¼›8û••¤Ö1
+K
+java:S1604©"(Make this anonymous inner class a lambda(Êè¬úÿÿÿÿ8û••¤Ö1
+K
+java:S1604Â"(Make this anonymous inner class a lambda(¬±¨˜şÿÿÿÿ8û••¤Ö1
+F
+java:S1604Ê"(Make this anonymous inner class a lambda(Åö¸¡8û••¤Ö1
 E
-java:S1604Â"(Make this anonymous inner class a lambda(•äE8Ô©©„Ö1
+java:S1604Ò"(Make this anonymous inner class a lambda(•äE8ı••¤Ö1
 K
-java:S1604Ê"(Make this anonymous inner class a lambda(âä™²üÿÿÿÿ8Ô©©„Ö1
+java:S1604Ú"(Make this anonymous inner class a lambda(âä™²üÿÿÿÿ8ı••¤Ö1
 K
-java:S1604‚"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8Ğ±›…Ö1
+java:S1604’"(Make this anonymous inner class a lambda(áŒÃåıÿÿÿÿ8ı••¤Ö1
 s
-java:S1104K"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8öÄıÖ1
+java:S1104O"QMake frame a static final constant or non-public and provide accessors if needed.(¹å‘şøÿÿÿÿ8ı••¤Ö1
 M
-java:S1444K"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8öÄıÖ1
-c	java:S107c"BConstructor has 15 parameters, which is greater than 7 authorized.(÷ó•äÿÿÿÿÿ8ÃÆıÖ1
+java:S1444O"+Make this "public static frame" field final(¹å‘şøÿÿÿÿ8ı••¤Ö1
+c	java:S107g"BConstructor has 15 parameters, which is greater than 7 authorized.(÷ó•äÿÿÿÿÿ8¼–•¤Ö1
 t
-java:S3776c"RRefactor this method to reduce its Cognitive Complexity from 77 to the 15 allowed.(÷ó•äÿÿÿÿÿ8ÇÆıÖ1
+java:S3776g"RRefactor this method to reduce its Cognitive Complexity from 80 to the 15 allowed.(÷ó•äÿÿÿÿÿ8¾–•¤Ö1
 ?
-java:S3010f""Remove this assignment of "frame".(Ã¸ÜÁ8ÉÆıÖ1
+java:S3010j""Remove this assignment of "frame".(Ã¸ÜÁ8¾–•¤Ö1
 f
-java:S3252h"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8ÎÆıÖ1
+java:S3252l"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8À–•¤Ö1
 e
-java:S1126–"BReplace this if-then-else statement by a single method invocation.(¼ä÷ßûÿÿÿÿ8ØÆıÖ1
+java:S1126œ"BReplace this if-then-else statement by a single method invocation.(¼ä÷ßûÿÿÿÿ8Ã–•¤Ö1
 e
-java:S1126ª"BReplace this if-then-else statement by a single method invocation.(½Âøÿÿÿÿ8ßÆıÖ1
+java:S1126°"BReplace this if-then-else statement by a single method invocation.(½Âøÿÿÿÿ8Æ–•¤Ö1
 `
-java:S1126¾"BReplace this if-then-else statement by a single method invocation.(§æİÙ8åÆıÖ1
+java:S1126Ä"BReplace this if-then-else statement by a single method invocation.(§æİÙ8È–•¤Ö1
 _
-java:S1126Ô"BReplace this if-then-else statement by a single method invocation.(‹Ó8ìÆıÖ1
+java:S1126Ú"BReplace this if-then-else statement by a single method invocation.(‹Ó8Ê–•¤Ö1
 e
-java:S1126é"BReplace this if-then-else statement by a single method invocation.(™Ëà¢şÿÿÿÿ8óÆıÖ1
+java:S1126ï"BReplace this if-then-else statement by a single method invocation.(™Ëà¢şÿÿÿÿ8Ì–•¤Ö1
 `
-java:S1126ş"BReplace this if-then-else statement by a single method invocation.(ùÖ×Æ8úÆıÖ1
+java:S1126„"BReplace this if-then-else statement by a single method invocation.(ùÖ×Æ8Ï–•¤Ö1
 e
-java:S1126ˆ"BReplace this if-then-else statement by a single method invocation.(–¯ëÂÿÿÿÿÿ8ıÆıÖ1
+java:S1126"BReplace this if-then-else statement by a single method invocation.(ºú¬øÿÿÿÿ8Ğ–•¤Ö1
+e
+java:S1126˜"BReplace this if-then-else statement by a single method invocation.(–¯ëÂÿÿÿÿÿ8Ñ–•¤Ö1
 E
-java:S1125"'Remove the unnecessary boolean literal.(å×Ç8İª©„Ö1
+java:S1125­"'Remove the unnecessary boolean literal.(å×Ç8Ô–•¤Ö1
 X
-java:S2209¶"5Change this instance-reference to a static reference.(ñ¡«£úÿÿÿÿ8Ÿ’¿¢Ö1
+java:S2209Æ"5Change this instance-reference to a static reference.(ñ¡«£úÿÿÿÿ8Ù–•¤Ö1
 X
-java:S2209¾"5Change this instance-reference to a static reference.(šû¼Äúÿÿÿÿ8¢’¿¢Ö1
+java:S2209Î"5Change this instance-reference to a static reference.(šû¼Äúÿÿÿÿ8Û–•¤Ö1
 S
-java:S2209Æ"5Change this instance-reference to a static reference.(½°Ä8¤’¿¢Ö1
+java:S2209Ö"5Change this instance-reference to a static reference.(½°Ä8Ü–•¤Ö1
 X
-java:S1068)";Remove this unused "panelModificaCalciatore" private field.(¥®¨î8¹ÇıÖ1
+java:S1068)";Remove this unused "panelModificaCalciatore" private field.(¥®¨î8á–•¤Ö1
 ]
-java:S1068*";Remove this unused "labelModificaCalciatore" private field.(¨âäşÿÿÿÿ8¹ÇıÖ1
+java:S1068*";Remove this unused "labelModificaCalciatore" private field.(¨âäşÿÿÿÿ8á–•¤Ö1
 J
-java:S1068+"-Remove this unused "panelNome" private field.(²ƒÉ³8ºÇıÖ1
+java:S1068+"-Remove this unused "panelNome" private field.(²ƒÉ³8á–•¤Ö1
 J
-java:S1068,"-Remove this unused "labelNome" private field.(¬Ñ‚—8ºÇıÖ1
+java:S1068,"-Remove this unused "labelNome" private field.(¬Ñ‚—8á–•¤Ö1
 M
-java:S1068-"0Remove this unused "panelCognome" private field.(ö‘¶é8ºÇıÖ1
+java:S1068-"0Remove this unused "panelCognome" private field.(ö‘¶é8â–•¤Ö1
 L
-java:S1068."0Remove this unused "labelCognome" private field.(›ş×8»ÇıÖ1
+java:S1068."0Remove this unused "labelCognome" private field.(›ş×8â–•¤Ö1
 V
-java:S1068/"4Remove this unused "panelDataNascita" private field.(ê«äëøÿÿÿÿ8»ÇıÖ1
+java:S1068/"4Remove this unused "panelDataNascita" private field.(ê«äëøÿÿÿÿ8â–•¤Ö1
 V
-java:S10680"4Remove this unused "labelDataNascita" private field.(äú£Üúÿÿÿÿ8»ÇıÖ1
+java:S10680"4Remove this unused "labelDataNascita" private field.(äú£Üúÿÿÿÿ8â–•¤Ö1
 U
-java:S10681"3Remove this unused "panelDataRitiro" private field.(½Æ½Ëşÿÿÿÿ8»ÇıÖ1
+java:S10681"3Remove this unused "panelDataRitiro" private field.(½Æ½Ëşÿÿÿÿ8â–•¤Ö1
 U
-java:S10682"3Remove this unused "labelDataRitiro" private field.(²®›Çøÿÿÿÿ8¼ÇıÖ1
+java:S10682"3Remove this unused "labelDataRitiro" private field.(²®›Çøÿÿÿÿ8â–•¤Ö1
 S
-java:S10683"1Remove this unused "panelGolFatti" private field.(ïàí„ùÿÿÿÿ8¼ÇıÖ1
+java:S10683"1Remove this unused "panelGolFatti" private field.(ïàí„ùÿÿÿÿ8â–•¤Ö1
 S
-java:S10684"1Remove this unused "labelGolFatti" private field.(ƒòÁÿÿÿÿÿ8¼ÇıÖ1
+java:S10684"1Remove this unused "labelGolFatti" private field.(ƒòÁÿÿÿÿÿ8â–•¤Ö1
 T
-java:S10685"2Remove this unused "panelGolSubiti" private field.(¥ÆÁ“şÿÿÿÿ8¼ÇıÖ1
+java:S10685"2Remove this unused "panelGolSubiti" private field.(¥ÆÁ“şÿÿÿÿ8â–•¤Ö1
 O
-java:S10686"2Remove this unused "labelGolSubiti" private field.(ÑÉØ–8¼ÇıÖ1
+java:S10686"2Remove this unused "labelGolSubiti" private field.(ÑÉØ–8â–•¤Ö1
 X
-java:S10687"6Remove this unused "panelModificaRuolo" private field.(ü—óœûÿÿÿÿ8¼ÇıÖ1
+java:S10687"6Remove this unused "panelModificaRuolo" private field.(ü—óœûÿÿÿÿ8â–•¤Ö1
 Y
-java:S10688"<Remove this unused "panelModificaNazionalita" private field.(‚¢·€8½ÇıÖ1
+java:S10688"<Remove this unused "panelModificaNazionalita" private field.(‚¢·€8â–•¤Ö1
 P
-java:S10689".Remove this unused "panelInvio" private field.(ı½–¤ıÿÿÿÿ8½ÇıÖ1
+java:S10689".Remove this unused "panelInvio" private field.(ı½–¤ıÿÿÿÿ8â–•¤Ö1
 N
-java:S1068:"1Remove this unused "panelIndietro" private field.(½¸å¥8½ÇıÖ1
+java:S1068:"1Remove this unused "panelIndietro" private field.(½¸å¥8â–•¤Ö1
 P
-java:S1068;".Remove this unused "panelSesso" private field.(ñŸö§ÿÿÿÿÿ8½ÇıÖ1
+java:S1068;".Remove this unused "panelSesso" private field.(ñŸö§ÿÿÿÿÿ8â–•¤Ö1
 P
-java:S1068<".Remove this unused "labelSesso" private field.(ü¬ò¨üÿÿÿÿ8½ÇıÖ1
+java:S1068<".Remove this unused "labelSesso" private field.(ü¬ò¨üÿÿÿÿ8â–•¤Ö1
 K
-java:S1068?".Remove this unused "panelPiede" private field.(Óõ› 8¾ÇıÖ1
+java:S1068?".Remove this unused "panelPiede" private field.(Óõ› 8â–•¤Ö1
 K
-java:S1068@".Remove this unused "labelPiede" private field.(Ò¾Ş„8¾ÇıÖ1
+java:S1068@".Remove this unused "labelPiede" private field.(Ò¾Ş„8â–•¤Ö1
 R
-java:S1068B"0Remove this unused "panelSquadra" private field.(Ï”«Æøÿÿÿÿ8¾ÇıÖ1
+java:S1068B"0Remove this unused "panelSquadra" private field.(Ï”«Æøÿÿÿÿ8â–•¤Ö1
 R
-java:S1068C"0Remove this unused "labelSquadra" private field.(ê¬…ÿşÿÿÿÿ8¿ÇıÖ1
+java:S1068C"0Remove this unused "labelSquadra" private field.(ê¬…ÿşÿÿÿÿ8â–•¤Ö1
 U
-java:S1068E"8Remove this unused "panelModificaSquadra" private field.(ŒÂêÌ8Ú¦”…Ö1
+java:S1068E"8Remove this unused "panelModificaSquadra" private field.(ŒÂêÌ8â–•¤Ö1
+Y
+java:S1068I"7Remove this unused "panelPartiteGiocate" private field.(¼ğÓ›üÿÿÿÿ8â–•¤Ö1
+Y
+java:S1068J"7Remove this unused "labelPartiteGiocate" private field.(Â¹ûÿÿÿÿ8â–•¤Ö1
 R
-java:S1068M"0Remove this unused "dataNascita2" private field.(áİ½øÿÿÿÿ8ÁÇıÖ1
+java:S1068Q"0Remove this unused "dataNascita2" private field.(áİ½øÿÿÿÿ8ã–•¤Ö1

@@ -56,7 +56,12 @@ public class ModificaNazionalita {
 
         tableModificaNazionalita.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Calciatore",
-                "Nazionalita"});
+                "Nazionalita"}){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tableModificaNazionalita.setModel(tableModel);
         tableModificaNazionalita.setModel(tableModel);
         tableModificaNazionalita.getColumnModel().getColumn(0).setMaxWidth(0);

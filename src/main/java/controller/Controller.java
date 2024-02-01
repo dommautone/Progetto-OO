@@ -105,6 +105,7 @@ public class Controller {
 
     public ArrayList<Squadra> getSquadreCategoria(char categoria){return implementazionePostgresDAO.getSquadreCategoria(categoria);}
 
+    public int getIdSquadra(String nomeSquadra, char categoria){return implementazionePostgresDAO.getIdSquadra(nomeSquadra, categoria);}
     /**
      * Get calciatori default table model.
      *
@@ -150,15 +151,26 @@ public class Controller {
      */
     public void aggiungiCalciatore(String nome, String cognome, char sesso, String squadra, ArrayList<String> nazionalita,
                                    String piede, LocalDate dataNascita, ArrayList<String> ruolo, LocalDate dataRitiro,
-                                   LocalDate dataInizio, LocalDate dataFine) throws CategoriaNonCorrispondeException {
+                                   LocalDate dataInizio, LocalDate dataFine) throws CategoriaNonCorrispondeException,
+            DataNonCoerenteException {
 
+        int idSquadra = getIdSquadra(squadra, sesso);
         piede = piede.toLowerCase();
         nome = nome.trim(); //Rimuove gli spazi all'inizio e alla fine
         nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase(); //Mette la prima lettera maiuscola e le altre minuscole
         cognome = cognome.trim();
         cognome = cognome.substring(0, 1).toUpperCase() + cognome.substring(1).toLowerCase();
+        if(dataRitiro != null)
+            if(dataNascita.isAfter(dataRitiro))
+                throw new DataNonCoerenteException();
+        if(dataNascita.isAfter(dataInizio))
+            throw new DataNonCoerenteException();
+        if(dataFine != null)
+            if(dataInizio.isAfter(dataFine))
+                throw new DataNonCoerenteException();
+
         try {
-            implementazionePostgresDAO.aggiungiCalciatore(nome, cognome, sesso, squadra, nazionalita, piede, dataNascita,
+            implementazionePostgresDAO.aggiungiCalciatore(nome, cognome, sesso, idSquadra, nazionalita, piede, dataNascita,
                     ruolo, dataRitiro, dataInizio, dataFine);
         } catch (Exception e) {
             throw new CategoriaNonCorrispondeException();
@@ -181,10 +193,10 @@ public class Controller {
      * @param squadra      la squadra
      */
     public void modificaCalciatore(int idCalciatore, int idSquadra, String nome, String cognome, String piede, char sesso,
-                                   LocalDate dataNascita, LocalDate dataRitiro, int golFatti, Integer golSubiti,
-                                   String squadra){
+                                   LocalDate dataNascita, LocalDate dataRitiro, int partiteGiocate, int golFatti,
+                                   Integer golSubiti, String squadra){
         implementazionePostgresDAO.modificaCalciatore(idCalciatore, idSquadra, nome, cognome, piede, sesso, dataNascita,
-                dataRitiro, golFatti, golSubiti, squadra);
+                dataRitiro, partiteGiocate, golFatti, golSubiti, squadra);
     }
 
     public boolean controlloRuoloPortiere(int idCalciatore) {
@@ -279,9 +291,17 @@ public class Controller {
         return implementazionePostgresDAO.visualizzaSquadreCalciatore(idCalciatore);
     }
 
-    public void inserisciSquadra(int idCalciatore, int idSquadra, LocalDate dataInizio, LocalDate dataFine, int golFatti, Integer golSubiti) throws SquadraGiàInseritaException{
+    public void inserisciSquadra(int idCalciatore, char sesso, String nomeSquadra, LocalDate dataInizio, LocalDate dataFine,
+                                 int partiteGiocate, int golFatti, Integer golSubiti) throws SquadraGiàInseritaException,
+            DataNonCoerenteException{
+
+        int idSquadra = getIdSquadra(nomeSquadra, sesso);
+        if(dataFine != null)
+            if(dataInizio.isAfter(dataFine))
+                throw new DataNonCoerenteException();
         try{
-            implementazionePostgresDAO.inserisciSquadra(idCalciatore, idSquadra, dataInizio, dataFine, golFatti,  golSubiti);
+            implementazionePostgresDAO.inserisciSquadra(idCalciatore, idSquadra, dataInizio, dataFine, partiteGiocate,
+                    golFatti, golSubiti);
         } catch (Exception e) {
             throw new SquadraGiàInseritaException();
         }

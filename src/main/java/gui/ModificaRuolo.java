@@ -56,7 +56,12 @@ public class ModificaRuolo {
         tableModificaRuolo.getTableHeader().setFont(new Font("Times New Roman", Font.BOLD, 14));
         tableModificaRuolo.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore", "Calciatore",
-                "Ruolo"});
+                "Ruolo"}){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tableModificaRuolo.setModel(tableModel);
         tableModificaRuolo.getColumnModel().getColumn(0).setMaxWidth(0);
         tableModificaRuolo.getColumnModel().getColumn(0).setMinWidth(0);

@@ -59,7 +59,7 @@ public class RisultatoUtente {
         tableRicercaUtente.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         DefaultTableModel tableModel = new DefaultTableModel(new Object[][]{}, new String[]{"idCalciatore",
                 "Nome", "Cognome", "Piede", "Sesso", "Data di nascita", "Data di ritiro", "idSquadra", "Squadra",
-                "Nazionalita", "Ruolo", "Gol fatti", "Gol subiti"});
+                "Nazionalita", "Ruolo","Partite giocare", "Gol fatti", "Gol subiti"});
         try {
             tableModel = controller.getCalciatori(nome, cognome, sesso, squadra, nazionalita, piede, eta,
                     ruolo, golFatti, golSubiti, dataRitiro);
